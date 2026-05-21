@@ -26,9 +26,10 @@ C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.buil
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\swae.build.ex.cache
-C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.dll
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\refint\ToDoList.dll
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.pdb
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.genruntimeconfig.cache
 C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\ref\ToDoList.dll
+C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.sourcelink.json
+C:\Users\sw\source\repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,0 +1,282 @@
+/* ToDoList — страница создания задачи (переменные темы в app-theme.css) */
+
+:root {
+    --required: #b8a8c8;
+    --shadow: 0 6px 28px rgba(120, 96, 150, 0.08);
+    --focus-ring: rgba(168, 148, 200, 0.28);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --ease: 0.2s ease;
+}
+
+.todo-app-page {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 -0.75rem;
+    padding: 1rem 0.75rem 1.5rem;
+}
+
+.todo-app-page *,
+.todo-app-page *::before,
+.todo-app-page *::after {
+    box-sizing: border-box;
+}
+
+/* Карточка по центру */
+
+.create-card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 4px);
+    box-shadow: var(--shadow);
+}
+
+.create-card__header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.create-card__title {
+    margin: 0 0 0.4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+}
+
+.create-card__lead {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Форма */
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+@media (max-width: 420px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-field--group {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.form-field--group legend {
+    margin-bottom: 0.4rem;
+}
+
+.form-field__label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-strong);
+    letter-spacing: 0.01em;
+}
+
+.form-field__required {
+    color: var(--required);
+}
+
+.form-field__input {
+    width: 100%;
+    padding: 0.62rem 0.8rem;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text-strong);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--ease), box-shadow var(--ease), background var(--ease);
+}
+
+.form-field__textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-field__select {
+    appearance: none;
+    padding-right: 2.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239490a8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    cursor: pointer;
+}
+
+.form-field__input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-field__input:hover {
+    border-color: var(--border-focus);
+    background: var(--card);
+}
+
+.form-field__input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--card);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Радио-пилюли */
+
+.choice-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.choice-pill {
+    display: flex;
+    cursor: pointer;
+}
+
+.choice-pill input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.choice-pill span {
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.choice-pill input:checked + span {
+    color: var(--text-strong);
+    background: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.choice-pill input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Чекбокс */
+
+.choice-check {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+}
+
+.choice-check__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.choice-check__box {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border-focus);
+    border-radius: 6px;
+    background: var(--card);
+    transition: background var(--ease), border-color var(--ease);
+}
+
+.choice-check__text {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.choice-check__input:checked + .choice-check__box {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fefcff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E");
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.choice-check__input:focus-visible + .choice-check__box {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 2px;
+}
+
+/* Кнопки (без класса .btn — не конфликтует с Bootstrap) */
+
+.create-form__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 0.35rem;
+    padding-top: 0.25rem;
+}
+
+.create-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.7rem 1.2rem;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.create-btn--primary {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.create-btn--primary:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+}
+
+.create-btn--primary:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+}
+
+.create-btn--secondary {
+    color: var(--text-muted);
+    background: transparent;
+    border-color: var(--border);
+}
+
+.create-btn--secondary:hover {
+    color: var(--text-strong);
+    background: var(--surface);
+    border-color: var(--border-focus);
+}

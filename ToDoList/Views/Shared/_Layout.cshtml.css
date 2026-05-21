@@ -8,7 +8,7 @@ a.navbar-brand {
 }
 
 a {
-  color: #0077cc;
+  color: var(--accent, #a894c8);
 }
 
 .btn-primary {
@@ -24,14 +24,10 @@ a {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--border, #e5dcf0);
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  border-bottom: 1px solid var(--border, #e5dcf0);
 }
 
 button.accept-policy {

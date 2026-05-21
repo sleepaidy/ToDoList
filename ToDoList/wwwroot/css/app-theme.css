@@ -1,0 +1,104 @@
+/* ToDoList — общая тема (layout и фон сайта) */
+
+:root {
+    --bg: #f3eff8;
+    --bg-tint: #eef5f0;
+    --card: #fefcff;
+    --surface: #f7f3fb;
+    --border: #e5dcf0;
+    --border-focus: #cfc2e4;
+    --text: #5c5768;
+    --text-strong: #4a4558;
+    --text-muted: #9490a8;
+    --accent: #a894c8;
+    --accent-strong: #9278b5;
+    --accent-soft: #ede6f6;
+    --accent-green: #9cb8a8;
+    --accent-green-soft: #e8f2ec;
+    --page-bg: #eee8f4;
+    --page-bg-mid: #e8f0eb;
+    --page-bg-deep: #e6e0f0;
+    --nav-bg: rgba(254, 252, 255, 0.82);
+    --font: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body.app-body {
+    min-height: 100vh;
+    margin-bottom: 60px;
+    font-family: var(--font);
+    color: var(--text);
+    background-color: var(--page-bg);
+    background-image:
+        radial-gradient(ellipse 90% 55% at 50% -15%, rgba(200, 178, 228, 0.45), transparent 70%),
+        radial-gradient(ellipse 55% 45% at 100% 40%, rgba(168, 200, 180, 0.22), transparent 65%),
+        radial-gradient(ellipse 50% 40% at 0% 85%, rgba(190, 175, 215, 0.3), transparent 60%),
+        linear-gradient(175deg, var(--bg) 0%, var(--page-bg-mid) 42%, var(--page-bg-deep) 100%);
+}
+
+/* Шапка */
+
+.app-navbar {
+    background: var(--nav-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 1px 16px rgba(120, 96, 150, 0.07) !important;
+}
+
+.app-navbar .navbar-brand {
+    font-weight: 600;
+    color: var(--text-strong) !important;
+    letter-spacing: -0.02em;
+}
+
+.app-navbar .nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link:focus {
+    color: var(--accent-strong) !important;
+}
+
+.app-navbar .navbar-toggler {
+    border-color: var(--border);
+}
+
+.app-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.app-navbar .navbar-toggler-icon {
+    filter: none;
+    opacity: 0.65;
+}
+
+/* Контент */
+
+.app-body main {
+    color: var(--text);
+}
+
+/* Подвал */
+
+.app-footer {
+    border-top: 1px solid var(--border) !important;
+    color: var(--text-muted) !important;
+    background: transparent;
+}
+
+.app-footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+    color: var(--accent-strong);
+}

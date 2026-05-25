@@ -18,6 +18,21 @@ namespace ToDoList.Controllers
             return View();
         }
 
+        public IActionResult ToDoList()
+        {
+            return View();
+        }
+
+        public IActionResult DoneList()
+        {
+            return View();
+        }
+
+        public IActionResult FailedList()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

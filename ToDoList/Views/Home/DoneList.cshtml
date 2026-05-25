@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Выполненные задачи";
+}
+
+<div class="todo-app-page">
+    <article class="page-card" aria-labelledby="done-heading">
+        <header class="page-card__header">
+            <h1 id="done-heading" class="page-card__title">Выполненные задачи</h1>
+            <p class="page-card__lead">Дела, которые уже завершены</p>
+            <span class="page-card__count">1</span>
+        </header>
+
+        <ul class="task-list">
+            <li class="task-card task-card--done">
+                <div class="task-card__head">
+                    <h2 class="task-card__title">Купить продукты</h2>
+                </div>
+                <p class="task-card__description">Молоко, хлеб, овощи.</p>
+                <ul class="task-card__meta">
+                    <li>
+                        <span class="task-card__meta-label">Статус</span>
+                        <span class="task-card__pill task-card__pill--done">Выполнена</span>
+                    </li>
+                    <li>
+                        <span class="task-card__meta-label">Категория</span>
+                        <span>Дом</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </article>
+</div>

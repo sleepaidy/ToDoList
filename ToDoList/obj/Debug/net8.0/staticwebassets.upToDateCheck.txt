@@ -1,5 +1,4 @@
-wwwroot\css\app-theme.css
-wwwroot\css\home-style.css
+wwwroot\css\app.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js

@@ -61,9 +61,9 @@ C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.bu
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.dll
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\refint\ToDoList.dll
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.pdb
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.genruntimeconfig.cache
 C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\ref\ToDoList.dll
+C:\Users\user\Source\Repos\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ToDoList.Enums;
 using ToDoList.Models;
+using ToDoList.Models.Home;
 
 namespace ToDoList.Controllers
 {
@@ -13,7 +15,14 @@ namespace ToDoList.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(ToDoTuskViewModel viewModel)
         {
             return View();
         }

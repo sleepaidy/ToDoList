@@ -25,5 +25,6 @@ artifacts/
 .DS_Store
 Thumbs.db
 
-## IDE (опционально — раскомментируйте при необходимости)
-# .vscode/
+## IDE
+.vscode/
+*.DotSettings.user

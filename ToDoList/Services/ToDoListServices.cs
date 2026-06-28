@@ -1,4 +1,4 @@
-﻿using ToDoList.Interfaces;
+using ToDoList.Interfaces;
 using ToDoList.Models.Entities;
 using ToDoList.Models.Home;
 
@@ -9,36 +9,42 @@ namespace ToDoList.Services
     {
         private readonly List<ToDoItem> _tasks = new();
         private int _nextId = 0;
-        public ToDoItem CreateTusk(ToDoTuskViewModel viewModel)
+        public ToDoItem CreateTask(ToDoTaskViewModel viewModel)
         {
-            ToDoItem newTusk = new ToDoItem();
-            newTusk.Id = ++_nextId;
-            newTusk.Name = viewModel.Name;
-            newTusk.Description = viewModel.Description;
-            newTusk.CreateAt = DateTime.Now;
-            newTusk.Priority = viewModel.Priority;
-            newTusk.Status = viewModel.Status;
-            newTusk.IsImportant = viewModel.IsImportant;
-            newTusk.Category = viewModel.Category;
+            ToDoItem newTask = new ToDoItem();
+            newTask.Id = ++_nextId;
+            newTask.Name = viewModel.Name;
+            newTask.Description = viewModel.Description;
+            newTask.CreateAt = DateTime.Now;
+            newTask.Priority = viewModel.Priority;
+            newTask.Status = viewModel.Status;
+            newTask.IsImportant = viewModel.IsImportant;
+            newTask.Category = viewModel.Category;
             if (viewModel.DeadlineDate == null && viewModel.DeadlineTime == null)
             {
-                newTusk.DeadlineAt = null;
+                newTask.DeadlineAt = null;
             }
             else if (viewModel.DeadlineDate == null)
             {
-                newTusk.DeadlineAt = DateTime.Today + viewModel.DeadlineTime!.Value.ToTimeSpan();
+                newTask.DeadlineAt = DateTime.Today + viewModel.DeadlineTime!.Value.ToTimeSpan();
             }
             else if (viewModel.DeadlineTime == null)
             {
-                newTusk.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(TimeOnly.MinValue);
+                newTask.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(TimeOnly.MinValue);
             }
             else
             {
-                newTusk.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(viewModel.DeadlineTime.Value);
+                newTask.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(viewModel.DeadlineTime.Value);
             }
 
-            _tasks.Add(newTusk);
-            return newTusk;
+            _tasks.Add(newTask);
+            return newTask;
         }
+
+        public IReadOnlyList<ToDoItem> GetAllTasks()
+        {
+            return _tasks;
+        }
+
     }
 }

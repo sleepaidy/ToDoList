@@ -1,0 +1,14 @@
+@model (int Id, string TaskName)
+
+<form asp-controller="Home"
+      asp-action="Complete"
+      method="post"
+      class="task-card__complete-form">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit"
+            class="task-card__complete-btn"
+            title="Отметить выполненной"
+            aria-label="Отметить выполненной задачу @Model.TaskName">
+        <span aria-hidden="true">✓</span>
+    </button>
+</form>

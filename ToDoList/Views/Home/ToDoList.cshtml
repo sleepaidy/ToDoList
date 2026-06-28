@@ -48,10 +48,14 @@
                     <li class="@GetCardClass(task)">
                         <div class="task-card__head">
                             <h2 class="task-card__title">@task.Name</h2>
-                            @if (task.IsImportant)
-                            {
-                                <span class="task-card__badge" title="Важная">!</span>
-                            }
+                            <div class="task-card__actions">
+                                @if (task.IsImportant)
+                                {
+                                    <span class="task-card__badge" title="Важная">!</span>
+                                }
+                                @await Html.PartialAsync("_TaskCompleteForm", (task.Id, task.Name))
+                                @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "ToDoList", task.Name))
+                            </div>
                         </div>
 
                         @if (!string.IsNullOrWhiteSpace(task.Description))

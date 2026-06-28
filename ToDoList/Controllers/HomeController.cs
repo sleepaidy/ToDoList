@@ -3,28 +3,32 @@ using System.Diagnostics;
 using ToDoList.Enums;
 using ToDoList.Models;
 using ToDoList.Models.Home;
+using ToDoList.Interfaces;
 
 namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IToDoListService _toDoListService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IToDoListService toDoListService)
         {
             _logger = logger;
+            _toDoListService = toDoListService;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index()    
         {
-            return View();
+            return View(new ToDoTuskViewModel());
         }
 
         [HttpPost]
         public IActionResult Index(ToDoTuskViewModel viewModel)
         {
-            return View();
+            _toDoListService.CreateTusk(viewModel);
+            return RedirectToAction(nameof(ToDoList));
         }
 
         public IActionResult ToDoList()

@@ -1,5 +1,28 @@
-﻿@{
+﻿@using ToDoList.Enums
+@using ToDoList.Models.Entities
+@model IReadOnlyList<ToDoItem>
+@{
     ViewData["Title"] = "Все задачи";
+
+    string GetPriorityLabel(Priority priority) => priority switch
+    {
+        Priority.High => "Высокий",
+        Priority.Medium => "Средний",
+        Priority.Low => "Низкий",
+        _ => priority.ToString()
+    };
+
+    string GetPriorityPillClass(Priority priority) => priority switch
+    {
+        Priority.High => "task-card__pill--priority-high",
+        Priority.Medium => "task-card__pill--priority-medium",
+        Priority.Low => "task-card__pill--priority-low",
+        _ => string.Empty
+    };
+
+    string GetCardClass(ToDoItem task) => task.IsImportant
+        ? "task-card task-card--important"
+        : $"task-card task-card--priority-{task.Priority.ToString().ToLower()}";
 }
 
 <div class="todo-app-page">
@@ -7,67 +30,58 @@
         <header class="page-card__header">
             <h1 id="all-tasks-heading" class="page-card__title">Все задачи</h1>
             <p class="page-card__lead">Список дел, созданных на странице «Новая задача»</p>
-            <span class="page-card__count">3</span>
+            <span class="page-card__count">@Model.Count</span>
         </header>
 
-        <ul class="task-list">
-            <li class="task-card task-card--important">
-                <div class="task-card__head">
-                    <h2 class="task-card__title">Подготовить отчёт</h2>
-                    <span class="task-card__badge" title="Важная">!</span>
-                </div>
-                <p class="task-card__description">Собрать данные за квартал и оформить презентацию.</p>
-                <ul class="task-card__meta">
-                    <li>
-                        <span class="task-card__meta-label">Приоритет</span>
-                        <span class="task-card__pill task-card__pill--priority-high">Высокий</span>
+        @if (Model.Count == 0)
+        {
+            <p class="page-card__lead">
+                Задач пока нет.
+                <a asp-controller="Home" asp-action="Index">Создать первую</a>
+            </p>
+        }
+        else
+        {
+            <ul class="task-list">
+                @foreach (var task in Model)
+                {
+                    <li class="@GetCardClass(task)">
+                        <div class="task-card__head">
+                            <h2 class="task-card__title">@task.Name</h2>
+                            @if (task.IsImportant)
+                            {
+                                <span class="task-card__badge" title="Важная">!</span>
+                            }
+                        </div>
+
+                        @if (!string.IsNullOrWhiteSpace(task.Description))
+                        {
+                            <p class="task-card__description">@task.Description</p>
+                        }
+
+                        <ul class="task-card__meta">
+                            <li>
+                                <span class="task-card__meta-label">Приоритет</span>
+                                <span class="task-card__pill @GetPriorityPillClass(task.Priority)">@GetPriorityLabel(task.Priority)</span>
+                            </li>
+                            @if (!string.IsNullOrWhiteSpace(task.Category))
+                            {
+                                <li>
+                                    <span class="task-card__meta-label">Категория</span>
+                                    <span>@task.Category</span>
+                                </li>
+                            }
+                            @if (task.DeadlineAt.HasValue)
+                            {
+                                <li>
+                                    <span class="task-card__meta-label">Срок</span>
+                                    <span>@task.DeadlineAt.Value.ToString("dd.MM.yyyy, HH:mm")</span>
+                                </li>
+                            }
+                        </ul>
                     </li>
-                    <li>
-                        <span class="task-card__meta-label">Категория</span>
-                        <span>Работа</span>
-                    </li>
-                    <li>
-                        <span class="task-card__meta-label">Срок</span>
-                        <span>30.05.2026, 18:00</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="task-card task-card--priority-medium">
-                <div class="task-card__head">
-                    <h2 class="task-card__title">Записаться к врачу</h2>
-                </div>
-                <p class="task-card__description">Терапевт, четверг после обеда.</p>
-                <ul class="task-card__meta">
-                    <li>
-                        <span class="task-card__meta-label">Приоритет</span>
-                        <span class="task-card__pill task-card__pill--priority-medium">Средний</span>
-                    </li>
-                    <li>
-                        <span class="task-card__meta-label">Категория</span>
-                        <span>Здоровье</span>
-                    </li>
-                    <li>
-                        <span class="task-card__meta-label">Срок</span>
-                        <span>02.06.2026, 14:30</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="task-card task-card--priority-low">
-                <div class="task-card__head">
-                    <h2 class="task-card__title">Разобрать почту</h2>
-                </div>
-                <p class="task-card__description">Ответить на письма за неделю, удалить рассылки.</p>
-                <ul class="task-card__meta">
-                    <li>
-                        <span class="task-card__meta-label">Приоритет</span>
-                        <span class="task-card__pill task-card__pill--priority-low">Низкий</span>
-                    </li>
-                    <li>
-                        <span class="task-card__meta-label">Категория</span>
-                        <span>Работа</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                }
+            </ul>
+        }
     </article>
 </div>

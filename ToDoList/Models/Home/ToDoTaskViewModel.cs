@@ -1,8 +1,8 @@
-﻿using ToDoList.Enums;
+using ToDoList.Enums;
 
 namespace ToDoList.Models.Home
 {
-    public class ToDoTuskViewModel
+    public class ToDoTaskViewModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

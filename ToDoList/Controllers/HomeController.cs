@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using ToDoList.Enums;
 using ToDoList.Models;
 using ToDoList.Models.Home;
 using ToDoList.Interfaces;
@@ -21,19 +20,20 @@ namespace ToDoList.Controllers
         [HttpGet]
         public IActionResult Index()    
         {
-            return View(new ToDoTuskViewModel());
+            return View(new ToDoTaskViewModel());
         }
 
         [HttpPost]
-        public IActionResult Index(ToDoTuskViewModel viewModel)
+        public IActionResult Index(ToDoTaskViewModel viewModel)
         {
-            _toDoListService.CreateTusk(viewModel);
+            _toDoListService.CreateTask(viewModel);
             return RedirectToAction(nameof(ToDoList));
         }
 
         public IActionResult ToDoList()
         {
-            return View();
+            var tasks = _toDoListService.GetAllTasks();
+            return View(tasks);
         }
 
         public IActionResult DoneList()

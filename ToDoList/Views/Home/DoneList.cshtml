@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ToDoList.Models.Entities
+@model IReadOnlyList<ToDoItem>
+@{
     ViewData["Title"] = "Выполненные задачи";
 }
 
@@ -7,26 +9,50 @@
         <header class="page-card__header">
             <h1 id="done-heading" class="page-card__title">Выполненные задачи</h1>
             <p class="page-card__lead">Дела, которые уже завершены</p>
-            <span class="page-card__count">1</span>
+            <span class="page-card__count">@Model.Count</span>
         </header>
 
-        <ul class="task-list">
-            <li class="task-card task-card--done">
-                <div class="task-card__head">
-                    <h2 class="task-card__title">Купить продукты</h2>
-                </div>
-                <p class="task-card__description">Молоко, хлеб, овощи.</p>
-                <ul class="task-card__meta">
-                    <li>
-                        <span class="task-card__meta-label">Статус</span>
-                        <span class="task-card__pill task-card__pill--done">Выполнена</span>
+        @if (Model.Count == 0)
+        {
+            <p class="page-card__lead">
+                Выполненных задач пока нет.
+                <a asp-controller="Home" asp-action="Index">Создать задачу</a>
+            </p>
+        }
+        else
+        {
+            <ul class="task-list">
+                @foreach (var task in Model)
+                {
+                    <li class="task-card task-card--done">
+                        <div class="task-card__head">
+                            <h2 class="task-card__title">@task.Name</h2>
+                            <div class="task-card__actions">
+                                @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "DoneList", task.Name))
+                            </div>
+                        </div>
+
+                        @if (!string.IsNullOrWhiteSpace(task.Description))
+                        {
+                            <p class="task-card__description">@task.Description</p>
+                        }
+
+                        <ul class="task-card__meta">
+                            <li>
+                                <span class="task-card__meta-label">Статус</span>
+                                <span class="task-card__pill task-card__pill--done">Выполнена</span>
+                            </li>
+                            @if (!string.IsNullOrWhiteSpace(task.Category))
+                            {
+                                <li>
+                                    <span class="task-card__meta-label">Категория</span>
+                                    <span>@task.Category</span>
+                                </li>
+                            }
+                        </ul>
                     </li>
-                    <li>
-                        <span class="task-card__meta-label">Категория</span>
-                        <span>Дом</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                }
+            </ul>
+        }
     </article>
 </div>

@@ -1,0 +1,101 @@
+@using System.Text.Json
+@model ToDoList.Models.Home.DashboardViewModel
+@{
+    var jsonOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+    var calendarJson = JsonSerializer.Serialize(Model.TasksByDate, jsonOptions);
+    var progress = Model.TotalCount == 0 ? 0 : (int)Math.Round(100.0 * Model.DoneCount / Model.TotalCount);
+}
+
+<div class="dashboard">
+    <div class="dashboard__today">
+        <time id="dashboard-clock" class="dashboard__clock" datetime="@DateTime.Now.ToString("o")"></time>
+        <p class="dashboard__date" id="dashboard-date"></p>
+    </div>
+
+    <div class="dashboard__stats">
+        <a class="stat-card stat-card--active" asp-controller="Home" asp-action="ToDoList">
+            <span class="stat-card__value">@Model.ActiveCount</span>
+            <span class="stat-card__label">Активные</span>
+        </a>
+        <a class="stat-card stat-card--done" asp-controller="Home" asp-action="DoneList">
+            <span class="stat-card__value">@Model.DoneCount</span>
+            <span class="stat-card__label">Готово</span>
+        </a>
+        <a class="stat-card stat-card--failed" asp-controller="Home" asp-action="FailedList">
+            <span class="stat-card__value">@Model.FailedCount</span>
+            <span class="stat-card__label">Просрочено</span>
+        </a>
+    </div>
+
+    <div class="dashboard__progress widget">
+        <div class="widget__head">
+            <h2 class="widget__title">Прогресс</h2>
+            <span class="widget__badge">@progress%</span>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar__fill" style="width: @progress%"></div>
+        </div>
+        <p class="widget__hint">@Model.DoneCount из @Model.TotalCount задач выполнено</p>
+    </div>
+
+    <div class="widget widget--calendar">
+        <div class="widget__head">
+            <h2 class="widget__title">Календарь</h2>
+            <div class="calendar-nav">
+                <button type="button" class="calendar-nav__btn" id="calendar-prev" aria-label="Предыдущий месяц">‹</button>
+                <span class="calendar-nav__label" id="calendar-month-label"></span>
+                <button type="button" class="calendar-nav__btn" id="calendar-next" aria-label="Следующий месяц">›</button>
+            </div>
+        </div>
+        <div
+            id="task-calendar"
+            class="widget-calendar"
+            aria-label="Календарь задач">
+            <script id="calendar-tasks-data" type="application/json">@Html.Raw(calendarJson)</script>
+            <div class="widget-calendar__weekdays" aria-hidden="true">
+                <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+            </div>
+            <div class="widget-calendar__grid" id="calendar-grid"></div>
+        </div>
+        <div class="calendar-day-panel" id="calendar-day-panel" hidden>
+            <p class="calendar-day-panel__title" id="calendar-day-title"></p>
+            <ul class="calendar-day-panel__list" id="calendar-day-list"></ul>
+        </div>
+    </div>
+
+    <div class="widget">
+        <div class="widget__head">
+            <h2 class="widget__title">Ближайшие сроки</h2>
+        </div>
+        @if (Model.UpcomingDeadlines.Count == 0)
+        {
+            <p class="widget__empty">Нет задач с дедлайном</p>
+        }
+        else
+        {
+            <ul class="deadline-list">
+                @foreach (var item in Model.UpcomingDeadlines)
+                {
+                    <li class="deadline-list__item deadline-list__item--@item.PriorityClass">
+                        <span class="deadline-list__name">@item.Name</span>
+                        <time class="deadline-list__time" datetime="@item.DeadlineAt.ToString("o")">
+                            @item.DeadlineAt.ToString("dd.MM, HH:mm")
+                        </time>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+  @await Html.PartialAsync("_ColorLegend")
+
+    <div class="widget widget--actions">
+        <div class="widget__head">
+            <h2 class="widget__title">Быстрые действия</h2>
+        </div>
+        <div class="quick-actions">
+            <a class="quick-actions__btn" asp-controller="Home" asp-action="Index">+ Новая задача</a>
+            <a class="quick-actions__btn quick-actions__btn--ghost" asp-controller="Home" asp-action="ToDoList">Все активные</a>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@
             <h1 id="create-heading" class="create-card__title">Новая задача</h1>
             <p class="create-card__lead">Заполните поля ниже</p>
         </header>
-        <form class="create-form" action="#" method="post" novalidate>
+        <form class="create-form" asp-action="Index" asp-controller="Home" method="post" novalidate>
             <div class="form-field">
                 <label class="form-field__label" for="task-title">
                     Название <span class="form-field__required" aria-hidden="true">*</span>

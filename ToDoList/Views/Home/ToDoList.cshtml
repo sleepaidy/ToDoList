@@ -6,9 +6,9 @@
 
     string GetPriorityLabel(Priority priority) => priority switch
     {
-        Priority.High => "Высокий",
-        Priority.Medium => "Средний",
-        Priority.Low => "Низкий",
+        Priority.High => "Срочная",
+        Priority.Medium => "Средняя",
+        Priority.Low => "Лёгкая",
         _ => priority.ToString()
     };
 
@@ -65,8 +65,12 @@
 
                         <ul class="task-card__meta">
                             <li>
-                                <span class="task-card__meta-label">Приоритет</span>
+                                <span class="task-card__meta-label">Важность</span>
                                 <span class="task-card__pill @GetPriorityPillClass(task.Priority)">@GetPriorityLabel(task.Priority)</span>
+                            </li>
+                            <li>
+                                <span class="task-card__meta-label">Статус</span>
+                                <span class="task-card__pill task-card__pill--active">Активна</span>
                             </li>
                             @if (!string.IsNullOrWhiteSpace(task.Category))
                             {
@@ -77,9 +81,10 @@
                             }
                             @if (task.DeadlineAt.HasValue)
                             {
+                                var deadlineSoon = task.DeadlineAt.Value - DateTime.Now < TimeSpan.FromHours(24) && task.DeadlineAt.Value > DateTime.Now;
                                 <li>
                                     <span class="task-card__meta-label">Срок</span>
-                                    <span>@task.DeadlineAt.Value.ToString("dd.MM.yyyy, HH:mm")</span>
+                                    <span class="@(deadlineSoon ? "task-card__deadline--soon" : null)">@task.DeadlineAt.Value.ToString("dd.MM.yyyy, HH:mm")</span>
                                 </li>
                             }
                         </ul>

@@ -1,6 +1,9 @@
+using ToDoList.Enums;
 using ToDoList.Interfaces;
 using ToDoList.Models.Entities;
 using ToDoList.Models.Home;
+using System.Linq;
+using System.Linq.Expressions;
 
 
 namespace ToDoList.Services
@@ -38,13 +41,63 @@ namespace ToDoList.Services
             }
 
             _tasks.Add(newTask);
+            UpdateTaskStatus();
             return newTask;
         }
 
         public IReadOnlyList<ToDoItem> GetAllTasks()
         {
+            UpdateTaskStatus();
             return _tasks;
         }
 
+        public IReadOnlyList<ToDoItem> GetTasksByStatus(Status status)
+        {
+            UpdateTaskStatus();
+            return _tasks.Where(task => task.Status == status).ToList();
+        }
+
+        private void UpdateTaskStatus()
+        {
+            var nowTime = DateTime.Now;
+            foreach (var task in _tasks)
+            {
+                if (task.Status != Status.InProgress)
+                {
+                    continue;
+                }
+                if (task.DeadlineAt == null)
+                {
+                    continue;
+                }
+                if (nowTime >= task.DeadlineAt.Value)
+                {
+                    task.Status = Status.Failed;
+                }
+            }
+        }
+
+        public bool DeleteTask(int id)
+        {
+            var task = _tasks.FirstOrDefault(task => task.Id == id);
+            if (task == null)
+            {
+                return false;
+            }
+            _tasks.Remove(task);
+            return true;
+        }
+
+        public bool CompleteTask(int id)
+        {
+            var task = _tasks.FirstOrDefault(task => task.Id == id);
+            if(task == null || task.Status == Status.Done)
+            {
+                return false;
+            }
+            task.Status = Status.Done;
+            return true;
+            
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using ToDoList.Models;
 using ToDoList.Models.Home;
 using ToDoList.Interfaces;
+using ToDoList.Enums;
 
 namespace ToDoList.Controllers
 {
@@ -26,24 +27,52 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Index(ToDoTaskViewModel viewModel)
         {
-            _toDoListService.CreateTask(viewModel);
-            return RedirectToAction(nameof(ToDoList));
+            var task = _toDoListService.CreateTask(viewModel);
+            return task.Status switch
+            {
+                Status.InProgress => RedirectToAction(nameof(ToDoList)),
+                Status.Done => RedirectToAction(nameof(DoneList)),
+                Status.Failed => RedirectToAction(nameof(FailedList))
+            };
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id, string returnAction)
+        {
+            returnAction = returnAction switch
+            {
+                nameof(DoneList) => nameof(DoneList),
+                nameof(FailedList) => nameof(FailedList),
+                _ => nameof(ToDoList)
+            };
+            _toDoListService.DeleteTask(id);
+            return RedirectToAction(returnAction);
+        }
+
+        [HttpPost]
+        public IActionResult Complete(int id)
+        {
+            _toDoListService.CompleteTask(id);
+            return RedirectToAction(nameof(DoneList));
+        }
+
 
         public IActionResult ToDoList()
         {
-            var tasks = _toDoListService.GetAllTasks();
+            var tasks = _toDoListService.GetTasksByStatus(Status.InProgress);
             return View(tasks);
         }
 
         public IActionResult DoneList()
         {
-            return View();
+            var tasks = _toDoListService.GetTasksByStatus(Status.Done);
+            return View(tasks);
         }
 
         public IActionResult FailedList()
         {
-            return View();
+            var tasks = _toDoListService.GetTasksByStatus(Status.Failed);
+            return View(tasks);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

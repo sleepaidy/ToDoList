@@ -8,54 +8,24 @@
     <article class="create-card" aria-labelledby="create-heading">
         <header class="create-card__header">
             <h1 id="create-heading" class="create-card__title">Новая задача</h1>
-            <p class="create-card__lead">Заполните поля ниже</p>
+            <p class="create-card__lead">Заполните поля — обязательно только название. Дату можно выбрать в календаре слева.</p>
         </header>
+
         <form class="create-form" asp-action="Index" asp-controller="Home" method="post" novalidate>
-            <div class="form-field">
-                <label class="form-field__label" for="task-title">
-                    Название <span class="form-field__required" aria-hidden="true">*</span>
-                </label>
-                <input
-                    type="text"
-                    id="task-title"
-                    name="Name"
-                    class="form-field__input"
-                    placeholder="Например: Подготовить отчёт"
-                    required
-                    maxlength="200"
-                    autocomplete="off" />
-            </div>
-
-            <div class="form-field">
-                <label class="form-field__label" for="task-description">Описание</label>
-                <textarea
-                    id="task-description"
-                    name="Description"
-                    class="form-field__input form-field__textarea"
-                    placeholder="Детали, ссылки, заметки…"
-                    rows="4"
-                    maxlength="2000"></textarea>
-            </div>
-
             <div class="form-row">
                 <div class="form-field">
-                    <label class="form-field__label" for="task-due-date">Срок</label>
-                    <input type="date" id="task-due-date" name="DeadlineDate" class="form-field__input" />
-                </div>
-                <div class="form-field">
-                    <label class="form-field__label" for="task-due-time">Время</label>
-                    <input type="time" id="task-due-time" name="DeadlineTime" class="form-field__input" />
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-field">
-                    <label class="form-field__label" for="task-priority">Приоритет</label>
-                    <select id="task-priority" name="Priority" class="form-field__input form-field__select">
-                        <option value="Low">Низкий</option>
-                        <option value="Medium" selected>Средний</option>
-                        <option value="High">Высокий</option>
-                    </select>
+                    <label class="form-field__label" for="task-title">
+                        Название <span class="form-field__required" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        name="Name"
+                        class="form-field__input"
+                        placeholder="Например: Подготовить отчёт"
+                        required
+                        maxlength="200"
+                        autocomplete="off" />
                 </div>
                 <div class="form-field">
                     <label class="form-field__label" for="task-category">Категория</label>
@@ -76,26 +46,68 @@
                 </div>
             </div>
 
-            <fieldset class="form-field form-field--group">
-                <legend class="form-field__label">Статус</legend>
-                <div class="choice-group">
-                    <label class="choice-pill">
-                        <input type="radio" name="Status" value="InProgress" checked />
-                        <span>Активная</span>
-                    </label>
-                    <label class="choice-pill">
-                        <input type="radio" name="Status" value="Done" />
-                        <span>Выполнена</span>
+            <div class="form-field">
+                <label class="form-field__label" for="task-description">Описание</label>
+                <textarea
+                    id="task-description"
+                    name="Description"
+                    class="form-field__input form-field__textarea"
+                    placeholder="Детали, ссылки, заметки…"
+                    rows="4"
+                    maxlength="2000"></textarea>
+            </div>
+
+            <div class="form-row form-row--3">
+                <div class="form-field">
+                    <label class="form-field__label" for="task-due-date">Срок</label>
+                    <input type="date" id="task-due-date" name="DeadlineDate" class="form-field__input" />
+                </div>
+                <div class="form-field">
+                    <label class="form-field__label" for="task-due-time">Время</label>
+                    <input type="time" id="task-due-time" name="DeadlineTime" class="form-field__input" />
+                </div>
+                <div class="form-field">
+                    <label class="form-field__label" for="task-important">Метка</label>
+                    <label class="choice-check choice-check--block">
+                        <input type="checkbox" name="IsImportant" value="true" id="task-important" class="choice-check__input" />
+                        <span class="choice-check__box" aria-hidden="true"></span>
+                        <span class="choice-check__text">Важная задача</span>
                     </label>
                 </div>
-            </fieldset>
+            </div>
 
-            <div class="form-field">
-                <label class="choice-check">
-                    <input type="checkbox" name="IsImportant" value="true" class="choice-check__input" />
-                    <span class="choice-check__box" aria-hidden="true"></span>
-                    <span class="choice-check__text">Отметить как важную</span>
-                </label>
+            <div class="form-row">
+                <fieldset class="form-field form-field--group">
+                    <legend class="form-field__label">Важность</legend>
+                    <div class="choice-group">
+                        <label class="choice-pill choice-pill--priority-low">
+                            <input type="radio" name="Priority" value="Low" />
+                            <span>Лёгкая</span>
+                        </label>
+                        <label class="choice-pill choice-pill--priority-medium">
+                            <input type="radio" name="Priority" value="Medium" checked />
+                            <span>Средняя</span>
+                        </label>
+                        <label class="choice-pill choice-pill--priority-high">
+                            <input type="radio" name="Priority" value="High" />
+                            <span>Срочная</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-field form-field--group">
+                    <legend class="form-field__label">Статус</legend>
+                    <div class="choice-group">
+                        <label class="choice-pill">
+                            <input type="radio" name="Status" value="InProgress" checked />
+                            <span>Активная</span>
+                        </label>
+                        <label class="choice-pill">
+                            <input type="radio" name="Status" value="Done" />
+                            <span>Выполнена</span>
+                        </label>
+                    </div>
+                </fieldset>
             </div>
 
             <div class="create-form__actions">

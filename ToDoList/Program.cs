@@ -1,7 +1,11 @@
+using ToDoList.Interfaces;
+using ToDoList.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IToDoListService, ToDoListServices>();
 
 var app = builder.Build();
 

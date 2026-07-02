@@ -2,6 +2,8 @@ using ToDoList.Interfaces;
 using ToDoList.Services;
 using ToDoList.Data;
 using Microsoft.EntityFrameworkCore;
+using ToDoList.Data.Repository.Interfaces;
+using ToDoList.Data.Repository;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<WebContext>(op => op.UseSqlServer(connectionString
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IToDoListService, ToDoListServices>();
+builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
 
 var app = builder.Build();
 

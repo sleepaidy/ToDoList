@@ -1,6 +1,6 @@
-using ToDoList.Data;
 using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
+using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Interfaces;
 using ToDoList.Models.Entities;
 using ToDoList.Models.Home;
@@ -10,11 +10,11 @@ namespace ToDoList.Services
 {
     public class ToDoListServices : IToDoListService
     {
-        private readonly WebContext _context;
+        private readonly IToDoListRepository _repository;
 
-        public ToDoListServices(WebContext context)
+        public ToDoListServices(IToDoListRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public ToDoItem CreateTask(ToDoTaskViewModel viewModel)
@@ -44,122 +44,69 @@ namespace ToDoList.Services
                 entity.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(viewModel.DeadlineTime.Value);
             }
 
-            _context.Tasks.Add(entity);
+            _repository.Create(entity);
             UpdateTaskStatus();
-            _context.SaveChanges();
-            return new ToDoItem
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-                Description = entity.Description,
-                CreateAt = entity.CreateAt,
-                DeadlineAt = entity.DeadlineAt,
-                Priority = entity.Priority,
-                Status = entity.Status,
-                IsImportant = entity.IsImportant,
-                Category = entity.Category
-            };
+
+            var saved = _repository.GetById(entity.Id)
+                ?? throw new InvalidOperationException($"Task with id {entity.Id} was not found after creation.");
+
+            return MapToToDoItem(saved);
         }
 
         public IReadOnlyList<ToDoItem> GetAllTasks()
         {
             UpdateTaskStatus();
-            var fromDb = _context.Tasks.ToList();
-            var result = new List<ToDoItem>();
-            foreach (var item in fromDb)
-            {
-                result.Add(new ToDoItem
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Description = item.Description,
-                    CreateAt = item.CreateAt,
-                    DeadlineAt = item.DeadlineAt,
-                    Priority = item.Priority,
-                    Status = item.Status,
-                    IsImportant = item.IsImportant,
-                    Category = item.Category
-                });
-            }
-            return result;
-
+            return _repository.GetAll()
+                .Select(MapToToDoItem)
+                .ToList();
         }
 
         public IReadOnlyList<ToDoItem> GetTasksByStatus(Status status)
         {
             UpdateTaskStatus();
-            var fromDb = _context.Tasks
-                .Where(t => t.Status == status)
+            return _repository.GetByStatus(status)
+                .Select(MapToToDoItem)
                 .ToList();
-            var result = new  List<ToDoItem>();
-
-            foreach (var item in fromDb)
-            {
-                result.Add(new ToDoItem
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Description = item.Description,
-                    DeadlineAt = item.DeadlineAt,
-                    CreateAt = item.CreateAt,
-                    Priority = item.Priority,
-                    Status = item.Status,
-                    IsImportant = item.IsImportant,
-                    Category = item.Category
-                });
-            }
-            return result;
         }
 
         private void UpdateTaskStatus()
         {
-            var nowTime = DateTime.Now;
-            var isChanged = false;
-            foreach (var task in _context.Tasks)
-            {
-                if (task.Status != Status.InProgress)
-                {
-                    continue;
-                }
-                if (task.DeadlineAt == null)
-                {
-                    continue;
-                }
-                if (nowTime >= task.DeadlineAt.Value)
-                {
-                    task.Status = Status.Failed;
-                    isChanged = true;
-                }
-            }
-            if (isChanged)
-            {
-                _context.SaveChanges();
-            }
+            _repository.MarkExpiredInProgressAsFailed(DateTime.Now);
         }
 
         public bool DeleteTask(int id)
         {
-            var task = _context.Tasks.FirstOrDefault(task => task.Id == id);
+            var task = _repository.GetById(id);
             if (task == null)
             {
                 return false;
             }
-            _context.Tasks.Remove(task);
-            _context.SaveChanges();
+            _repository.Remove(task);
             return true;
         }
 
         public bool CompleteTask(int id)
         {
-            var task = _context.Tasks.FirstOrDefault(task => task.Id == id);
-            if(task == null || task.Status == Status.Done)
+            var task = _repository.GetById(id);
+            if (task == null || task.Status == Status.Done)
             {
                 return false;
             }
-            task.Status = Status.Done;
-            _context.SaveChanges(); 
+            _repository.UpdateStatus(task, Status.Done);
             return true;
-            
         }
+
+        private static ToDoItem MapToToDoItem(TaskData item) => new()
+        {
+            Id = item.Id,
+            Name = item.Name,
+            Description = item.Description,
+            CreateAt = item.CreateAt,
+            DeadlineAt = item.DeadlineAt,
+            Priority = item.Priority,
+            Status = item.Status,
+            IsImportant = item.IsImportant,
+            Category = item.Category
+        };
     }
 }

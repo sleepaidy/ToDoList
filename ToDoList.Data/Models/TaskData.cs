@@ -1,9 +1,8 @@
 ﻿using ToDoList.Data.Enums;
 
-namespace ToDoList.Models.Entities
-
+namespace ToDoList.Data.Models
 {
-    public class ToDoItem
+    public class TaskData
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,6 +13,5 @@ namespace ToDoList.Models.Entities
         public string Category { get; set; }
         public bool IsImportant { get; set; }
         public Status Status { get; set; }
-
     }
 }

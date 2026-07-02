@@ -11,7 +11,7 @@ builder.Services.AddDbContext<WebContext>(op => op.UseSqlServer(connectionString
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IToDoListService, ToDoListServices>();
+builder.Services.AddScoped<IToDoListService, ToDoListServices>();
 
 var app = builder.Build();
 

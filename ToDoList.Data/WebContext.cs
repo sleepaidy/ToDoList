@@ -8,12 +8,5 @@ namespace ToDoList.Data
         public DbSet<TaskData> Tasks { get; set; }
 
         public WebContext(DbContextOptions<WebContext> options):base(options) { }
-
-        public WebContext() { }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
     }
 }

@@ -5,4 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ToDoList.Data\ToDoList.Data.csproj" />
+	</ItemGroup>
 </Project>

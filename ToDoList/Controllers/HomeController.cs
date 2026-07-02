@@ -11,12 +11,10 @@ namespace ToDoList.Controllers
     public class HomeController : Controller
     {
         private readonly IToDoListService _toDoListService;
-        private WebContext _webContext;
 
-        public HomeController(IToDoListService toDoListService, WebContext webContext)
+        public HomeController(IToDoListService toDoListService)
         {
             _toDoListService = toDoListService;
-            _webContext = webContext;
         }
 
         [HttpGet]
@@ -33,7 +31,8 @@ namespace ToDoList.Controllers
             {
                 Status.InProgress => RedirectToAction(nameof(ToDoList)),
                 Status.Done => RedirectToAction(nameof(DoneList)),
-                Status.Failed => RedirectToAction(nameof(FailedList))
+                Status.Failed => RedirectToAction(nameof(FailedList)),
+                _ => RedirectToAction(nameof(ToDoList))
             };
         }
 

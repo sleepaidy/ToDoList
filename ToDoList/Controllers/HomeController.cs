@@ -3,19 +3,20 @@ using System.Diagnostics;
 using ToDoList.Models;
 using ToDoList.Models.Home;
 using ToDoList.Interfaces;
-using ToDoList.Enums;
+using ToDoList.Data.Enums;
+using ToDoList.Data;
 
 namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IToDoListService _toDoListService;
+        private WebContext _webContext;
 
-        public HomeController(ILogger<HomeController> logger, IToDoListService toDoListService)
+        public HomeController(IToDoListService toDoListService, WebContext webContext)
         {
-            _logger = logger;
             _toDoListService = toDoListService;
+            _webContext = webContext;
         }
 
         [HttpGet]

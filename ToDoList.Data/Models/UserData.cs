@@ -6,5 +6,7 @@
         public string Name { get; set; }
         public string Password { get; set; }
         public string ProfileImage {  get; set; }
+
+        public virtual List<TaskData> Tasks { get; set; } = new();
     }
 }

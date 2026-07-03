@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using ToDoList.Data.Models;
+﻿using ToDoList.Data.Models;
+using ToDoList.Data.Repository.Interfaces;
 
 namespace ToDoList.Data.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly WebContext _webContext;
 
@@ -16,16 +16,13 @@ namespace ToDoList.Data.Repository
         {
             var hash = GetHashByPassword(password);
             return _webContext.Users
-                .FirstOrDefault(x => x.Name == userName && x.Password == password);
+                .FirstOrDefault(x => x.Name == userName && x.Password == hash);
         }
 
         public bool IsNameUniq (string userName)
         {
-            if(_webContext.Users.Any(x => x.Name == userName) == null)
-            {
-                return false;
-            }
-            return true;
+
+            return !_webContext.Users.Any(x => x.Name == userName);
         }
 
         public void Registration(UserData user)

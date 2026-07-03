@@ -7,10 +7,10 @@ namespace ToDoList.Interfaces
 {
     public interface IToDoListService
     {
-        ToDoItem CreateTask(ToDoTaskViewModel viewModel);
-        IReadOnlyList<ToDoItem> GetAllTasks();
-        IReadOnlyList<ToDoItem> GetTasksByStatus(Status status);
-        bool DeleteTask(int id);
-        bool CompleteTask(int id);
+        ToDoItem CreateTask(ToDoTaskViewModel viewModel, int userId);
+        IReadOnlyList<ToDoItem> GetAllTasksForCurrentUser(int userId);
+        IReadOnlyList<ToDoItem> GetTasksByStatus(Status status, int userId);
+        bool DeleteTask(int id, int UserId);
+        bool CompleteTask(int id, int userId);
     }
 }

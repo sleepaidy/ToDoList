@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ToDoList.Models;
@@ -8,13 +9,16 @@ using ToDoList.Data;
 
 namespace ToDoList.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IToDoListService _toDoListService;
+        private readonly IAuthService _authService;
 
-        public HomeController(IToDoListService toDoListService)
+        public HomeController(IToDoListService toDoListService, IAuthService authService)
         {
             _toDoListService = toDoListService;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -26,7 +30,8 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Index(ToDoTaskViewModel viewModel)
         {
-            var task = _toDoListService.CreateTask(viewModel);
+            var userId = _authService.GetUserId();
+            var task = _toDoListService.CreateTask(viewModel, userId);
             return task.Status switch
             {
                 Status.InProgress => RedirectToAction(nameof(ToDoList)),
@@ -39,42 +44,48 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Delete(int id, string returnAction)
         {
+            var userId = _authService.GetUserId();
             returnAction = returnAction switch
             {
                 nameof(DoneList) => nameof(DoneList),
                 nameof(FailedList) => nameof(FailedList),
                 _ => nameof(ToDoList)
             };
-            _toDoListService.DeleteTask(id);
+            _toDoListService.DeleteTask(id, userId);
             return RedirectToAction(returnAction);
         }
 
         [HttpPost]
         public IActionResult Complete(int id)
         {
-            _toDoListService.CompleteTask(id);
+            var userId = _authService.GetUserId();
+            _toDoListService.CompleteTask(id, userId);
             return RedirectToAction(nameof(DoneList));
         }
 
 
         public IActionResult ToDoList()
         {
-            var tasks = _toDoListService.GetTasksByStatus(Status.InProgress);
+            var userId = _authService.GetUserId();
+            var tasks = _toDoListService.GetTasksByStatus(Status.InProgress, userId);
             return View(tasks);
         }
 
         public IActionResult DoneList()
         {
-            var tasks = _toDoListService.GetTasksByStatus(Status.Done);
+            var userId = _authService.GetUserId();
+            var tasks = _toDoListService.GetTasksByStatus(Status.Done, userId);
             return View(tasks);
         }
 
         public IActionResult FailedList()
         {
-            var tasks = _toDoListService.GetTasksByStatus(Status.Failed);
+            var userId = _authService.GetUserId();
+            var tasks = _toDoListService.GetTasksByStatus(Status.Failed, userId);
             return View(tasks);
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

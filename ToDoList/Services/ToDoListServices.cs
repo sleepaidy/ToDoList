@@ -17,7 +17,7 @@ namespace ToDoList.Services
             _repository = repository;
         }
 
-        public ToDoItem CreateTask(ToDoTaskViewModel viewModel)
+        public ToDoItem CreateTask(ToDoTaskViewModel viewModel, int userId)
         {
             var entity = new TaskData();
             entity.Name = viewModel.Name;
@@ -44,39 +44,40 @@ namespace ToDoList.Services
                 entity.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(viewModel.DeadlineTime.Value);
             }
 
+            entity.UserId = userId;
             _repository.Create(entity);
-            UpdateTaskStatus();
+            UpdateTaskStatus(userId);
 
-            var saved = _repository.GetById(entity.Id)
+            var saved = _repository.GetById(entity.Id, userId)
                 ?? throw new InvalidOperationException($"Task with id {entity.Id} was not found after creation.");
 
             return MapToToDoItem(saved);
         }
 
-        public IReadOnlyList<ToDoItem> GetAllTasks()
+        public IReadOnlyList<ToDoItem> GetAllTasksForCurrentUser(int userId)
         {
-            UpdateTaskStatus();
-            return _repository.GetAll()
+            UpdateTaskStatus(userId);
+            return _repository.GetAllTaskForCurrentUser(userId)
                 .Select(MapToToDoItem)
                 .ToList();
         }
 
-        public IReadOnlyList<ToDoItem> GetTasksByStatus(Status status)
+        public IReadOnlyList<ToDoItem> GetTasksByStatus(Status status, int userId)
         {
-            UpdateTaskStatus();
-            return _repository.GetByStatus(status)
+            UpdateTaskStatus(userId);
+            return _repository.GetByStatus(status, userId)
                 .Select(MapToToDoItem)
                 .ToList();
         }
 
-        private void UpdateTaskStatus()
+        private void UpdateTaskStatus(int userId)
         {
-            _repository.MarkExpiredInProgressAsFailed(DateTime.Now);
+            _repository.MarkExpiredInProgressAsFailed(DateTime.Now, userId);
         }
 
-        public bool DeleteTask(int id)
+        public bool DeleteTask(int id, int userId)
         {
-            var task = _repository.GetById(id);
+            var task = _repository.GetById(id, userId);
             if (task == null)
             {
                 return false;
@@ -85,9 +86,9 @@ namespace ToDoList.Services
             return true;
         }
 
-        public bool CompleteTask(int id)
+        public bool CompleteTask(int id, int userId)
         {
-            var task = _repository.GetById(id);
+            var task = _repository.GetById(id, userId);
             if (task == null || task.Status == Status.Done)
             {
                 return false;

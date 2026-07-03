@@ -6,6 +6,7 @@ namespace ToDoList.Data
     public class WebContext : DbContext
     {
         public DbSet<TaskData> Tasks { get; set; }
+        public DbSet<UserData> Users { get; set; }
 
         public WebContext(DbContextOptions<WebContext> options):base(options) { }
     }

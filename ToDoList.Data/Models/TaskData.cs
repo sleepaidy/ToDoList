@@ -13,5 +13,8 @@ namespace ToDoList.Data.Models
         public string Category { get; set; }
         public bool IsImportant { get; set; }
         public Status Status { get; set; }
+        public int UserId { get; set; }
+
+        public virtual UserData User { get; set; }
     }
 }

@@ -25,21 +25,23 @@ namespace ToDoList.Data.Repository
             _webContext.SaveChanges();
         }
 
-        public List<TaskData> GetAll()
-        {
-            return _webContext.Tasks.ToList();
-        }
-
-        public List<TaskData> GetByStatus(Status status)
+        public List<TaskData> GetAllTaskForCurrentUser(int userId)
         {
             return _webContext.Tasks
-                .Where(t => t.Status == status)
+                .Where(x => x.UserId == userId)
                 .ToList();
         }
 
-        public TaskData? GetById(int id)
+        public List<TaskData> GetByStatus(Status status, int userId)
         {
-            return _webContext.Tasks.FirstOrDefault(x => x.Id == id);
+            return _webContext.Tasks
+                .Where(t => t.Status == status && t.UserId == userId )
+                .ToList();
+        }
+
+        public TaskData? GetById(int id, int userId)
+        {
+            return _webContext.Tasks.FirstOrDefault(x => x.Id == id && x.UserId == userId);
         }
 
         public void UpdateStatus(TaskData task, Status status)
@@ -48,10 +50,11 @@ namespace ToDoList.Data.Repository
             _webContext.SaveChanges();
         }
 
-        public void MarkExpiredInProgressAsFailed(DateTime now)
+        public void MarkExpiredInProgressAsFailed(DateTime now, int userId)
         {
             var expired = _webContext.Tasks
-                .Where(t => t.Status == Status.InProgress
+                .Where(t => t.UserId == userId
+                         && t.Status == Status.InProgress
                          && t.DeadlineAt != null
                          && t.DeadlineAt <= now)
                 .ToList();

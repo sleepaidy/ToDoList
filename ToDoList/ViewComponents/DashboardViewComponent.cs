@@ -8,15 +8,18 @@ namespace ToDoList.ViewComponents
     public class DashboardViewComponent : ViewComponent
     {
         private readonly IToDoListService _toDoListService;
+        private readonly IAuthService _authService;
 
-        public DashboardViewComponent(IToDoListService toDoListService)
+        public DashboardViewComponent(IToDoListService toDoListService, IAuthService authService)
         {
             _toDoListService = toDoListService;
+            _authService = authService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var allTasks = _toDoListService.GetAllTasks();
+            var userId = _authService.GetUserId();
+            var allTasks = _toDoListService.GetAllTasksForCurrentUser(userId);
             var now = DateTime.Now;
 
             var tasksByDate = allTasks

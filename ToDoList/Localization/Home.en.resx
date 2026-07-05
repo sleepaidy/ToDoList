@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dashboard_Action_AllActive" xml:space="preserve">
+    <value>All active</value>
+  </data>
+  <data name="Dashboard_Action_NewTask" xml:space="preserve">
+    <value>+ New task</value>
+  </data>
+  <data name="Dashboard_Actions_Title" xml:space="preserve">
+    <value>Quick actions</value>
+  </data>
+  <data name="Dashboard_Calendar_Label" xml:space="preserve">
+    <value>Task calendar</value>
+  </data>
+  <data name="Dashboard_Calendar_Next" xml:space="preserve">
+    <value>Next month</value>
+  </data>
+  <data name="Dashboard_Calendar_Prev" xml:space="preserve">
+    <value>Previous month</value>
+  </data>
+  <data name="Dashboard_Calendar_Title" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="Dashboard_Progress_Hint" xml:space="preserve">
+    <value>{0} of {1} tasks completed</value>
+  </data>
+  <data name="Dashboard_Progress_Title" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="Dashboard_Stat_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Dashboard_Stat_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Dashboard_Stat_Failed" xml:space="preserve">
+    <value>Overdue</value>
+  </data>
+  <data name="Dashboard_Upcoming_Empty" xml:space="preserve">
+    <value>No tasks with deadlines</value>
+  </data>
+  <data name="Dashboard_Upcoming_Title" xml:space="preserve">
+    <value>Upcoming deadlines</value>
+  </data>
+  <data name="Dashboard_Weekday_Fri" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="Dashboard_Weekday_Mon" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="Dashboard_Weekday_Sat" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="Dashboard_Weekday_Sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Dashboard_Weekday_Thu" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="Dashboard_Weekday_Tue" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="Dashboard_Weekday_Wed" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="DoneList_Empty_Link" xml:space="preserve">
+    <value>Create task</value>
+  </data>
+  <data name="DoneList_Empty_Message" xml:space="preserve">
+    <value>No completed tasks yet.</value>
+  </data>
+  <data name="DoneList_Header_Lead" xml:space="preserve">
+    <value>Tasks that are already finished</value>
+  </data>
+  <data name="DoneList_Header_Title" xml:space="preserve">
+    <value>Completed tasks</value>
+  </data>
+  <data name="DoneList_Page_Title" xml:space="preserve">
+    <value>Completed tasks</value>
+  </data>
+  <data name="FailedList_Empty_Link" xml:space="preserve">
+    <value>Create task</value>
+  </data>
+  <data name="FailedList_Empty_Message" xml:space="preserve">
+    <value>No failed tasks yet.</value>
+  </data>
+  <data name="FailedList_Header_Lead" xml:space="preserve">
+    <value>Tasks that were not completed on time</value>
+  </data>
+  <data name="FailedList_Header_Title" xml:space="preserve">
+    <value>Failed tasks</value>
+  </data>
+  <data name="FailedList_Page_Title" xml:space="preserve">
+    <value>Failed tasks</value>
+  </data>
+  <data name="Index_Button_Create" xml:space="preserve">
+    <value>Create task</value>
+  </data>
+  <data name="Index_Button_Reset" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Index_Category_Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="Index_Category_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Index_Category_Study" xml:space="preserve">
+    <value>Study</value>
+  </data>
+  <data name="Index_Category_Work" xml:space="preserve">
+    <value>Work</value>
+  </data>
+  <data name="Index_Header_Create_Card" xml:space="preserve">
+    <value>New task</value>
+  </data>
+  <data name="Index_Header_Create_Card_Lead" xml:space="preserve">
+    <value>Fill in the fields. You can pick a date in the calendar on the left.</value>
+  </data>
+  <data name="Index_Label_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Index_Label_DeadlineDate" xml:space="preserve">
+    <value>Due date</value>
+  </data>
+  <data name="Index_Label_DeadlineTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Index_Label_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Index_Label_Important" xml:space="preserve">
+    <value>Important task</value>
+  </data>
+  <data name="Index_Label_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Index_Label_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="Index_Label_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Index_Label_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Index_Page_Title" xml:space="preserve">
+    <value>New task</value>
+  </data>
+  <data name="Index_Placeholder_Category" xml:space="preserve">
+    <value>Work, home…</value>
+  </data>
+  <data name="Index_Placeholder_Description" xml:space="preserve">
+    <value>Details, links, notes…</value>
+  </data>
+  <data name="Index_Placeholder_Name" xml:space="preserve">
+    <value>e.g. Prepare report</value>
+  </data>
+  <data name="Index_Priority_High" xml:space="preserve">
+    <value>Urgent</value>
+  </data>
+  <data name="Index_Priority_Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="Index_Priority_Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="Index_Status_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Index_Status_InProgress" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Index_Validation_Name_Required" xml:space="preserve">
+    <value>Name is required.</value>
+  </data>
+  <data name="ToDoList_Badge_Important" xml:space="preserve">
+    <value>Important</value>
+  </data>
+  <data name="ToDoList_Empty_Link" xml:space="preserve">
+    <value>Create the first one</value>
+  </data>
+  <data name="ToDoList_Empty_Message" xml:space="preserve">
+    <value>No tasks yet.</value>
+  </data>
+  <data name="ToDoList_Header_Lead" xml:space="preserve">
+    <value>Tasks created on the New task page</value>
+  </data>
+  <data name="ToDoList_Header_Title" xml:space="preserve">
+    <value>All tasks</value>
+  </data>
+  <data name="ToDoList_Meta_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ToDoList_Meta_Deadline" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="ToDoList_Meta_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="ToDoList_Meta_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ToDoList_Page_Title" xml:space="preserve">
+    <value>All tasks</value>
+  </data>
+</root>

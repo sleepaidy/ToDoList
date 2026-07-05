@@ -2,13 +2,14 @@
     ViewData["Title"] = "Новая задача";
 }
 @using ToDoList.Models.Home
+@using ToDoList.Localization
 @model CreateToDoTaskViewModel
 
 <div class="todo-app-page">
     <article class="create-card" aria-labelledby="create-heading">
         <header class="create-card__header">
-            <h1 id="create-heading" class="create-card__title">Новая задача</h1>
-            <p class="create-card__lead">Заполните поля. Дату можно выбрать в календаре слева.</p>
+            <h1 id="create-heading" class="create-card__title">@Home.Index_Header_Create_Card</h1>
+            <p class="create-card__lead">@Home.Index_Header_Create_Card_Lead</p>
         </header>
 
         <form class="create-form" asp-action="Index" asp-controller="Home" method="post" novalidate>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dashboard_Action_AllActive" xml:space="preserve">
+    <value>Все активные</value>
+  </data>
+  <data name="Dashboard_Action_NewTask" xml:space="preserve">
+    <value>+ Новая задача</value>
+  </data>
+  <data name="Dashboard_Actions_Title" xml:space="preserve">
+    <value>Быстрые действия</value>
+  </data>
+  <data name="Dashboard_Calendar_Label" xml:space="preserve">
+    <value>Календарь задач</value>
+  </data>
+  <data name="Dashboard_Calendar_Next" xml:space="preserve">
+    <value>Следующий месяц</value>
+  </data>
+  <data name="Dashboard_Calendar_Prev" xml:space="preserve">
+    <value>Предыдущий месяц</value>
+  </data>
+  <data name="Dashboard_Calendar_Title" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="Dashboard_Progress_Hint" xml:space="preserve">
+    <value>{0} из {1} задач выполнено</value>
+  </data>
+  <data name="Dashboard_Progress_Title" xml:space="preserve">
+    <value>Прогресс</value>
+  </data>
+  <data name="Dashboard_Stat_Active" xml:space="preserve">
+    <value>Активные</value>
+  </data>
+  <data name="Dashboard_Stat_Done" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Dashboard_Stat_Failed" xml:space="preserve">
+    <value>Просрочено</value>
+  </data>
+  <data name="Dashboard_Upcoming_Empty" xml:space="preserve">
+    <value>Нет задач с дедлайном</value>
+  </data>
+  <data name="Dashboard_Upcoming_Title" xml:space="preserve">
+    <value>Ближайшие сроки</value>
+  </data>
+  <data name="Dashboard_Weekday_Fri" xml:space="preserve">
+    <value>Пт</value>
+  </data>
+  <data name="Dashboard_Weekday_Mon" xml:space="preserve">
+    <value>Пн</value>
+  </data>
+  <data name="Dashboard_Weekday_Sat" xml:space="preserve">
+    <value>Сб</value>
+  </data>
+  <data name="Dashboard_Weekday_Sun" xml:space="preserve">
+    <value>Вс</value>
+  </data>
+  <data name="Dashboard_Weekday_Thu" xml:space="preserve">
+    <value>Чт</value>
+  </data>
+  <data name="Dashboard_Weekday_Tue" xml:space="preserve">
+    <value>Вт</value>
+  </data>
+  <data name="Dashboard_Weekday_Wed" xml:space="preserve">
+    <value>Ср</value>
+  </data>
+  <data name="DoneList_Empty_Link" xml:space="preserve">
+    <value>Создать задачу</value>
+  </data>
+  <data name="DoneList_Empty_Message" xml:space="preserve">
+    <value>Выполненных задач пока нет.</value>
+  </data>
+  <data name="DoneList_Header_Lead" xml:space="preserve">
+    <value>Дела, которые уже завершены</value>
+  </data>
+  <data name="DoneList_Header_Title" xml:space="preserve">
+    <value>Выполненные задачи</value>
+  </data>
+  <data name="DoneList_Page_Title" xml:space="preserve">
+    <value>Выполненные задачи</value>
+  </data>
+  <data name="FailedList_Empty_Link" xml:space="preserve">
+    <value>Создать задачу</value>
+  </data>
+  <data name="FailedList_Empty_Message" xml:space="preserve">
+    <value>Проваленных задач пока нет.</value>
+  </data>
+  <data name="FailedList_Header_Lead" xml:space="preserve">
+    <value>Дела, которые не удалось завершить в срок</value>
+  </data>
+  <data name="FailedList_Header_Title" xml:space="preserve">
+    <value>Проваленные задачи</value>
+  </data>
+  <data name="FailedList_Page_Title" xml:space="preserve">
+    <value>Проваленные задачи</value>
+  </data>
+  <data name="Index_Button_Create" xml:space="preserve">
+    <value>Создать задачу</value>
+  </data>
+  <data name="Index_Button_Reset" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="Index_Category_Health" xml:space="preserve">
+    <value>Здоровье</value>
+  </data>
+  <data name="Index_Category_Home" xml:space="preserve">
+    <value>Дом</value>
+  </data>
+  <data name="Index_Category_Study" xml:space="preserve">
+    <value>Учёба</value>
+  </data>
+  <data name="Index_Category_Work" xml:space="preserve">
+    <value>Работа</value>
+  </data>
+  <data name="Index_Header_Create_Card" xml:space="preserve">
+    <value>Новая задача</value>
+  </data>
+  <data name="Index_Header_Create_Card_Lead" xml:space="preserve">
+    <value>Заполните поля. Дату можно выбрать в календаре слева.</value>
+  </data>
+  <data name="Index_Label_Category" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Index_Label_DeadlineDate" xml:space="preserve">
+    <value>Срок</value>
+  </data>
+  <data name="Index_Label_DeadlineTime" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="Index_Label_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Index_Label_Important" xml:space="preserve">
+    <value>Важная задача</value>
+  </data>
+  <data name="Index_Label_Name" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Index_Label_Priority" xml:space="preserve">
+    <value>Важность</value>
+  </data>
+  <data name="Index_Label_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Index_Label_Tag" xml:space="preserve">
+    <value>Метка</value>
+  </data>
+  <data name="Index_Page_Title" xml:space="preserve">
+    <value>Новая задача</value>
+  </data>
+  <data name="Index_Placeholder_Category" xml:space="preserve">
+    <value>Работа, дом…</value>
+  </data>
+  <data name="Index_Placeholder_Description" xml:space="preserve">
+    <value>Детали, ссылки, заметки…</value>
+  </data>
+  <data name="Index_Placeholder_Name" xml:space="preserve">
+    <value>Например: Подготовить отчёт</value>
+  </data>
+  <data name="Index_Priority_High" xml:space="preserve">
+    <value>Срочная</value>
+  </data>
+  <data name="Index_Priority_Low" xml:space="preserve">
+    <value>Лёгкая</value>
+  </data>
+  <data name="Index_Priority_Medium" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="Index_Status_Done" xml:space="preserve">
+    <value>Выполнена</value>
+  </data>
+  <data name="Index_Status_InProgress" xml:space="preserve">
+    <value>Активная</value>
+  </data>
+  <data name="Index_Validation_Name_Required" xml:space="preserve">
+    <value>Название обязательно для заполнения.</value>
+  </data>
+  <data name="ToDoList_Badge_Important" xml:space="preserve">
+    <value>Важная</value>
+  </data>
+  <data name="ToDoList_Empty_Link" xml:space="preserve">
+    <value>Создать первую</value>
+  </data>
+  <data name="ToDoList_Empty_Message" xml:space="preserve">
+    <value>Задач пока нет.</value>
+  </data>
+  <data name="ToDoList_Header_Lead" xml:space="preserve">
+    <value>Список дел, созданных на странице «Новая задача»</value>
+  </data>
+  <data name="ToDoList_Header_Title" xml:space="preserve">
+    <value>Все задачи</value>
+  </data>
+  <data name="ToDoList_Meta_Category" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="ToDoList_Meta_Deadline" xml:space="preserve">
+    <value>Срок</value>
+  </data>
+  <data name="ToDoList_Meta_Priority" xml:space="preserve">
+    <value>Важность</value>
+  </data>
+  <data name="ToDoList_Meta_Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="ToDoList_Page_Title" xml:space="preserve">
+    <value>Все задачи</value>
+  </data>
+</root>

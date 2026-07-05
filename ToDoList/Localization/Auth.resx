@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthLayout_Brand" xml:space="preserve">
+    <value>ToDoList</value>
+  </data>
+  <data name="AuthLayout_Nav_Label" xml:space="preserve">
+    <value>Авторизация</value>
+  </data>
+  <data name="Login_Button_Submit" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Login_Header_Lead" xml:space="preserve">
+    <value>Войдите, чтобы управлять своими задачами.</value>
+  </data>
+  <data name="Login_Header_Title" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Login_Label_Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Login_Label_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Login_Page_Title" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Login_Placeholder_Login" xml:space="preserve">
+    <value>Ваш логин</value>
+  </data>
+  <data name="Login_Placeholder_Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Login_Switch_Link" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="Login_Switch_Text" xml:space="preserve">
+    <value>Нет аккаунта?</value>
+  </data>
+  <data name="Login_Validation_Required" xml:space="preserve">
+    <value>Поле обязательно для заполнения.</value>
+  </data>
+  <data name="Registration_Button_Submit" xml:space="preserve">
+    <value>Создать аккаунт</value>
+  </data>
+  <data name="Registration_Header_Lead" xml:space="preserve">
+    <value>Создайте аккаунт — задачи будут доступны только вам.</value>
+  </data>
+  <data name="Registration_Header_Title" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Registration_Label_ConfirmPassword" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
+  <data name="Registration_Page_Title" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Registration_Placeholder_ConfirmPassword" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
+  <data name="Registration_Placeholder_Login" xml:space="preserve">
+    <value>Придумайте логин</value>
+  </data>
+  <data name="Registration_Placeholder_Password" xml:space="preserve">
+    <value>Придумайте пароль</value>
+  </data>
+  <data name="Registration_Switch_Link" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Registration_Switch_Text" xml:space="preserve">
+    <value>Уже есть аккаунт?</value>
+  </data>
+  <data name="Validation_PasswordMustContainDigit" xml:space="preserve">
+    <value>Пароль должен содержать хотя бы одну цифру.</value>
+  </data>
+  <data name="Validation_PasswordMustStartUpper" xml:space="preserve">
+    <value>Пароль должен начинаться с заглавной буквы.</value>
+  </data>
+  <data name="Validation_PasswordsMustMatch" xml:space="preserve">
+    <value>Пароли должны совпадать.</value>
+  </data>
+  <data name="Validation_PasswordTooShort" xml:space="preserve">
+    <value>Пароль слишком короткий.</value>
+  </data>
+</root>

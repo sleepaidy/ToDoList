@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorLegend_Label" xml:space="preserve">
+    <value>Цветовая схема задач</value>
+  </data>
+  <data name="ColorLegend_Overdue" xml:space="preserve">
+    <value>Просрочена</value>
+  </data>
+  <data name="ColorLegend_Title" xml:space="preserve">
+    <value>Цвета</value>
+  </data>
+  <data name="Footer_Copyright" xml:space="preserve">
+    <value>© 2026 — ToDoList</value>
+  </data>
+  <data name="Js_Month_Apr" xml:space="preserve">
+    <value>Апрель</value>
+  </data>
+  <data name="Js_Month_Aug" xml:space="preserve">
+    <value>Август</value>
+  </data>
+  <data name="Js_Month_Dec" xml:space="preserve">
+    <value>Декабрь</value>
+  </data>
+  <data name="Js_Month_Feb" xml:space="preserve">
+    <value>Февраль</value>
+  </data>
+  <data name="Js_Month_Jan" xml:space="preserve">
+    <value>Январь</value>
+  </data>
+  <data name="Js_Month_Jul" xml:space="preserve">
+    <value>Июль</value>
+  </data>
+  <data name="Js_Month_Jun" xml:space="preserve">
+    <value>Июнь</value>
+  </data>
+  <data name="Js_Month_Mar" xml:space="preserve">
+    <value>Март</value>
+  </data>
+  <data name="Js_Month_May" xml:space="preserve">
+    <value>Май</value>
+  </data>
+  <data name="Js_Month_Nov" xml:space="preserve">
+    <value>Ноябрь</value>
+  </data>
+  <data name="Js_Month_Oct" xml:space="preserve">
+    <value>Октябрь</value>
+  </data>
+  <data name="Js_Month_Sep" xml:space="preserve">
+    <value>Сентябрь</value>
+  </data>
+  <data name="Js_Status_Active" xml:space="preserve">
+    <value>активна</value>
+  </data>
+  <data name="Js_Status_Done" xml:space="preserve">
+    <value>выполнена</value>
+  </data>
+  <data name="Js_Status_Failed" xml:space="preserve">
+    <value>просрочена</value>
+  </data>
+  <data name="Js_TasksCount" xml:space="preserve">
+    <value>{0} задач(и)</value>
+  </data>
+  <data name="Js_TasksOn" xml:space="preserve">
+    <value>Задачи на {0}</value>
+  </data>
+  <data name="Lang_English" xml:space="preserve">
+    <value>EN</value>
+  </data>
+  <data name="Lang_Label" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Lang_Russian" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="Nav_AllTasks" xml:space="preserve">
+    <value>Все задачи</value>
+  </data>
+  <data name="Nav_Done" xml:space="preserve">
+    <value>Выполненные</value>
+  </data>
+  <data name="Nav_Failed" xml:space="preserve">
+    <value>Проваленные</value>
+  </data>
+  <data name="Nav_LogIn" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Nav_LogOut" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="Nav_NewTask" xml:space="preserve">
+    <value>Новая задача</value>
+  </data>
+  <data name="Nav_Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Nav_ToggleMenu" xml:space="preserve">
+    <value>Открыть меню</value>
+  </data>
+  <data name="Priority_High" xml:space="preserve">
+    <value>Срочная</value>
+  </data>
+  <data name="Priority_Low" xml:space="preserve">
+    <value>Лёгкая</value>
+  </data>
+  <data name="Priority_Medium" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="Sidebar_Label" xml:space="preserve">
+    <value>Панель управления</value>
+  </data>
+  <data name="Status_Active" xml:space="preserve">
+    <value>Активна</value>
+  </data>
+  <data name="Status_Done" xml:space="preserve">
+    <value>Выполнена</value>
+  </data>
+  <data name="Status_Failed" xml:space="preserve">
+    <value>Провалена</value>
+  </data>
+  <data name="Task_Complete_AriaLabel" xml:space="preserve">
+    <value>Отметить выполненной задачу {0}</value>
+  </data>
+  <data name="Task_Complete_Title" xml:space="preserve">
+    <value>Отметить выполненной</value>
+  </data>
+  <data name="Task_Delete_AriaLabel" xml:space="preserve">
+    <value>Удалить задачу {0}</value>
+  </data>
+  <data name="Task_Delete_Confirm" xml:space="preserve">
+    <value>Удалить задачу «{0}»?</value>
+  </data>
+  <data name="Task_Delete_Title" xml:space="preserve">
+    <value>Удалить задачу</value>
+  </data>
+</root>

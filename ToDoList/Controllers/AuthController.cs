@@ -51,7 +51,7 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult Registration (LoginViewModel viewModel)
+        public IActionResult Registration(RegisterViewModel viewModel)
         {
             if(!_userRepository.IsNameUniq(viewModel.Login) || !ModelState.IsValid)
             {

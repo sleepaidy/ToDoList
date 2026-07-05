@@ -9,4 +9,46 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ToDoList.Data\ToDoList.Data.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Localization\Home.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Home.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Localization\Auth.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Auth.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Localization\Shared.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Shared.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Localization\Home.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Home.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Localization\Home.en.resx">
+	    <DependentUpon>Home.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Localization\Auth.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Auth.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Localization\Auth.en.resx">
+	    <DependentUpon>Auth.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Localization\Shared.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Localization\Shared.en.resx">
+	    <DependentUpon>Shared.resx</DependentUpon>
+	  </EmbeddedResource>
+	</ItemGroup>
 </Project>

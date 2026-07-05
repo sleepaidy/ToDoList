@@ -28,6 +28,11 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var user = _userRepository.GetByNameAndPassword(viewModel.Login, viewModel.Password);
 
             if (user == null)
@@ -48,9 +53,9 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Registration (LoginViewModel viewModel)
         {
-            if(!_userRepository.IsNameUniq(viewModel.Login))
+            if(!_userRepository.IsNameUniq(viewModel.Login) || !ModelState.IsValid)
             {
-                return View();
+                return View(viewModel);
             }
 
             var user = new UserData

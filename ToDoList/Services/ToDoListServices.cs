@@ -2,7 +2,7 @@ using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Interfaces;
-using ToDoList.Models.Entities;
+using ToDoList.Models.Dtos;
 using ToDoList.Models.Home;
 
 
@@ -17,7 +17,7 @@ namespace ToDoList.Services
             _repository = repository;
         }
 
-        public ToDoItem CreateTask(ToDoTaskViewModel viewModel, int userId)
+        public ToDoTaskDto CreateTask(CreateToDoTaskViewModel viewModel, int userId)
         {
             var entity = new TaskData();
             entity.Name = viewModel.Name;
@@ -51,22 +51,22 @@ namespace ToDoList.Services
             var saved = _repository.GetById(entity.Id, userId)
                 ?? throw new InvalidOperationException($"Task with id {entity.Id} was not found after creation.");
 
-            return MapToToDoItem(saved);
+            return MapToDto(saved);
         }
 
-        public IReadOnlyList<ToDoItem> GetAllTasksForCurrentUser(int userId)
+        public IReadOnlyList<ToDoTaskDto> GetAllTasksForCurrentUser(int userId)
         {
             UpdateTaskStatus(userId);
             return _repository.GetAllTaskForCurrentUser(userId)
-                .Select(MapToToDoItem)
+                .Select(MapToDto)
                 .ToList();
         }
 
-        public IReadOnlyList<ToDoItem> GetTasksByStatus(Status status, int userId)
+        public IReadOnlyList<ToDoTaskDto> GetTasksByStatus(Status status, int userId)
         {
             UpdateTaskStatus(userId);
             return _repository.GetByStatus(status, userId)
-                .Select(MapToToDoItem)
+                .Select(MapToDto)
                 .ToList();
         }
 
@@ -97,7 +97,7 @@ namespace ToDoList.Services
             return true;
         }
 
-        private static ToDoItem MapToToDoItem(TaskData item) => new()
+        private static ToDoTaskDto MapToDto(TaskData item) => new()
         {
             Id = item.Id,
             Name = item.Name,

@@ -2,13 +2,13 @@
     ViewData["Title"] = "Новая задача";
 }
 @using ToDoList.Models.Home
-@model ToDoTaskViewModel
+@model CreateToDoTaskViewModel
 
 <div class="todo-app-page">
     <article class="create-card" aria-labelledby="create-heading">
         <header class="create-card__header">
             <h1 id="create-heading" class="create-card__title">Новая задача</h1>
-            <p class="create-card__lead">Заполните поля — обязательно только название. Дату можно выбрать в календаре слева.</p>
+            <p class="create-card__lead">Заполните поля. Дату можно выбрать в календаре слева.</p>
         </header>
 
         <form class="create-form" asp-action="Index" asp-controller="Home" method="post" novalidate>
@@ -26,6 +26,7 @@
                         required
                         maxlength="200"
                         autocomplete="off" />
+                    @Html.ValidationMessageFor(x => x.Name)
                 </div>
                 <div class="form-field">
                     <label class="form-field__label" for="task-category">Категория</label>
@@ -73,6 +74,7 @@
                         <span class="choice-check__box" aria-hidden="true"></span>
                         <span class="choice-check__text">Важная задача</span>
                     </label>
+                    @Html.ValidationMessageFor(x => x.IsImportant)
                 </div>
             </div>
 
@@ -92,6 +94,7 @@
                             <input type="radio" name="Priority" value="High" />
                             <span>Срочная</span>
                         </label>
+                        @Html.ValidationMessageFor(x => x.Priority)
                     </div>
                 </fieldset>
 
@@ -106,6 +109,7 @@
                             <input type="radio" name="Status" value="Done" />
                             <span>Выполнена</span>
                         </label>
+                        @Html.ValidationMessageFor(x => x.Status)
                     </div>
                 </fieldset>
             </div>

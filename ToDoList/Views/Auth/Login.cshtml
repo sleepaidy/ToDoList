@@ -20,6 +20,7 @@
                     placeholder="Ваш логин"
                     autocomplete="username"
                     maxlength="100" />
+                @Html.ValidationMessageFor(x => x.Login)
             </div>
 
             <div class="form-field">
@@ -32,6 +33,7 @@
                     placeholder="Пароль"
                     autocomplete="current-password"
                     maxlength="100" />
+                @Html.ValidationMessageFor(x => x.Password)
             </div>
 
             <div class="create-form__actions auth-form__actions">

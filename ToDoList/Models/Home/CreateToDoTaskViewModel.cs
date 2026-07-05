@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using ToDoList.Data.Enums;
 
 namespace ToDoList.Models.Home
 {
-    public class ToDoTaskViewModel
+    public class CreateToDoTaskViewModel
     {
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
         public DateOnly? DeadlineDate { get; set; }

@@ -1,6 +1,6 @@
 ﻿@using ToDoList.Data.Enums
-@using ToDoList.Models.Entities
-@model IReadOnlyList<ToDoItem>
+@using ToDoList.Models.Dtos
+@model IReadOnlyList<ToDoTaskDto>
 @{
     ViewData["Title"] = "Все задачи";
 
@@ -20,7 +20,7 @@
         _ => string.Empty
     };
 
-    string GetCardClass(ToDoItem task) => task.IsImportant
+    string GetCardClass(ToDoTaskDto task) => task.IsImportant
         ? "task-card task-card--important"
         : $"task-card task-card--priority-{task.Priority.ToString().ToLower()}";
 }

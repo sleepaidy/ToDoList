@@ -20,6 +20,7 @@
                     placeholder="Придумайте логин"
                     autocomplete="username"
                     maxlength="100" />
+                @Html.ValidationMessageFor(x => x.Login)
             </div>
 
             <div class="form-field">
@@ -32,6 +33,18 @@
                     placeholder="Придумайте пароль"
                     autocomplete="new-password"
                     maxlength="100" />
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+            <div class="form-field">
+                <label class="form-field__label" for="auth-password-confirm">Повторите пароль</label>
+                <input asp-for="DoubleCheckPassword"
+                       id="auth-password-confirm"
+                       type="password"
+                       class="form-field__input"
+                       placeholder="Повторите пароль"
+                       autocomplete="new-password"
+                       maxlength="100" />
+                @Html.ValidationMessageFor(x => x.DoubleCheckPassword)
             </div>
 
             <div class="create-form__actions auth-form__actions">

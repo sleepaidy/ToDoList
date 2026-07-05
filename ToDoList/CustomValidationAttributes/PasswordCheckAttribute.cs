@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ToDoList.Models.Auth;
+using ToDoList.Localization;
 
 namespace ToDoList.CustomValidationAttributes
 {
@@ -7,24 +7,27 @@ namespace ToDoList.CustomValidationAttributes
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            var viewModel = validationContext.ObjectInstance as LoginViewModel;
-            if (viewModel is null)
+            if (value is not string password || string.IsNullOrEmpty(password))
             {
-                throw new ArgumentNullException(nameof(viewModel));
+                return ValidationResult.Success;
             }
-            if (viewModel.Password.Length <= 4)
+
+            if (password.Length <= 4)
             {
-                return new ValidationResult("Your password is too short.");
+                return new ValidationResult(Auth.Validation_PasswordTooShort);
             }
-            if (!char.IsUpper(viewModel.Password[0]))
+
+            if (!char.IsUpper(password[0]))
             {
-                return new ValidationResult("Your password must start with a capital letter.");
+                return new ValidationResult(Auth.Validation_PasswordMustStartUpper);
             }
-            if(!viewModel.Password.Any(char.IsDigit))
+
+            if (!password.Any(char.IsDigit))
             {
-                return new ValidationResult("Your password must contain at least one digit");
+                return new ValidationResult(Auth.Validation_PasswordMustContainDigit);
             }
-            return base.IsValid(value, validationContext);
+
+            return ValidationResult.Success;
         }
     }
 }

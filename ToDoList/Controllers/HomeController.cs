@@ -24,12 +24,16 @@ namespace ToDoList.Controllers
         [HttpGet]
         public IActionResult Index()    
         {
-            return View(new ToDoTaskViewModel());
+            return View(new CreateToDoTaskViewModel());
         }
 
         [HttpPost]
-        public IActionResult Index(ToDoTaskViewModel viewModel)
+        public IActionResult Index(CreateToDoTaskViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
             var userId = _authService.GetUserId();
             var task = _toDoListService.CreateTask(viewModel, userId);
             return task.Status switch

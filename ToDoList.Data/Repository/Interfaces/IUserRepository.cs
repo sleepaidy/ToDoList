@@ -8,5 +8,6 @@ namespace ToDoList.Data.Repository.Interfaces
         bool IsNameUniq (string name);
         void Registration(UserData user);
         UserData? Get(int id);
+        void Update(UserData user);
     }
 }

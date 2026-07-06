@@ -45,6 +45,19 @@ namespace ToDoList.Data.Repository
             return password.Substring(0, password.Length - 1);
         }
 
+        public void Update(UserData user)
+        {
+            var existing = _webContext.Users.FirstOrDefault(x =>x.Id == user.Id);
+
+            if(existing is null)
+            {
+                return;
+            }
+            existing.ProfileImage = user.ProfileImage;
+            existing.Language = user.Language;
+
+            _webContext.SaveChanges();
+        }
 
     }
 }

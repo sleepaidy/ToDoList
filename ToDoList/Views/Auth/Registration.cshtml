@@ -10,7 +10,7 @@
             <p class="create-card__lead">Создайте аккаунт — задачи будут доступны только вам.</p>
         </header>
 
-        <form class="create-form auth-form" asp-action="Registration" asp-controller="Auth" method="post" novalidate>
+        <form class="create-form auth-form" asp-action="Registration" asp-controller="Auth" method="post" enctype="multipart/form-data" novalidate>
             <div class="form-field">
                 <label class="form-field__label" for="auth-login">Логин</label>
                 <input
@@ -21,6 +21,24 @@
                     autocomplete="username"
                     maxlength="100" />
                 @Html.ValidationMessageFor(x => x.Login)
+            </div>
+
+            <div class="form-field form-field--avatar">
+                <span class="form-field__label" id="auth-avatar-label">Аватар <span class="form-field__hint">(необязательно)</span></span>
+                <div class="profile-avatar-block profile-avatar-block--register" aria-labelledby="auth-avatar-label">
+                    <img id="register-avatar-preview-image"
+                         class="profile-avatar profile-avatar--large register-avatar-preview register-avatar-preview--hidden"
+                         alt="Предпросмотр аватара" />
+                    <span id="register-avatar-preview-placeholder"
+                          class="profile-avatar profile-avatar--large profile-avatar--placeholder"
+                          aria-hidden="true">?</span>
+                </div>
+                <input
+                    type="file"
+                    id="auth-avatar"
+                    name="avatar"
+                    class="form-field__input form-field__input--file"
+                    accept="image/*" />
             </div>
 
             <div class="form-field">
@@ -58,3 +76,50 @@
         </p>
     </article>
 </div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var loginInput = document.getElementById('auth-login');
+            var fileInput = document.getElementById('auth-avatar');
+            var placeholder = document.getElementById('register-avatar-preview-placeholder');
+            var previewImage = document.getElementById('register-avatar-preview-image');
+            var previewUrl = null;
+
+            function updatePlaceholder() {
+                var value = (loginInput && loginInput.value || '').trim();
+                placeholder.textContent = value ? value.charAt(0).toUpperCase() : '?';
+            }
+
+            function clearPreviewUrl() {
+                if (previewUrl) {
+                    URL.revokeObjectURL(previewUrl);
+                    previewUrl = null;
+                }
+            }
+
+            if (loginInput) {
+                loginInput.addEventListener('input', updatePlaceholder);
+                updatePlaceholder();
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener('change', function () {
+                    clearPreviewUrl();
+
+                    var file = fileInput.files && fileInput.files[0];
+                    if (!file) {
+                        previewImage.classList.add('register-avatar-preview--hidden');
+                        placeholder.hidden = false;
+                        return;
+                    }
+
+                    previewUrl = URL.createObjectURL(file);
+                    previewImage.src = previewUrl;
+                    previewImage.classList.remove('register-avatar-preview--hidden');
+                    placeholder.hidden = true;
+                });
+            }
+        })();
+    </script>
+}

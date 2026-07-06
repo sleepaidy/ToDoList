@@ -61,610 +61,610 @@ namespace ToDoList.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Р’СЃРµ Р°РєС‚РёРІРЅС‹Рµ.
+        ///   Looks up a localized string similar to Все активные.
         /// </summary>
         public static string Dashboard_Action_AllActive {
             get {
                 return ResourceManager.GetString("Dashboard_Action_AllActive", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to + РќРѕРІР°СЏ Р·Р°РґР°С‡Р°.
+        ///   Looks up a localized string similar to + Новая задача.
         /// </summary>
         public static string Dashboard_Action_NewTask {
             get {
                 return ResourceManager.GetString("Dashboard_Action_NewTask", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р‘С‹СЃС‚СЂС‹Рµ РґРµР№СЃС‚РІРёСЏ.
+        ///   Looks up a localized string similar to Быстрые действия.
         /// </summary>
         public static string Dashboard_Actions_Title {
             get {
                 return ResourceManager.GetString("Dashboard_Actions_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РљР°Р»РµРЅРґР°СЂСЊ Р·Р°РґР°С‡.
+        ///   Looks up a localized string similar to Календарь задач.
         /// </summary>
         public static string Dashboard_Calendar_Label {
             get {
                 return ResourceManager.GetString("Dashboard_Calendar_Label", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎР»РµРґСѓСЋС‰РёР№ РјРµСЃСЏС†.
+        ///   Looks up a localized string similar to Следующий месяц.
         /// </summary>
         public static string Dashboard_Calendar_Next {
             get {
                 return ResourceManager.GetString("Dashboard_Calendar_Next", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРµРґС‹РґСѓС‰РёР№ РјРµСЃСЏС†.
+        ///   Looks up a localized string similar to Предыдущий месяц.
         /// </summary>
         public static string Dashboard_Calendar_Prev {
             get {
                 return ResourceManager.GetString("Dashboard_Calendar_Prev", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РљР°Р»РµРЅРґР°СЂСЊ.
+        ///   Looks up a localized string similar to Календарь.
         /// </summary>
         public static string Dashboard_Calendar_Title {
             get {
                 return ResourceManager.GetString("Dashboard_Calendar_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to {0} РёР· {1} Р·Р°РґР°С‡ РІС‹РїРѕР»РЅРµРЅРѕ.
+        ///   Looks up a localized string similar to {0} из {1} задач выполнено.
         /// </summary>
         public static string Dashboard_Progress_Hint {
             get {
                 return ResourceManager.GetString("Dashboard_Progress_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРѕРіСЂРµСЃСЃ.
+        ///   Looks up a localized string similar to Прогресс.
         /// </summary>
         public static string Dashboard_Progress_Title {
             get {
                 return ResourceManager.GetString("Dashboard_Progress_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РђРєС‚РёРІРЅС‹Рµ.
+        ///   Looks up a localized string similar to Активные.
         /// </summary>
         public static string Dashboard_Stat_Active {
             get {
                 return ResourceManager.GetString("Dashboard_Stat_Active", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р“РѕС‚РѕРІРѕ.
+        ///   Looks up a localized string similar to Готово.
         /// </summary>
         public static string Dashboard_Stat_Done {
             get {
                 return ResourceManager.GetString("Dashboard_Stat_Done", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРѕСЃСЂРѕС‡РµРЅРѕ.
+        ///   Looks up a localized string similar to Просрочено.
         /// </summary>
         public static string Dashboard_Stat_Failed {
             get {
                 return ResourceManager.GetString("Dashboard_Stat_Failed", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќРµС‚ Р·Р°РґР°С‡ СЃ РґРµРґР»Р°Р№РЅРѕРј.
+        ///   Looks up a localized string similar to Нет задач с дедлайном.
         /// </summary>
         public static string Dashboard_Upcoming_Empty {
             get {
                 return ResourceManager.GetString("Dashboard_Upcoming_Empty", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р‘Р»РёР¶Р°Р№С€РёРµ СЃСЂРѕРєРё.
+        ///   Looks up a localized string similar to Ближайшие сроки.
         /// </summary>
         public static string Dashboard_Upcoming_Title {
             get {
                 return ResourceManager.GetString("Dashboard_Upcoming_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџС‚.
+        ///   Looks up a localized string similar to Пт.
         /// </summary>
         public static string Dashboard_Weekday_Fri {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Fri", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџРЅ.
+        ///   Looks up a localized string similar to Пн.
         /// </summary>
         public static string Dashboard_Weekday_Mon {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Mon", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎР±.
+        ///   Looks up a localized string similar to Сб.
         /// </summary>
         public static string Dashboard_Weekday_Sat {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Sat", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’СЃ.
+        ///   Looks up a localized string similar to Вс.
         /// </summary>
         public static string Dashboard_Weekday_Sun {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Sun", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р§С‚.
+        ///   Looks up a localized string similar to Чт.
         /// </summary>
         public static string Dashboard_Weekday_Thu {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Thu", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’С‚.
+        ///   Looks up a localized string similar to Вт.
         /// </summary>
         public static string Dashboard_Weekday_Tue {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Tue", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎСЂ.
+        ///   Looks up a localized string similar to Ср.
         /// </summary>
         public static string Dashboard_Weekday_Wed {
             get {
                 return ResourceManager.GetString("Dashboard_Weekday_Wed", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ.
+        ///   Looks up a localized string similar to Создать задачу.
         /// </summary>
         public static string DoneList_Empty_Link {
             get {
                 return ResourceManager.GetString("DoneList_Empty_Link", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’С‹РїРѕР»РЅРµРЅРЅС‹С… Р·Р°РґР°С‡ РїРѕРєР° РЅРµС‚..
+        ///   Looks up a localized string similar to Выполненных задач пока нет..
         /// </summary>
         public static string DoneList_Empty_Message {
             get {
                 return ResourceManager.GetString("DoneList_Empty_Message", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р”РµР»Р°, РєРѕС‚РѕСЂС‹Рµ СѓР¶Рµ Р·Р°РІРµСЂС€РµРЅС‹.
+        ///   Looks up a localized string similar to Дела, которые уже завершены.
         /// </summary>
         public static string DoneList_Header_Lead {
             get {
                 return ResourceManager.GetString("DoneList_Header_Lead", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Выполненные задачи.
         /// </summary>
         public static string DoneList_Header_Title {
             get {
                 return ResourceManager.GetString("DoneList_Header_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Выполненные задачи.
         /// </summary>
         public static string DoneList_Page_Title {
             get {
                 return ResourceManager.GetString("DoneList_Page_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ.
+        ///   Looks up a localized string similar to Создать задачу.
         /// </summary>
         public static string FailedList_Empty_Link {
             get {
                 return ResourceManager.GetString("FailedList_Empty_Link", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРѕРІР°Р»РµРЅРЅС‹С… Р·Р°РґР°С‡ РїРѕРєР° РЅРµС‚..
+        ///   Looks up a localized string similar to Проваленных задач пока нет..
         /// </summary>
         public static string FailedList_Empty_Message {
             get {
                 return ResourceManager.GetString("FailedList_Empty_Message", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р”РµР»Р°, РєРѕС‚РѕСЂС‹Рµ РЅРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РІРµСЂС€РёС‚СЊ РІ СЃСЂРѕРє.
+        ///   Looks up a localized string similar to Дела, которые не удалось завершить в срок.
         /// </summary>
         public static string FailedList_Header_Lead {
             get {
                 return ResourceManager.GetString("FailedList_Header_Lead", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРѕРІР°Р»РµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Проваленные задачи.
         /// </summary>
         public static string FailedList_Header_Title {
             get {
                 return ResourceManager.GetString("FailedList_Header_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РџСЂРѕРІР°Р»РµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Проваленные задачи.
         /// </summary>
         public static string FailedList_Page_Title {
             get {
                 return ResourceManager.GetString("FailedList_Page_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎРѕР·РґР°С‚СЊ Р·Р°РґР°С‡Сѓ.
+        ///   Looks up a localized string similar to Создать задачу.
         /// </summary>
         public static string Index_Button_Create {
             get {
                 return ResourceManager.GetString("Index_Button_Create", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РћС‡РёСЃС‚РёС‚СЊ.
+        ///   Looks up a localized string similar to Очистить.
         /// </summary>
         public static string Index_Button_Reset {
             get {
                 return ResourceManager.GetString("Index_Button_Reset", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р—РґРѕСЂРѕРІСЊРµ.
+        ///   Looks up a localized string similar to Здоровье.
         /// </summary>
         public static string Index_Category_Health {
             get {
                 return ResourceManager.GetString("Index_Category_Health", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р”РѕРј.
+        ///   Looks up a localized string similar to Дом.
         /// </summary>
         public static string Index_Category_Home {
             get {
                 return ResourceManager.GetString("Index_Category_Home", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЈС‡С‘Р±Р°.
+        ///   Looks up a localized string similar to Учёба.
         /// </summary>
         public static string Index_Category_Study {
             get {
                 return ResourceManager.GetString("Index_Category_Study", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р Р°Р±РѕС‚Р°.
+        ///   Looks up a localized string similar to Работа.
         /// </summary>
         public static string Index_Category_Work {
             get {
                 return ResourceManager.GetString("Index_Category_Work", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќРѕРІР°СЏ Р·Р°РґР°С‡Р°.
+        ///   Looks up a localized string similar to Новая задача.
         /// </summary>
         public static string Index_Header_Create_Card {
             get {
                 return ResourceManager.GetString("Index_Header_Create_Card", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»СЏ. Р”Р°С‚Сѓ РјРѕР¶РЅРѕ РІС‹Р±СЂР°С‚СЊ РІ РєР°Р»РµРЅРґР°СЂРµ СЃР»РµРІР°..
+        ///   Looks up a localized string similar to Заполните поля. Дату можно выбрать в календаре слева..
         /// </summary>
         public static string Index_Header_Create_Card_Lead {
             get {
                 return ResourceManager.GetString("Index_Header_Create_Card_Lead", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РљР°С‚РµРіРѕСЂРёСЏ.
+        ///   Looks up a localized string similar to Категория.
         /// </summary>
         public static string Index_Label_Category {
             get {
                 return ResourceManager.GetString("Index_Label_Category", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎСЂРѕРє.
+        ///   Looks up a localized string similar to Срок.
         /// </summary>
         public static string Index_Label_DeadlineDate {
             get {
                 return ResourceManager.GetString("Index_Label_DeadlineDate", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’СЂРµРјСЏ.
+        ///   Looks up a localized string similar to Время.
         /// </summary>
         public static string Index_Label_DeadlineTime {
             get {
                 return ResourceManager.GetString("Index_Label_DeadlineTime", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РћРїРёСЃР°РЅРёРµ.
+        ///   Looks up a localized string similar to Описание.
         /// </summary>
         public static string Index_Label_Description {
             get {
                 return ResourceManager.GetString("Index_Label_Description", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’Р°Р¶РЅР°СЏ Р·Р°РґР°С‡Р°.
+        ///   Looks up a localized string similar to Важная задача.
         /// </summary>
         public static string Index_Label_Important {
             get {
                 return ResourceManager.GetString("Index_Label_Important", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќР°Р·РІР°РЅРёРµ.
+        ///   Looks up a localized string similar to Название.
         /// </summary>
         public static string Index_Label_Name {
             get {
                 return ResourceManager.GetString("Index_Label_Name", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’Р°Р¶РЅРѕСЃС‚СЊ.
+        ///   Looks up a localized string similar to Важность.
         /// </summary>
         public static string Index_Label_Priority {
             get {
                 return ResourceManager.GetString("Index_Label_Priority", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎС‚Р°С‚СѓСЃ.
+        ///   Looks up a localized string similar to Статус.
         /// </summary>
         public static string Index_Label_Status {
             get {
                 return ResourceManager.GetString("Index_Label_Status", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РњРµС‚РєР°.
+        ///   Looks up a localized string similar to Метка.
         /// </summary>
         public static string Index_Label_Tag {
             get {
                 return ResourceManager.GetString("Index_Label_Tag", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќРѕРІР°СЏ Р·Р°РґР°С‡Р°.
+        ///   Looks up a localized string similar to Новая задача.
         /// </summary>
         public static string Index_Page_Title {
             get {
                 return ResourceManager.GetString("Index_Page_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р Р°Р±РѕС‚Р°, РґРѕРјвЂ¦.
+        ///   Looks up a localized string similar to Работа, дом….
         /// </summary>
         public static string Index_Placeholder_Category {
             get {
                 return ResourceManager.GetString("Index_Placeholder_Category", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р”РµС‚Р°Р»Рё, СЃСЃС‹Р»РєРё, Р·Р°РјРµС‚РєРёвЂ¦.
+        ///   Looks up a localized string similar to Детали, ссылки, заметки….
         /// </summary>
         public static string Index_Placeholder_Description {
             get {
                 return ResourceManager.GetString("Index_Placeholder_Description", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќР°РїСЂРёРјРµСЂ: РџРѕРґРіРѕС‚РѕРІРёС‚СЊ РѕС‚С‡С‘С‚.
+        ///   Looks up a localized string similar to Например: Подготовить отчёт.
         /// </summary>
         public static string Index_Placeholder_Name {
             get {
                 return ResourceManager.GetString("Index_Placeholder_Name", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎСЂРѕС‡РЅР°СЏ.
+        ///   Looks up a localized string similar to Срочная.
         /// </summary>
         public static string Index_Priority_High {
             get {
                 return ResourceManager.GetString("Index_Priority_High", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р›С‘РіРєР°СЏ.
+        ///   Looks up a localized string similar to Лёгкая.
         /// </summary>
         public static string Index_Priority_Low {
             get {
                 return ResourceManager.GetString("Index_Priority_Low", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎСЂРµРґРЅСЏСЏ.
+        ///   Looks up a localized string similar to Средняя.
         /// </summary>
         public static string Index_Priority_Medium {
             get {
                 return ResourceManager.GetString("Index_Priority_Medium", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’С‹РїРѕР»РЅРµРЅР°.
+        ///   Looks up a localized string similar to Выполнена.
         /// </summary>
         public static string Index_Status_Done {
             get {
                 return ResourceManager.GetString("Index_Status_Done", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РђРєС‚РёРІРЅР°СЏ.
+        ///   Looks up a localized string similar to Активная.
         /// </summary>
         public static string Index_Status_InProgress {
             get {
                 return ResourceManager.GetString("Index_Status_InProgress", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РќР°Р·РІР°РЅРёРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ..
+        ///   Looks up a localized string similar to Название обязательно для заполнения..
         /// </summary>
         public static string Index_Validation_Name_Required {
             get {
                 return ResourceManager.GetString("Index_Validation_Name_Required", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’Р°Р¶РЅР°СЏ.
+        ///   Looks up a localized string similar to Важная.
         /// </summary>
         public static string ToDoList_Badge_Important {
             get {
                 return ResourceManager.GetString("ToDoList_Badge_Important", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎРѕР·РґР°С‚СЊ РїРµСЂРІСѓСЋ.
+        ///   Looks up a localized string similar to Создать первую.
         /// </summary>
         public static string ToDoList_Empty_Link {
             get {
                 return ResourceManager.GetString("ToDoList_Empty_Link", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р—Р°РґР°С‡ РїРѕРєР° РЅРµС‚..
+        ///   Looks up a localized string similar to Задач пока нет..
         /// </summary>
         public static string ToDoList_Empty_Message {
             get {
                 return ResourceManager.GetString("ToDoList_Empty_Message", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎРїРёСЃРѕРє РґРµР», СЃРѕР·РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ В«РќРѕРІР°СЏ Р·Р°РґР°С‡Р°В».
+        ///   Looks up a localized string similar to Список дел, созданных на странице «Новая задача».
         /// </summary>
         public static string ToDoList_Header_Lead {
             get {
                 return ResourceManager.GetString("ToDoList_Header_Lead", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’СЃРµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Все задачи.
         /// </summary>
         public static string ToDoList_Header_Title {
             get {
                 return ResourceManager.GetString("ToDoList_Header_Title", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РљР°С‚РµРіРѕСЂРёСЏ.
+        ///   Looks up a localized string similar to Категория.
         /// </summary>
         public static string ToDoList_Meta_Category {
             get {
                 return ResourceManager.GetString("ToDoList_Meta_Category", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎСЂРѕРє.
+        ///   Looks up a localized string similar to Срок.
         /// </summary>
         public static string ToDoList_Meta_Deadline {
             get {
                 return ResourceManager.GetString("ToDoList_Meta_Deadline", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’Р°Р¶РЅРѕСЃС‚СЊ.
+        ///   Looks up a localized string similar to Важность.
         /// </summary>
         public static string ToDoList_Meta_Priority {
             get {
                 return ResourceManager.GetString("ToDoList_Meta_Priority", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to РЎС‚Р°С‚СѓСЃ.
+        ///   Looks up a localized string similar to Статус.
         /// </summary>
         public static string ToDoList_Meta_Status {
             get {
                 return ResourceManager.GetString("ToDoList_Meta_Status", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Р’СЃРµ Р·Р°РґР°С‡Рё.
+        ///   Looks up a localized string similar to Все задачи.
         /// </summary>
         public static string ToDoList_Page_Title {
             get {

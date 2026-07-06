@@ -1,9 +1,10 @@
-using ToDoList.Interfaces;
-using ToDoList.Services;
-using ToDoList.Data;
 using Microsoft.EntityFrameworkCore;
-using ToDoList.Data.Repository.Interfaces;
+using ToDoList.Data;
 using ToDoList.Data.Repository;
+using ToDoList.Data.Repository.Interfaces;
+using ToDoList.Interfaces;
+using ToDoList.MiddlewareServices;
+using ToDoList.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +43,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<MyLocalizationMiddleware>();
 
 app.MapControllerRoute(
     name: "default",

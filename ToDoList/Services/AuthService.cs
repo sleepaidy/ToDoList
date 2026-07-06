@@ -3,6 +3,7 @@ using ToDoList.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using ToDoList.Data.Models;
+using ToDoList.Data.Enums;
 
 namespace ToDoList.Services
 {
@@ -11,6 +12,7 @@ namespace ToDoList.Services
         public const string AUTH_KEY = "AuthNameToDoList";
         public const string COOKIE_ID_KEY = "Id";
         public const string COOKIE_NAME_KEY = "UserName";
+        public const string COOKIE_LANGUAGE_KEY = "Language";
 
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -29,7 +31,8 @@ namespace ToDoList.Services
                 new Claim(COOKIE_ID_KEY, user.Id.ToString()),
                 new Claim(COOKIE_NAME_KEY, user.Name.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.AuthenticationMethod, AUTH_KEY)
+                new Claim(ClaimTypes.AuthenticationMethod, AUTH_KEY),
+                new Claim(COOKIE_LANGUAGE_KEY, user.Language.ToString())
             };
 
             var identity = new ClaimsIdentity(claims, AUTH_KEY);
@@ -63,6 +66,18 @@ namespace ToDoList.Services
         {
             var userId = GetUserId();
             return userId <= 0 ? null : _userRepository.Get(userId);
+        }
+
+        public Language GetLanguage()
+        {
+            if(!IsAuthenticated())
+            {
+                return Language.Russian;
+            }
+
+            var languageStr = _httpContextAccessor.HttpContext!.User.Claims
+                .First(x => x.Type == COOKIE_LANGUAGE_KEY).Value;
+            return Enum.Parse<Language>(languageStr);
         }
 
     }

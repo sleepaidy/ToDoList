@@ -1,4 +1,5 @@
-﻿using ToDoList.Data.Models;
+﻿using ToDoList.Data.Enums;
+using ToDoList.Data.Models;
 
 namespace ToDoList.Interfaces
 {
@@ -9,5 +10,6 @@ namespace ToDoList.Interfaces
         string? GetUserName();
         bool IsAuthenticated();
         UserData? GetUser();
+        Language GetLanguage(); 
     }
 }

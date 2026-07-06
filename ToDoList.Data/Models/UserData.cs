@@ -1,4 +1,7 @@
-﻿namespace ToDoList.Data.Models
+﻿using System.CodeDom.Compiler;
+using ToDoList.Data.Enums;
+
+namespace ToDoList.Data.Models
 {
     public class UserData
     {
@@ -6,6 +9,7 @@
         public string Name { get; set; }
         public string Password { get; set; }
         public string ProfileImage {  get; set; }
+        public Language Language { get; set; } = Language.English;
 
         public virtual List<TaskData> Tasks { get; set; } = new();
     }

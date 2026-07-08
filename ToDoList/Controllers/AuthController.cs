@@ -4,6 +4,7 @@ using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Interfaces;
+using ToDoList.Localization;
 using ToDoList.Models.Auth;
 using ToDoList.Services;
 
@@ -59,8 +60,27 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Registration(RegisterViewModel viewModel, IFormFile? avatar)
         {
-            if(!_userRepository.IsNameUniq(viewModel.Login) || !ModelState.IsValid)
+            viewModel.Login = viewModel.Login?.Trim() ?? "";
+
+            if (string.IsNullOrEmpty(viewModel.Login))
             {
+                ModelState.Remove(nameof(RegisterViewModel.Login));
+                ModelState.AddModelError(
+                    nameof(RegisterViewModel.Login),
+                    Auth.Login_Validation_Required);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            if (!_userRepository.IsNameUniq(viewModel.Login))
+            {
+                ModelState.AddModelError(
+                    nameof(RegisterViewModel.Login),
+                    Auth.Validation_LoginTaken);
+
                 return View(viewModel);
             }
 

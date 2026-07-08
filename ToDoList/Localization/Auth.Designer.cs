@@ -268,6 +268,15 @@ namespace ToDoList.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Этот логин уже занят.
+        /// </summary>
+        public static string Validation_LoginTaken {
+            get {
+                return ResourceManager.GetString("Validation_LoginTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пароль должен содержать хотя бы одну цифру..
         /// </summary>
         public static string Validation_PasswordMustContainDigit {

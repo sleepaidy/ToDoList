@@ -35,7 +35,11 @@ namespace ToDoList.Data.Repository
         public List<TaskData> GetByStatus(Status status, int userId)
         {
             return _webContext.Tasks
-                .Where(t => t.Status == status && t.UserId == userId )
+                .Where(t => t.Status == status && t.UserId == userId)
+                .OrderByDescending(t => t.IsImportant)
+                .ThenBy(t => t.SortOrder)
+                .ThenByDescending(t => t.Priority)
+                .ThenBy(t => t.CreateAt)
                 .ToList();
         }
 
@@ -69,5 +73,47 @@ namespace ToDoList.Data.Repository
                 _webContext.SaveChanges();
             }
         }
+        public int GetNextSortOrder(int userId, bool isImportant, Status status)
+        {
+            var max = _webContext.Tasks
+                .Where(t => t.UserId == userId && t.Status == status && t.IsImportant == isImportant)
+                .Select(t => (int?)t.SortOrder)
+                .Max();
+            return (max ?? -1) + 1;
+        }
+
+        public bool MoveTask(int taskId, int userId, bool moveUp)
+        {
+            var task = GetById(taskId, userId);
+            if (task == null || task.Status != Status.InProgress)
+            {
+                return false;
+            }
+            var zone = _webContext.Tasks
+                .Where(t => t.UserId == userId
+                         && t.Status == Status.InProgress
+                         && t.IsImportant == task.IsImportant)
+                .OrderBy(t => t.SortOrder)
+                .ThenBy(t => t.Id)
+                .ToList();
+            var index = zone.FindIndex(t => t.Id == taskId);
+            if (index < 0)
+            {
+                return false;
+            }
+            var swapIndex = moveUp ? index - 1 : index + 1;
+            if (swapIndex < 0 || swapIndex >= zone.Count)
+            {
+                return false;
+            }
+            (zone[index], zone[swapIndex]) = (zone[swapIndex], zone[index]);
+            for (var i = 0; i < zone.Count; i++)
+            {
+                zone[i].SortOrder = i;
+            }
+            _webContext.SaveChanges();
+            return true;
+        }
+
     }
 }

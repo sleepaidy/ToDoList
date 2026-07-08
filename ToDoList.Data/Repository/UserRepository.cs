@@ -19,10 +19,15 @@ namespace ToDoList.Data.Repository
                 .FirstOrDefault(x => x.Name == userName && x.Password == hash);
         }
 
-        public bool IsNameUniq (string userName)
+        public bool IsNameUniq(string userName)
         {
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                return true;
+            }
 
-            return !_webContext.Users.Any(x => x.Name == userName);
+            var normalized = userName.Trim();
+            return !_webContext.Users.Any(x => x.Name == normalized);
         }
 
         public void Registration(UserData user)

@@ -45,6 +45,7 @@ namespace ToDoList.Services
             }
 
             entity.UserId = userId;
+            entity.SortOrder = _repository.GetNextSortOrder(userId, entity.IsImportant, entity.Status);
             _repository.Create(entity);
             UpdateTaskStatus(userId);
 
@@ -107,7 +108,17 @@ namespace ToDoList.Services
             Priority = item.Priority,
             Status = item.Status,
             IsImportant = item.IsImportant,
-            Category = item.Category
+            Category = item.Category,
+            SortOrder = item.SortOrder
         };
+
+        public bool MoveTaskUp(int id, int userId)
+        {
+            return _repository.MoveTask(id, userId, true);
+        }
+        public bool MoveTaskDown(int id, int userId)
+        {
+            return _repository.MoveTask(id, userId, false);
+        }
     }
 }

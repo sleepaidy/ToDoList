@@ -12,5 +12,8 @@ namespace ToDoList.Data.Repository.Interfaces
         TaskData? GetById(int id, int userId);
         void UpdateStatus(TaskData task, Status status);
         void MarkExpiredInProgressAsFailed(DateTime now, int userId);
+        int GetNextSortOrder(int userId, bool isImportant, Status status);
+        bool MoveTask(int taskId, int userId, bool moveUp);
+
     }
 }

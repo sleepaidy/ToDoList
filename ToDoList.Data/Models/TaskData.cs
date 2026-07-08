@@ -14,6 +14,7 @@ namespace ToDoList.Data.Models
         public bool IsImportant { get; set; }
         public Status Status { get; set; }
         public int UserId { get; set; }
+        public int SortOrder { get; set; }
 
         public virtual UserData User { get; set; }
     }

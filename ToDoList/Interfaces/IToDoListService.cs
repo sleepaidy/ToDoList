@@ -12,5 +12,7 @@ namespace ToDoList.Interfaces
         IReadOnlyList<ToDoTaskDto> GetTasksByStatus(Status status, int userId);
         bool DeleteTask(int id, int UserId);
         bool CompleteTask(int id, int userId);
+        bool MoveTaskUp(int id, int userId);
+        bool MoveTaskDown(int id, int userId);
     }
 }

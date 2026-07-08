@@ -13,6 +13,7 @@ namespace ToDoList.Models.Dtos
         public string Category { get; set; }
         public bool IsImportant { get; set; }
         public Status Status { get; set; }
+        public int SortOrder { get; set; }
 
     }
 }

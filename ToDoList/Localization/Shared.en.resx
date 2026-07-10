@@ -190,4 +190,70 @@
   <data name="Task_Delete_Title" xml:space="preserve">
     <value>Delete task</value>
   </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Js_TaskOrder_Error" xml:space="preserve">
+    <value>Could not reorder the task</value>
+  </data>
+  <data name="Task_Order_Down" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="Task_Order_Down_Aria" xml:space="preserve">
+    <value>Move task &quot;{0}&quot; down</value>
+  </data>
+  <data name="Task_Order_Group" xml:space="preserve">
+    <value>Task order for &quot;{0}&quot;</value>
+  </data>
+  <data name="Task_Order_Up" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="Task_Order_Up_Aria" xml:space="preserve">
+    <value>Move task &quot;{0}&quot; up</value>
+  </data>
+  <data name="Profile_Avatar_Alt" xml:space="preserve">
+    <value>User avatar</value>
+  </data>
+  <data name="Profile_Avatar_Label" xml:space="preserve">
+    <value>Choose image</value>
+  </data>
+  <data name="Profile_Avatar_Title" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+  <data name="Profile_Button_SaveAvatar" xml:space="preserve">
+    <value>Save avatar</value>
+  </data>
+  <data name="Profile_Button_SaveLanguage" xml:space="preserve">
+    <value>Save language</value>
+  </data>
+  <data name="Profile_Page_Title" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Lang_Full_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Lang_Full_Russian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="Error_Development_Mode" xml:space="preserve">
+    <value>Development Mode</value>
+  </data>
+  <data name="Error_Development_Text1" xml:space="preserve">
+    <value>Swapping to the &lt;strong&gt;Development&lt;/strong&gt; environment will display more detailed information about the error that occurred.</value>
+  </data>
+  <data name="Error_Development_Text2" xml:space="preserve">
+    <value>&lt;strong&gt;The Development environment shouldn&apos;t be enabled for deployed applications.&lt;/strong&gt; It can result in displaying sensitive information from exceptions to end users. For local debugging, enable the &lt;strong&gt;Development&lt;/strong&gt; environment by setting the &lt;strong&gt;ASPNETCORE_ENVIRONMENT&lt;/strong&gt; environment variable to &lt;strong&gt;Development&lt;/strong&gt;, and restarting the app.</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>An error occurred while processing your request.</value>
+  </data>
+  <data name="Error_Page_Title" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Error_RequestId" xml:space="preserve">
+    <value>Request ID:</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Error.</value>
+  </data>
 </root>

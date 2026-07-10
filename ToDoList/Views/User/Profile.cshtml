@@ -1,24 +1,23 @@
 @using ToDoList.Data.Enums
-@using ToDoList.Localization
 @model ToDoList.Models.User.ProfileViewModel
 @{
-    ViewData["Title"] = "Профиль";
+    ViewData["Title"] = Shared.Profile_Page_Title;
     var initial = string.IsNullOrEmpty(Model.UserName) ? "?" : Model.UserName[0].ToString().ToUpperInvariant();
 }
 
 <div class="todo-app-page">
     <article class="create-card profile-card" aria-labelledby="profile-heading">
         <header class="create-card__header">
-            <h1 id="profile-heading" class="create-card__title">Профиль</h1>
+            <h1 id="profile-heading" class="create-card__title">@Shared.Profile_Page_Title</h1>
             <p class="create-card__lead">@Model.UserName</p>
         </header>
 
         <section class="profile-section" aria-labelledby="avatar-heading">
-            <h2 id="avatar-heading" class="profile-section__title">Аватар</h2>
+            <h2 id="avatar-heading" class="profile-section__title">@Shared.Profile_Avatar_Title</h2>
             <div class="profile-avatar-block">
                 @if (!string.IsNullOrEmpty(Model.AvatarUrl))
                 {
-                    <img src="@Model.AvatarUrl" alt="Аватар пользователя" class="profile-avatar profile-avatar--large" />
+                    <img src="@Model.AvatarUrl" alt="@Shared.Profile_Avatar_Alt" class="profile-avatar profile-avatar--large" />
                 }
                 else
                 {
@@ -27,7 +26,7 @@
             </div>
             <form class="create-form profile-form" asp-action="UpdateAvatar" asp-controller="User" method="post" enctype="multipart/form-data">
                 <div class="form-field">
-                    <label class="form-field__label" for="avatar-file">Выберите изображение</label>
+                    <label class="form-field__label" for="avatar-file">@Shared.Profile_Avatar_Label</label>
                     <input
                         type="file"
                         id="avatar-file"
@@ -36,7 +35,7 @@
                         accept="image/*" />
                 </div>
                 <div class="create-form__actions">
-                    <button type="submit" class="create-btn create-btn--primary">Сохранить аватар</button>
+                    <button type="submit" class="create-btn create-btn--primary">@Shared.Profile_Button_SaveAvatar</button>
                 </div>
             </form>
         </section>
@@ -50,17 +49,17 @@
                         <label class="choice-pill">
                             <input type="radio" name="language" value="@((int)Language.Russian)"
                                    @(Model.Language == Language.Russian ? "checked" : null) />
-                            <span>@Shared.Lang_Russian</span>
+                            <span>@Shared.Lang_Full_Russian</span>
                         </label>
                         <label class="choice-pill">
                             <input type="radio" name="language" value="@((int)Language.English)"
                                    @(Model.Language == Language.English ? "checked" : null) />
-                            <span>@Shared.Lang_English</span>
+                            <span>@Shared.Lang_Full_English</span>
                         </label>
                     </div>
                 </fieldset>
                 <div class="create-form__actions">
-                    <button type="submit" class="create-btn create-btn--secondary">Сохранить язык</button>
+                    <button type="submit" class="create-btn create-btn--secondary">@Shared.Profile_Button_SaveLanguage</button>
                 </div>
             </form>
         </section>

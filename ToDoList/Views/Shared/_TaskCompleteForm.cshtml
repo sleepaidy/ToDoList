@@ -7,8 +7,8 @@
     <input type="hidden" name="id" value="@Model.Id" />
     <button type="submit"
             class="task-card__complete-btn"
-            title="Отметить выполненной"
-            aria-label="Отметить выполненной задачу @Model.TaskName">
+            title="@Shared.Task_Complete_Title"
+            aria-label="@string.Format(Shared.Task_Complete_AriaLabel, Model.TaskName)">
         <span aria-hidden="true">✓</span>
     </button>
 </form>

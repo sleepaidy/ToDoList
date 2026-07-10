@@ -1,16 +1,17 @@
+@using System.Text.Json
 @model (int Id, string ReturnAction, string TaskName)
 
 <form asp-controller="Home"
       asp-action="Delete"
       method="post"
       class="task-card__delete-form"
-      onsubmit="return confirm('Удалить задачу «@Model.TaskName»?');">
+      onsubmit="return confirm(@JsonSerializer.Serialize(string.Format(Shared.Task_Delete_Confirm, Model.TaskName)));">
     <input type="hidden" name="id" value="@Model.Id" />
     <input type="hidden" name="returnAction" value="@Model.ReturnAction" />
     <button type="submit"
             class="task-card__delete-btn"
-            title="Удалить задачу"
-            aria-label="Удалить задачу @Model.TaskName">
+            title="@Shared.Task_Delete_Title"
+            aria-label="@string.Format(Shared.Task_Delete_AriaLabel, Model.TaskName)">
         <span aria-hidden="true">×</span>
     </button>
 </form>

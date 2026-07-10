@@ -455,5 +455,137 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("Task_Delete_Title", resourceCulture);
             }
         }
+        
+        public static string Nav_Profile {
+            get {
+                return ResourceManager.GetString("Nav_Profile", resourceCulture);
+            }
+        }
+        
+        public static string Js_TaskOrder_Error {
+            get {
+                return ResourceManager.GetString("Js_TaskOrder_Error", resourceCulture);
+            }
+        }
+        
+        public static string Task_Order_Down {
+            get {
+                return ResourceManager.GetString("Task_Order_Down", resourceCulture);
+            }
+        }
+        
+        public static string Task_Order_Down_Aria {
+            get {
+                return ResourceManager.GetString("Task_Order_Down_Aria", resourceCulture);
+            }
+        }
+        
+        public static string Task_Order_Group {
+            get {
+                return ResourceManager.GetString("Task_Order_Group", resourceCulture);
+            }
+        }
+        
+        public static string Task_Order_Up {
+            get {
+                return ResourceManager.GetString("Task_Order_Up", resourceCulture);
+            }
+        }
+        
+        public static string Task_Order_Up_Aria {
+            get {
+                return ResourceManager.GetString("Task_Order_Up_Aria", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Avatar_Alt {
+            get {
+                return ResourceManager.GetString("Profile_Avatar_Alt", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Avatar_Label {
+            get {
+                return ResourceManager.GetString("Profile_Avatar_Label", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Avatar_Title {
+            get {
+                return ResourceManager.GetString("Profile_Avatar_Title", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Button_SaveAvatar {
+            get {
+                return ResourceManager.GetString("Profile_Button_SaveAvatar", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Button_SaveLanguage {
+            get {
+                return ResourceManager.GetString("Profile_Button_SaveLanguage", resourceCulture);
+            }
+        }
+        
+        public static string Profile_Page_Title {
+            get {
+                return ResourceManager.GetString("Profile_Page_Title", resourceCulture);
+            }
+        }
+        
+        public static string Lang_Full_English {
+            get {
+                return ResourceManager.GetString("Lang_Full_English", resourceCulture);
+            }
+        }
+        
+        public static string Lang_Full_Russian {
+            get {
+                return ResourceManager.GetString("Lang_Full_Russian", resourceCulture);
+            }
+        }
+        
+        public static string Error_Development_Mode {
+            get {
+                return ResourceManager.GetString("Error_Development_Mode", resourceCulture);
+            }
+        }
+        
+        public static string Error_Development_Text1 {
+            get {
+                return ResourceManager.GetString("Error_Development_Text1", resourceCulture);
+            }
+        }
+        
+        public static string Error_Development_Text2 {
+            get {
+                return ResourceManager.GetString("Error_Development_Text2", resourceCulture);
+            }
+        }
+        
+        public static string Error_Message {
+            get {
+                return ResourceManager.GetString("Error_Message", resourceCulture);
+            }
+        }
+        
+        public static string Error_Page_Title {
+            get {
+                return ResourceManager.GetString("Error_Page_Title", resourceCulture);
+            }
+        }
+        
+        public static string Error_RequestId {
+            get {
+                return ResourceManager.GetString("Error_RequestId", resourceCulture);
+            }
+        }
+        
+        public static string Error_Title {
+            get {
+                return ResourceManager.GetString("Error_Title", resourceCulture);
+            }
+        }
     }
 }

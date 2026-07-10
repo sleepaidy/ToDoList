@@ -1,14 +1,16 @@
-﻿@using ToDoList.Interfaces
+﻿@using System.Globalization
+@using ToDoList.Interfaces
 @inject IAuthService AuthService
 @{
     var currentUser = AuthService.GetUser();
     var avatarUrl = currentUser?.ProfileImage;
     var userInitial = User.Identity?.Name is { Length: > 0 } name ? name[0].ToString().ToUpperInvariant() : "?";
+    var htmlLang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
 }
 
 <!DOCTYPE html>
 
-<html lang="ru">
+<html lang="@htmlLang">
 
 <head>
 
@@ -42,7 +44,7 @@
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 
-                        aria-expanded="false" aria-label="Открыть меню">
+                        aria-expanded="false" aria-label="@Shared.Nav_ToggleMenu">
 
                     <span class="navbar-toggler-icon"></span>
 
@@ -54,25 +56,25 @@
 
                         <li class="nav-item">
 
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Новая задача</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">@Shared.Nav_NewTask</a>
 
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="nav-link" asp-controller="Home" asp-action="ToDoList">Все задачи</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="ToDoList">@Shared.Nav_AllTasks</a>
 
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="nav-link" asp-controller="Home" asp-action="DoneList">Выполненные</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="DoneList">@Shared.Nav_Done</a>
 
                         </li>
 
                         <li class="nav-item">
 
-                            <a class="nav-link" asp-controller="Home" asp-action="FailedList">Проваленные</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="FailedList">@Shared.Nav_Failed</a>
 
                         </li>
 
@@ -85,7 +87,7 @@
                                 <a class="nav-link app-navbar__user-link"
                                    asp-controller="User"
                                    asp-action="Profile"
-                                   title="Профиль">
+                                   title="@Shared.Nav_Profile">
                                     @if (!string.IsNullOrEmpty(avatarUrl))
                                     {
                                         <img src="@avatarUrl" alt="" class="profile-avatar" />
@@ -98,16 +100,16 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="LogOut">Выйти</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="LogOut">@Shared.Nav_LogOut</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Login">Войти</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="Login">@Shared.Nav_LogIn</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Registration">Регистрация</a>
+                                <a class="nav-link" asp-controller="Auth" asp-action="Registration">@Shared.Nav_Registration</a>
                             </li>
                         }
                     </ul>
@@ -126,7 +128,7 @@
 
         <div class="app-shell__grid">
 
-            <aside class="app-sidebar" aria-label="Панель управления">
+            <aside class="app-sidebar" aria-label="@Shared.Sidebar_Label">
 
                 @await Component.InvokeAsync("Dashboard")
 
@@ -148,7 +150,7 @@
 
         <div class="container app-footer__inner">
 
-            <span>&copy; 2026 — ToDoList</span>
+            <span>@Shared.Footer_Copyright</span>
 
         </div>
 
@@ -160,6 +162,7 @@
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+    @await Html.PartialAsync("_AppLocalization")
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
@@ -167,4 +170,3 @@
 </body>
 
 </html>
-

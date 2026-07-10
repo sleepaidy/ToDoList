@@ -1,12 +1,18 @@
 ﻿(function () {
-    const monthNames = [
-        "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
-        "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
-    ];
+    function getAppLocalization() {
+        try {
+            const el = document.getElementById("app-localization");
+            return el ? JSON.parse(el.textContent) : {};
+        } catch {
+            return {};
+        }
+    }
 
-    const dayNames = [
-        "воскресенье", "понедельник", "вторник", "среда",
-        "четверг", "пятница", "суббота"
+    const l10n = getAppLocalization();
+    const locale = l10n.locale || "ru-RU";
+    const monthNames = l10n.months || [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
     ];
 
     function pad(value) {
@@ -15,6 +21,10 @@
 
     function toDateKey(date) {
         return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function formatTemplate(template, value) {
+        return String(template).replace("{0}", value);
     }
 
     function updateClock() {
@@ -28,7 +38,7 @@
         clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
         clock.setAttribute("datetime", now.toISOString());
 
-        const dateText = now.toLocaleDateString("ru-RU", {
+        const dateText = now.toLocaleDateString(locale, {
             weekday: "long",
             day: "numeric",
             month: "long"
@@ -89,18 +99,18 @@
 
             const parts = dateKey.split("-").map(Number);
             const date = new Date(parts[0], parts[1] - 1, parts[2]);
-            const label = date.toLocaleDateString("ru-RU", {
+            const label = date.toLocaleDateString(locale, {
                 day: "numeric",
                 month: "long"
             });
 
-            dayTitle.textContent = `Задачи на ${label}`;
+            dayTitle.textContent = formatTemplate(l10n.tasksOn || "Tasks on {0}", label);
             dayList.innerHTML = tasks.map((task) => {
                 const statusLabel = task.statusClass === "done"
-                    ? "выполнена"
+                    ? (l10n.statusDone || "done")
                     : task.statusClass === "failed"
-                        ? "просрочена"
-                        : "активна";
+                        ? (l10n.statusFailed || "overdue")
+                        : (l10n.statusActive || "active");
                 return `<li class="calendar-day-panel__item calendar-day-panel__item--${task.priorityClass}">
                     <span class="calendar-day-panel__task">${escapeHtml(task.name)}</span>
                     <span class="calendar-day-panel__status">${statusLabel}</span>
@@ -155,7 +165,7 @@
                 if (tasks.length > 0) {
                     button.classList.add("widget-calendar__day--has-tasks");
                     button.classList.add(`widget-calendar__day--${getTopPriorityClass(tasks)}`);
-                    button.title = `${tasks.length} задач(и)`;
+                    button.title = formatTemplate(l10n.tasksCount || "{0} task(s)", tasks.length);
                 }
 
                 grid.appendChild(button);

@@ -190,4 +190,70 @@
   <data name="Task_Delete_Title" xml:space="preserve">
     <value>Удалить задачу</value>
   </data>
+  <data name="Nav_Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Js_TaskOrder_Error" xml:space="preserve">
+    <value>Не удалось изменить порядок задачи</value>
+  </data>
+  <data name="Task_Order_Down" xml:space="preserve">
+    <value>Опустить ниже</value>
+  </data>
+  <data name="Task_Order_Down_Aria" xml:space="preserve">
+    <value>Опустить задачу «{0}» ниже</value>
+  </data>
+  <data name="Task_Order_Group" xml:space="preserve">
+    <value>Порядок задачи «{0}»</value>
+  </data>
+  <data name="Task_Order_Up" xml:space="preserve">
+    <value>Поднять выше</value>
+  </data>
+  <data name="Task_Order_Up_Aria" xml:space="preserve">
+    <value>Поднять задачу «{0}» выше</value>
+  </data>
+  <data name="Profile_Avatar_Alt" xml:space="preserve">
+    <value>Аватар пользователя</value>
+  </data>
+  <data name="Profile_Avatar_Label" xml:space="preserve">
+    <value>Выберите изображение</value>
+  </data>
+  <data name="Profile_Avatar_Title" xml:space="preserve">
+    <value>Аватар</value>
+  </data>
+  <data name="Profile_Button_SaveAvatar" xml:space="preserve">
+    <value>Сохранить аватар</value>
+  </data>
+  <data name="Profile_Button_SaveLanguage" xml:space="preserve">
+    <value>Сохранить язык</value>
+  </data>
+  <data name="Profile_Page_Title" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Lang_Full_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Lang_Full_Russian" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Error_Development_Mode" xml:space="preserve">
+    <value>Режим разработки</value>
+  </data>
+  <data name="Error_Development_Text1" xml:space="preserve">
+    <value>Переключение в среду &lt;strong&gt;Development&lt;/strong&gt; покажет более подробную информацию об ошибке.</value>
+  </data>
+  <data name="Error_Development_Text2" xml:space="preserve">
+    <value>&lt;strong&gt;Режим разработки не должен быть включён на опубликованных приложениях.&lt;/strong&gt; Это может привести к отображению конфиденциальной информации из исключений пользователям. Для локальной отладки включите среду &lt;strong&gt;Development&lt;/strong&gt;, установив переменную окружения &lt;strong&gt;ASPNETCORE_ENVIRONMENT&lt;/strong&gt; в значение &lt;strong&gt;Development&lt;/strong&gt;, и перезапустите приложение.</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>При обработке запроса произошла ошибка.</value>
+  </data>
+  <data name="Error_Page_Title" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Error_RequestId" xml:space="preserve">
+    <value>ID запроса:</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Ошибка.</value>
+  </data>
 </root>

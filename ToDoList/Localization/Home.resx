@@ -262,4 +262,13 @@
   <data name="ToDoList_Page_Title" xml:space="preserve">
     <value>Все задачи</value>
   </data>
+  <data name="ToDoList_Zone_Important" xml:space="preserve">
+    <value>Важные</value>
+  </data>
+  <data name="ToDoList_Zone_Regular" xml:space="preserve">
+    <value>Остальные</value>
+  </data>
+  <data name="FailedList_Meta_Deadline" xml:space="preserve">
+    <value>Срок</value>
+  </data>
 </root>

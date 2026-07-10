@@ -7,9 +7,9 @@
 
     string GetPriorityLabel(Priority priority) => priority switch
     {
-        Priority.High => "Срочная",
-        Priority.Medium => "Средняя",
-        Priority.Low => "Лёгкая",
+        Priority.High => Shared.Priority_High,
+        Priority.Medium => Shared.Priority_Medium,
+        Priority.Low => Shared.Priority_Low,
         _ => priority.ToString()
     };
 
@@ -30,11 +30,11 @@
     <div class="task-card__head">
         <h2 class="task-card__title">@task.Name</h2>
         <div class="task-card__actions">
-            <div class="task-card__order" role="group" aria-label="Порядок задачи «@task.Name»">
+            <div class="task-card__order" role="group" aria-label="@string.Format(Shared.Task_Order_Group, task.Name)">
                 <button type="button"
                         class="task-card__order-btn task-card__order-btn--up"
-                        title="Поднять выше"
-                        aria-label="Поднять задачу «@task.Name» выше"
+                        title="@Shared.Task_Order_Up"
+                        aria-label="@string.Format(Shared.Task_Order_Up_Aria, task.Name)"
                         @(Model.IsFirst ? "disabled" : null)>
                     <svg class="task-card__order-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
                         <path d="M3.5 9L7 5.5L10.5 9" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
@@ -42,8 +42,8 @@
                 </button>
                 <button type="button"
                         class="task-card__order-btn task-card__order-btn--down"
-                        title="Опустить ниже"
-                        aria-label="Опустить задачу «@task.Name» ниже"
+                        title="@Shared.Task_Order_Down"
+                        aria-label="@string.Format(Shared.Task_Order_Down_Aria, task.Name)"
                         @(Model.IsLast ? "disabled" : null)>
                     <svg class="task-card__order-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
                         <path d="M3.5 5L7 8.5L10.5 5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
@@ -52,7 +52,7 @@
             </div>
             @if (task.IsImportant)
             {
-                <span class="task-card__badge" title="Важная">!</span>
+                <span class="task-card__badge" title="@Home.ToDoList_Badge_Important">!</span>
             }
             @await Html.PartialAsync("_TaskCompleteForm", (task.Id, task.Name))
             @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "ToDoList", task.Name))
@@ -66,17 +66,17 @@
 
     <ul class="task-card__meta">
         <li>
-            <span class="task-card__meta-label">Важность</span>
+            <span class="task-card__meta-label">@Home.ToDoList_Meta_Priority</span>
             <span class="task-card__pill @GetPriorityPillClass(task.Priority)">@GetPriorityLabel(task.Priority)</span>
         </li>
         <li>
-            <span class="task-card__meta-label">Статус</span>
-            <span class="task-card__pill task-card__pill--active">Активна</span>
+            <span class="task-card__meta-label">@Home.ToDoList_Meta_Status</span>
+            <span class="task-card__pill task-card__pill--active">@Shared.Status_Active</span>
         </li>
         @if (!string.IsNullOrWhiteSpace(task.Category))
         {
             <li>
-                <span class="task-card__meta-label">Категория</span>
+                <span class="task-card__meta-label">@Home.ToDoList_Meta_Category</span>
                 <span>@task.Category</span>
             </li>
         }
@@ -84,7 +84,7 @@
         {
             var deadlineSoon = task.DeadlineAt.Value - DateTime.Now < TimeSpan.FromHours(24) && task.DeadlineAt.Value > DateTime.Now;
             <li>
-                <span class="task-card__meta-label">Срок</span>
+                <span class="task-card__meta-label">@Home.ToDoList_Meta_Deadline</span>
                 <span class="@(deadlineSoon ? "task-card__deadline--soon" : null)">@task.DeadlineAt.Value.ToString("dd.MM.yyyy, HH:mm")</span>
             </li>
         }

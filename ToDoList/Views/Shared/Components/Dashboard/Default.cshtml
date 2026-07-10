@@ -15,45 +15,45 @@
     <div class="dashboard__stats">
         <a class="stat-card stat-card--active" asp-controller="Home" asp-action="ToDoList">
             <span class="stat-card__value">@Model.ActiveCount</span>
-            <span class="stat-card__label">Активные</span>
+            <span class="stat-card__label">@Home.Dashboard_Stat_Active</span>
         </a>
         <a class="stat-card stat-card--done" asp-controller="Home" asp-action="DoneList">
             <span class="stat-card__value">@Model.DoneCount</span>
-            <span class="stat-card__label">Готово</span>
+            <span class="stat-card__label">@Home.Dashboard_Stat_Done</span>
         </a>
         <a class="stat-card stat-card--failed" asp-controller="Home" asp-action="FailedList">
             <span class="stat-card__value">@Model.FailedCount</span>
-            <span class="stat-card__label">Просрочено</span>
+            <span class="stat-card__label">@Home.Dashboard_Stat_Failed</span>
         </a>
     </div>
 
     <div class="dashboard__progress widget">
         <div class="widget__head">
-            <h2 class="widget__title">Прогресс</h2>
+            <h2 class="widget__title">@Home.Dashboard_Progress_Title</h2>
             <span class="widget__badge">@progress%</span>
         </div>
         <div class="progress-bar" role="progressbar" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar__fill" style="width: @progress%"></div>
         </div>
-        <p class="widget__hint">@Model.DoneCount из @Model.TotalCount задач выполнено</p>
+        <p class="widget__hint">@string.Format(Home.Dashboard_Progress_Hint, Model.DoneCount, Model.TotalCount)</p>
     </div>
 
     <div class="widget widget--calendar">
         <div class="widget__head">
-            <h2 class="widget__title">Календарь</h2>
+            <h2 class="widget__title">@Home.Dashboard_Calendar_Title</h2>
             <div class="calendar-nav">
-                <button type="button" class="calendar-nav__btn" id="calendar-prev" aria-label="Предыдущий месяц">‹</button>
+                <button type="button" class="calendar-nav__btn" id="calendar-prev" aria-label="@Home.Dashboard_Calendar_Prev">‹</button>
                 <span class="calendar-nav__label" id="calendar-month-label"></span>
-                <button type="button" class="calendar-nav__btn" id="calendar-next" aria-label="Следующий месяц">›</button>
+                <button type="button" class="calendar-nav__btn" id="calendar-next" aria-label="@Home.Dashboard_Calendar_Next">›</button>
             </div>
         </div>
         <div
             id="task-calendar"
             class="widget-calendar"
-            aria-label="Календарь задач">
+            aria-label="@Home.Dashboard_Calendar_Label">
             <script id="calendar-tasks-data" type="application/json">@Html.Raw(calendarJson)</script>
             <div class="widget-calendar__weekdays" aria-hidden="true">
-                <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                <span>@Home.Dashboard_Weekday_Mon</span><span>@Home.Dashboard_Weekday_Tue</span><span>@Home.Dashboard_Weekday_Wed</span><span>@Home.Dashboard_Weekday_Thu</span><span>@Home.Dashboard_Weekday_Fri</span><span>@Home.Dashboard_Weekday_Sat</span><span>@Home.Dashboard_Weekday_Sun</span>
             </div>
             <div class="widget-calendar__grid" id="calendar-grid"></div>
         </div>
@@ -65,11 +65,11 @@
 
     <div class="widget">
         <div class="widget__head">
-            <h2 class="widget__title">Ближайшие сроки</h2>
+            <h2 class="widget__title">@Home.Dashboard_Upcoming_Title</h2>
         </div>
         @if (Model.UpcomingDeadlines.Count == 0)
         {
-            <p class="widget__empty">Нет задач с дедлайном</p>
+            <p class="widget__empty">@Home.Dashboard_Upcoming_Empty</p>
         }
         else
         {
@@ -87,15 +87,15 @@
         }
     </div>
 
-  @await Html.PartialAsync("_ColorLegend")
+    @await Html.PartialAsync("_ColorLegend")
 
     <div class="widget widget--actions">
         <div class="widget__head">
-            <h2 class="widget__title">Быстрые действия</h2>
+            <h2 class="widget__title">@Home.Dashboard_Actions_Title</h2>
         </div>
         <div class="quick-actions">
-            <a class="quick-actions__btn" asp-controller="Home" asp-action="Index">+ Новая задача</a>
-            <a class="quick-actions__btn quick-actions__btn--ghost" asp-controller="Home" asp-action="ToDoList">Все активные</a>
+            <a class="quick-actions__btn" asp-controller="Home" asp-action="Index">@Home.Dashboard_Action_NewTask</a>
+            <a class="quick-actions__btn quick-actions__btn--ghost" asp-controller="Home" asp-action="ToDoList">@Home.Dashboard_Action_AllActive</a>
         </div>
     </div>
 </div>

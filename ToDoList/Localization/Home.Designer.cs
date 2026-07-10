@@ -671,5 +671,23 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("ToDoList_Page_Title", resourceCulture);
             }
         }
+        
+        public static string ToDoList_Zone_Important {
+            get {
+                return ResourceManager.GetString("ToDoList_Zone_Important", resourceCulture);
+            }
+        }
+        
+        public static string ToDoList_Zone_Regular {
+            get {
+                return ResourceManager.GetString("ToDoList_Zone_Regular", resourceCulture);
+            }
+        }
+        
+        public static string FailedList_Meta_Deadline {
+            get {
+                return ResourceManager.GetString("FailedList_Meta_Deadline", resourceCulture);
+            }
+        }
     }
 }

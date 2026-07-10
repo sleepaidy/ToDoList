@@ -311,5 +311,35 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("Validation_PasswordTooShort", resourceCulture);
             }
         }
+        
+        public static string Registration_Label_Avatar {
+            get {
+                return ResourceManager.GetString("Registration_Label_Avatar", resourceCulture);
+            }
+        }
+        
+        public static string Registration_Label_Login {
+            get {
+                return ResourceManager.GetString("Registration_Label_Login", resourceCulture);
+            }
+        }
+        
+        public static string Registration_Label_Password {
+            get {
+                return ResourceManager.GetString("Registration_Label_Password", resourceCulture);
+            }
+        }
+        
+        public static string Registration_Avatar_Optional {
+            get {
+                return ResourceManager.GetString("Registration_Avatar_Optional", resourceCulture);
+            }
+        }
+        
+        public static string Registration_Avatar_Preview_Alt {
+            get {
+                return ResourceManager.GetString("Registration_Avatar_Preview_Alt", resourceCulture);
+            }
+        }
     }
 }

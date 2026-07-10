@@ -1,65 +1,65 @@
-﻿@using ToDoList.Models.Dtos
-@model IReadOnlyList<ToDoTaskDto>
-@{
-    ViewData["Title"] = "Все задачи";
-
-    var importantTasks = Model.Where(t => t.IsImportant).ToList();
-    var regularTasks = Model.Where(t => !t.IsImportant).ToList();
-}
-
-<div class="todo-app-page">
-    <article class="page-card" aria-labelledby="all-tasks-heading">
-        <header class="page-card__header">
-            <h1 id="all-tasks-heading" class="page-card__title">Все задачи</h1>
-            <p class="page-card__lead">Список дел, созданных на странице «Новая задача»</p>
-            <span class="page-card__count">@Model.Count</span>
-        </header>
-
-        @if (Model.Count == 0)
-        {
-            <p class="page-card__lead">
-                Задач пока нет.
-                <a asp-controller="Home" asp-action="Index">Создать первую</a>
-            </p>
-        }
-        else
-        {
-            @if (importantTasks.Count > 0)
-            {
-                <section class="task-zone task-zone--important" aria-labelledby="important-tasks-heading">
-                    <h2 id="important-tasks-heading" class="task-zone__title">
-                        <span class="task-zone__marker" aria-hidden="true">!</span>
-                        Важные
-                        <span class="task-zone__count">@importantTasks.Count</span>
-                    </h2>
-                    <ul class="task-list task-list--sortable" id="important-tasks">
-                        @for (var i = 0; i < importantTasks.Count; i++)
-                        {
-                            @await Html.PartialAsync("_ToDoListTaskCard", (importantTasks[i], i == 0, i == importantTasks.Count - 1))
-                        }
-                    </ul>
-                </section>
-            }
-
-            @if (regularTasks.Count > 0)
-            {
-                <section class="task-zone task-zone--regular" aria-labelledby="regular-tasks-heading">
-                    <h2 id="regular-tasks-heading" class="task-zone__title">
-                        Остальные
-                        <span class="task-zone__count">@regularTasks.Count</span>
-                    </h2>
-                    <ul class="task-list task-list--sortable" id="regular-tasks">
-                        @for (var i = 0; i < regularTasks.Count; i++)
-                        {
-                            @await Html.PartialAsync("_ToDoListTaskCard", (regularTasks[i], i == 0, i == regularTasks.Count - 1))
-                        }
-                    </ul>
-                </section>
-            }
-        }
-    </article>
-</div>
-
-@section Scripts {
-    <script src="~/js/todo/task-order.js" asp-append-version="true"></script>
-}
+﻿@using ToDoList.Models.Dtos
+@model IReadOnlyList<ToDoTaskDto>
+@{
+    ViewData["Title"] = Home.ToDoList_Page_Title;
+
+    var importantTasks = Model.Where(t => t.IsImportant).ToList();
+    var regularTasks = Model.Where(t => !t.IsImportant).ToList();
+}
+
+<div class="todo-app-page">
+    <article class="page-card" aria-labelledby="all-tasks-heading">
+        <header class="page-card__header">
+            <h1 id="all-tasks-heading" class="page-card__title">@Home.ToDoList_Header_Title</h1>
+            <p class="page-card__lead">@Home.ToDoList_Header_Lead</p>
+            <span class="page-card__count">@Model.Count</span>
+        </header>
+
+        @if (Model.Count == 0)
+        {
+            <p class="page-card__lead">
+                @Home.ToDoList_Empty_Message
+                <a asp-controller="Home" asp-action="Index">@Home.ToDoList_Empty_Link</a>
+            </p>
+        }
+        else
+        {
+            @if (importantTasks.Count > 0)
+            {
+                <section class="task-zone task-zone--important" aria-labelledby="important-tasks-heading">
+                    <h2 id="important-tasks-heading" class="task-zone__title">
+                        <span class="task-zone__marker" aria-hidden="true">!</span>
+                        @Home.ToDoList_Zone_Important
+                        <span class="task-zone__count">@importantTasks.Count</span>
+                    </h2>
+                    <ul class="task-list task-list--sortable" id="important-tasks">
+                        @for (var i = 0; i < importantTasks.Count; i++)
+                        {
+                            @await Html.PartialAsync("_ToDoListTaskCard", (importantTasks[i], i == 0, i == importantTasks.Count - 1))
+                        }
+                    </ul>
+                </section>
+            }
+
+            @if (regularTasks.Count > 0)
+            {
+                <section class="task-zone task-zone--regular" aria-labelledby="regular-tasks-heading">
+                    <h2 id="regular-tasks-heading" class="task-zone__title">
+                        @Home.ToDoList_Zone_Regular
+                        <span class="task-zone__count">@regularTasks.Count</span>
+                    </h2>
+                    <ul class="task-list task-list--sortable" id="regular-tasks">
+                        @for (var i = 0; i < regularTasks.Count; i++)
+                        {
+                            @await Html.PartialAsync("_ToDoListTaskCard", (regularTasks[i], i == 0, i == regularTasks.Count - 1))
+                        }
+                    </ul>
+                </section>
+            }
+        }
+    </article>
+</div>
+
+@section Scripts {
+    <script src="~/js/todo/task-order.js" asp-append-version="true"></script>
+}

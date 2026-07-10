@@ -1,5 +1,6 @@
+@using System.Globalization
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,9 +14,9 @@
 </head>
 <body class="app-body app-body--auth">
     <header>
-        <nav class="navbar navbar-light app-navbar auth-navbar" aria-label="Авторизация">
+        <nav class="navbar navbar-light app-navbar auth-navbar" aria-label="@Auth.AuthLayout_Nav_Label">
             <div class="container auth-navbar__inner">
-                <span class="auth-navbar__brand">ToDoList</span>
+                <span class="auth-navbar__brand">@Auth.AuthLayout_Brand</span>
             </div>
         </nav>
     </header>
@@ -28,12 +29,13 @@
 
     <footer class="app-footer">
         <div class="container app-footer__inner">
-            <span>&copy; 2026 — ToDoList</span>
+            <span>@Shared.Footer_Copyright</span>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await Html.PartialAsync("_AppLocalization")
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

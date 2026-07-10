@@ -1,4 +1,17 @@
 $(function () {
+    function getTaskOrderErrorMessage() {
+        try {
+            const el = document.getElementById('app-localization');
+            if (!el) {
+                return 'Could not reorder the task';
+            }
+            const l10n = JSON.parse(el.textContent);
+            return l10n.taskOrderError || 'Could not reorder the task';
+        } catch {
+            return 'Could not reorder the task';
+        }
+    }
+
     $('.task-list--sortable').each(function () {
         updateOrderButtons($(this));
     });
@@ -20,7 +33,7 @@ $(function () {
                 updateOrderButtons($item.closest('.task-list--sortable'));
             })
             .fail(function () {
-                alert('Не удалось изменить порядок задачи');
+                alert(getTaskOrderErrorMessage());
             })
             .always(function () {
                 updateOrderButtons($item.closest('.task-list--sortable'));

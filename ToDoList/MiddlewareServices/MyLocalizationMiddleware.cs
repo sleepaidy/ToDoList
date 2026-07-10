@@ -24,12 +24,23 @@ namespace ToDoList.MiddlewareServices
                     Language.English => new CultureInfo("en"),
                     _ => new CultureInfo("ru")
                 }
-                : new CultureInfo("ru");
+                : GetGuestCulture(context);
 
             CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
 
             await _next(context);
+        }
+
+        private static CultureInfo GetGuestCulture(HttpContext context)
+        {
+            var acceptLanguage = context.Request.Headers.AcceptLanguage.ToString();
+            if (acceptLanguage.StartsWith("en", StringComparison.OrdinalIgnoreCase))
+            {
+                return new CultureInfo("en");
+            }
+
+            return new CultureInfo("ru");
         }
     }
 }

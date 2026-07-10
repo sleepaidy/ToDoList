@@ -5,7 +5,9 @@ namespace ToDoList.Models.Home
 {
     public class CreateToDoTaskViewModel
     {
-        [Required]
+        [Required(
+            ErrorMessageResourceName = "Index_Validation_Name_Required",
+            ErrorMessageResourceType = typeof(ToDoList.Localization.Home))]
         public string Name { get; set; }
         public string Description { get; set; }
         public DateOnly? DeadlineDate { get; set; }

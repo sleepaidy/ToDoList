@@ -14,6 +14,10 @@ namespace ToDoList.Data.Repository.Interfaces
         void MarkExpiredInProgressAsFailed(DateTime now, int userId);
         int GetNextSortOrder(int userId, bool isImportant, Status status);
         bool MoveTask(int taskId, int userId, bool moveUp);
+        List<TaskData> GetTasksNeeding24HoursReminder(DateTime now);
+        List<TaskData> GetTasksNeeding1HourReminder(DateTime now);
+        void Mark24HoursReminderSent(int taskId);
+        void Mark1HourReminderSent(int taskId);
 
     }
 }

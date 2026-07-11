@@ -37,7 +37,7 @@ namespace ToDoList.Services
             }
             else if (viewModel.DeadlineTime == null)
             {
-                entity.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(TimeOnly.MinValue);
+                entity.DeadlineAt = viewModel.DeadlineDate.Value.ToDateTime(new TimeOnly(23, 59));
             }
             else
             {

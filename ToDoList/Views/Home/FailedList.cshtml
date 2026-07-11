@@ -28,7 +28,6 @@
                         <div class="task-card__head">
                             <h2 class="task-card__title">@task.Name</h2>
                             <div class="task-card__actions">
-                                @await Html.PartialAsync("_TaskCompleteForm", (task.Id, task.Name))
                                 @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "FailedList", task.Name))
                             </div>
                         </div>

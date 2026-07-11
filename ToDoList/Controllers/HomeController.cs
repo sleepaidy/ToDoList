@@ -63,8 +63,9 @@ namespace ToDoList.Controllers
         public IActionResult Complete(int id)
         {
             var userId = _authService.GetUserId();
-            _toDoListService.CompleteTask(id, userId);
-            return RedirectToAction(nameof(DoneList));
+            return _toDoListService.CompleteTask(id, userId)
+                ? RedirectToAction(nameof(DoneList))
+                : RedirectToAction(nameof(ToDoList));
         }
 
 

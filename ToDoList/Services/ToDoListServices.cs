@@ -90,7 +90,7 @@ namespace ToDoList.Services
         public bool CompleteTask(int id, int userId)
         {
             var task = _repository.GetById(id, userId);
-            if (task == null || task.Status == Status.Done)
+            if (task == null || task.Status != Status.InProgress)
             {
                 return false;
             }

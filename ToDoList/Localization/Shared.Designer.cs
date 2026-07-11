@@ -587,5 +587,17 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("Error_Title", resourceCulture);
             }
         }
+
+        public static string Notification_Deadline_24h {
+            get {
+                return ResourceManager.GetString("Notification_Deadline_24h", resourceCulture);
+            }
+        }
+
+        public static string Notification_Deadline_1h {
+            get {
+                return ResourceManager.GetString("Notification_Deadline_1h", resourceCulture);
+            }
+        }
     }
 }

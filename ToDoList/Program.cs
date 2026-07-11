@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data;
 using ToDoList.Data.Repository;
 using ToDoList.Data.Repository.Interfaces;
+using ToDoList.Hubs;
 using ToDoList.Interfaces;
 using ToDoList.MiddlewareServices;
 using ToDoList.Services;
@@ -26,6 +28,9 @@ builder.Services
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
     });
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
+builder.Services.AddHostedService<DeadlineReminderBackgroundService>();
 
 var app = builder.Build();
 
@@ -44,6 +49,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<MyLocalizationMiddleware>();
+app.MapHub<ToDoHub>("/my-hub/todo");
 
 app.MapControllerRoute(
     name: "default",

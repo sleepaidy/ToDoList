@@ -29,12 +29,21 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <link rel="stylesheet" href="~/css/app-style.css" asp-append-version="true" />
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <link rel="stylesheet" href="~/css/notifications.css" asp-append-version="true" />
+    }
 
     <link rel="stylesheet" href="~/ToDoList.styles.css" asp-append-version="true" />
 
 </head>
 
 <body class="app-body">
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="notifications" aria-live="polite"></div>
+    }
 
     <header>
 
@@ -164,6 +173,11 @@
 
     @await Html.PartialAsync("_AppLocalization")
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+        <script src="~/js/todo/deadline-notifications.js" asp-append-version="true"></script>
+    }
 
     @await RenderSectionAsync("Scripts", required: false)
 

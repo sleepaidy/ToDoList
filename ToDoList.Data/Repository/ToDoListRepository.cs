@@ -115,5 +115,47 @@ namespace ToDoList.Data.Repository
             return true;
         }
 
+        public List<TaskData> GetTasksNeeding24HoursReminder(DateTime now)
+        {
+            return _webContext.Tasks
+                .Where(t => t.Status == Status.InProgress
+                && t.DeadlineAt != null
+                && t.DeadlineAt > now
+                && t.DeadlineAt <= now.AddHours(24)
+                && !t.Notified24HoursBefore)
+                .ToList();
+        }
+
+        public List<TaskData> GetTasksNeeding1HourReminder(DateTime now)
+        {
+            return _webContext.Tasks
+                .Where(t => t.Status == Status.InProgress
+                && t.DeadlineAt != null
+                && t.DeadlineAt > now
+                && t.DeadlineAt <= now.AddHours(1)
+                && !t.Notified1HourBefore)
+                .ToList();
+        }
+
+        public void Mark24HoursReminderSent(int taskId)
+        {
+            var task = _webContext.Tasks.Find(taskId);
+            if(task != null)
+            {
+                task.Notified24HoursBefore = true;
+                _webContext.SaveChanges();
+            }
+        }
+
+        public void Mark1HourReminderSent(int taskId)
+        {
+            var task = _webContext.Tasks.Find(taskId);
+            if(task != null)
+            {
+                task.Notified1HourBefore = true;
+                _webContext.SaveChanges();  
+            }
+        }
     }
+
 }

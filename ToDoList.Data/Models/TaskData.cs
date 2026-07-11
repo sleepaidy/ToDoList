@@ -15,6 +15,8 @@ namespace ToDoList.Data.Models
         public Status Status { get; set; }
         public int UserId { get; set; }
         public int SortOrder { get; set; }
+        public bool Notified24HoursBefore { get; set; }
+        public bool Notified1HourBefore { get; set; }
 
         public virtual UserData User { get; set; }
     }

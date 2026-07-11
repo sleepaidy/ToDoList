@@ -35,7 +35,7 @@
         }
 
         const now = new Date();
-        clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
         clock.setAttribute("datetime", now.toISOString());
 
         const dateText = now.toLocaleDateString(locale, {
@@ -199,8 +199,10 @@
         renderCalendar();
         showDayPanel(selectedDate);
     }
-
+    document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) updateClock();
+    });
     updateClock();
-    setInterval(updateClock, 30000);
+    setInterval(updateClock, 1000);
     initCalendar();
 })();

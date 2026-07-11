@@ -256,4 +256,10 @@
   <data name="Error_Title" xml:space="preserve">
     <value>Error.</value>
   </data>
+  <data name="Notification_Deadline_24h" xml:space="preserve">
+    <value>Task "{0}" expires in 24 hours ({1})</value>
+  </data>
+  <data name="Notification_Deadline_1h" xml:space="preserve">
+    <value>Task "{0}" expires in 1 hour ({1})</value>
+  </data>
 </root>

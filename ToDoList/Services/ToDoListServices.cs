@@ -1,4 +1,5 @@
 using ToDoList.Data.Enums;
+using ToDoList.Data.HelperModels;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Interfaces;
@@ -10,9 +11,9 @@ namespace ToDoList.Services
 {
     public class ToDoListServices : IToDoListService
     {
-        private readonly IToDoListRepository _repository;
+        private readonly ITaskRepository _repository;
 
-        public ToDoListServices(IToDoListRepository repository)
+        public ToDoListServices(ITaskRepository repository)
         {
             _repository = repository;
         }
@@ -119,6 +120,45 @@ namespace ToDoList.Services
         public bool MoveTaskDown(int id, int userId)
         {
             return _repository.MoveTask(id, userId, false);
+        }
+
+        public TaskListFilterViewModel GetFilteredTasksByStatus(Status status, int userId, TaskListFilter filter)
+        {
+            UpdateTaskStatus(userId);
+
+            var repositoryFilter = new TaskListFilter
+            {
+                Category = filter.Category,
+                Priority = filter.Priority,
+                Search = filter.Search,
+                SortBy = filter.SortBy,
+                SortDir = filter.SortDir,
+            };
+
+            var categories = _repository.GetDistinctCategories(status, userId);
+
+            var tasks = _repository
+                .GetByStatusFiltered(status, userId, repositoryFilter)
+                .Select(MapToDto)
+                .ToList();
+
+            return new TaskListFilterViewModel
+            {
+                Category = filter.Category,
+                Priority = filter.Priority,
+                Search = filter.Search,
+                SortBy = string.IsNullOrWhiteSpace(filter.SortBy) ? "CreateAt" : filter.SortBy,
+                SortDir = string.Equals(filter.SortDir, "asc", StringComparison.OrdinalIgnoreCase)
+                    ? "asc"
+                    : "desc",
+                Status = status,
+                IsFilterActive =
+                    !string.IsNullOrWhiteSpace(filter.Category)
+                    || filter.Priority.HasValue
+                    || !string.IsNullOrWhiteSpace(filter.Search),
+                Tasks = tasks,
+                AvailableCategories = categories,
+            };
         }
     }
 }

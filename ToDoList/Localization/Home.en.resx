@@ -271,4 +271,55 @@
   <data name="FailedList_Meta_Deadline" xml:space="preserve">
     <value>Deadline</value>
   </data>
+  <data name="Filter_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Filter_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Filter_EmptyFiltered" xml:space="preserve">
+    <value>No tasks match your filters.</value>
+  </data>
+  <data name="Filter_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="Filter_Reset" xml:space="preserve">
+    <value>Reset filters</value>
+  </data>
+  <data name="Filter_ResultsCount" xml:space="preserve">
+    <value>Found: {0}</value>
+  </data>
+  <data name="Filter_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Filter_Search_Placeholder" xml:space="preserve">
+    <value>Task name…</value>
+  </data>
+  <data name="Filter_SortBy" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Filter_SortDir" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="SortBy_CreateAt" xml:space="preserve">
+    <value>By created date</value>
+  </data>
+  <data name="SortBy_DeadlineAt" xml:space="preserve">
+    <value>By deadline</value>
+  </data>
+  <data name="SortBy_Name" xml:space="preserve">
+    <value>By name</value>
+  </data>
+  <data name="SortBy_Priority" xml:space="preserve">
+    <value>By priority</value>
+  </data>
+  <data name="SortDir_Asc" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="SortDir_Desc" xml:space="preserve">
+    <value>Descending</value>
+  </data>
 </root>

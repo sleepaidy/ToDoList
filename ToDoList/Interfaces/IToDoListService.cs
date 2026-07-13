@@ -1,4 +1,5 @@
 using ToDoList.Data.Enums;
+using ToDoList.Data.HelperModels;
 using ToDoList.Models.Dtos;
 using ToDoList.Models.Home;
 
@@ -14,5 +15,6 @@ namespace ToDoList.Interfaces
         bool CompleteTask(int id, int userId);
         bool MoveTaskUp(int id, int userId);
         bool MoveTaskDown(int id, int userId);
+        TaskListFilterViewModel GetFilteredTasksByStatus(Status status, int userId, TaskListFilter filter);
     }
 }

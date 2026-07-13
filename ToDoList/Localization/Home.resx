@@ -271,4 +271,55 @@
   <data name="FailedList_Meta_Deadline" xml:space="preserve">
     <value>Срок</value>
   </data>
+  <data name="Filter_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="Filter_Category" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Filter_EmptyFiltered" xml:space="preserve">
+    <value>Ничего не найдено по фильтрам.</value>
+  </data>
+  <data name="Filter_Priority" xml:space="preserve">
+    <value>Приоритет</value>
+  </data>
+  <data name="Filter_Reset" xml:space="preserve">
+    <value>Сбросить фильтры</value>
+  </data>
+  <data name="Filter_ResultsCount" xml:space="preserve">
+    <value>Найдено: {0}</value>
+  </data>
+  <data name="Filter_Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Filter_Search_Placeholder" xml:space="preserve">
+    <value>Название задачи…</value>
+  </data>
+  <data name="Filter_SortBy" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="Filter_SortDir" xml:space="preserve">
+    <value>Направление</value>
+  </data>
+  <data name="SortBy_CreateAt" xml:space="preserve">
+    <value>По дате создания</value>
+  </data>
+  <data name="SortBy_DeadlineAt" xml:space="preserve">
+    <value>По дедлайну</value>
+  </data>
+  <data name="SortBy_Name" xml:space="preserve">
+    <value>По названию</value>
+  </data>
+  <data name="SortBy_Priority" xml:space="preserve">
+    <value>По приоритету</value>
+  </data>
+  <data name="SortDir_Asc" xml:space="preserve">
+    <value>По возрастанию</value>
+  </data>
+  <data name="SortDir_Desc" xml:space="preserve">
+    <value>По убыванию</value>
+  </data>
 </root>

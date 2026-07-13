@@ -6,6 +6,7 @@ using ToDoList.Models.Home;
 using ToDoList.Interfaces;
 using ToDoList.Data.Enums;
 using ToDoList.Data;
+using ToDoList.Data.HelperModels;
 
 namespace ToDoList.Controllers
 {
@@ -76,18 +77,38 @@ namespace ToDoList.Controllers
             return View(tasks);
         }
 
-        public IActionResult DoneList()
+        [HttpGet]
+        public IActionResult DoneList(string? category, Priority? priority, string? search, string? sortBy, string? sortDir)
         {
             var userId = _authService.GetUserId();
-            var tasks = _toDoListService.GetTasksByStatus(Status.Done, userId);
-            return View(tasks);
+            var filter = new TaskListFilter
+            {
+                Category = category,
+                Priority = priority,
+                Search = search,
+                SortBy = sortBy,
+                SortDir = sortDir
+
+            };
+            var model = _toDoListService.GetFilteredTasksByStatus(Status.Done, userId, filter);
+            return View(model);
         }
 
-        public IActionResult FailedList()
+        [HttpGet]
+        public IActionResult FailedList(string? category, Priority? priority, string? search, string? sortBy, string? sortDir)
         {
             var userId = _authService.GetUserId();
-            var tasks = _toDoListService.GetTasksByStatus(Status.Failed, userId);
-            return View(tasks);
+            var filter = new TaskListFilter
+            {
+                Category = category,
+                Priority = priority,
+                Search = search,
+                SortBy = sortBy,
+                SortDir = sortDir
+
+            };
+            var model = _toDoListService.GetFilteredTasksByStatus(Status.Failed, userId, filter);
+            return View(model);
         }
 
         [AllowAnonymous]

@@ -1026,6 +1026,35 @@ body.app-body {
     border-radius: 999px;
 }
 
+.task-filters {
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.05rem;
+    background: var(--surface);
+    border: 1px solid var(--block-border);
+    border-radius: var(--radius-sm);
+}
+
+.task-filters .form-row {
+    margin-bottom: 0.75rem;
+}
+
+.task-filters .form-row:last-child {
+    margin-bottom: 0;
+}
+
+.task-filters__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.task-filters__results {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--block-text);
+}
+
 .task-list {
     display: flex;
     flex-direction: column;

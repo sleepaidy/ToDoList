@@ -1,14 +1,16 @@
-﻿using ToDoList.Data.Enums;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using ToDoList.Data.Enums;
+using ToDoList.Data.HelperModels;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
 
 namespace ToDoList.Data.Repository
 {
-    public class ToDoListRepository : IToDoListRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly WebContext _webContext;
 
-        public ToDoListRepository(WebContext webContext)
+        public TaskRepository(WebContext webContext)
         {
             _webContext = webContext;
         }
@@ -155,6 +157,72 @@ namespace ToDoList.Data.Repository
                 task.Notified1HourBefore = true;
                 _webContext.SaveChanges();  
             }
+        }
+
+        public List<string> GetDistinctCategories (Status status, int userId)
+        {
+            return _webContext.Tasks
+                .Where(t => t.Status == status && t.UserId == userId)
+                .Where(t => t.Category != null && t.Category != "")
+                .Select(t => t.Category)
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+        }
+
+        public List<TaskData> GetByStatusFiltered(Status status, int userId, TaskListFilter filter)
+        {
+            var query = _webContext.Tasks
+                .Where(t => t.Status == status && t.UserId == userId);
+
+            if(!string.IsNullOrWhiteSpace(filter.Category))
+            {
+                var category = filter.Category.Trim();
+                query = query.Where(t => t.Category == category);
+            }
+
+            if (filter.Priority.HasValue)
+            {
+                query = query.Where(t => t.Priority == filter.Priority.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(filter.Search))
+            {
+                var term = filter.Search.Trim().ToLower();
+                query = query.Where(t => t.Name.ToLower().Contains(term));
+            }
+
+            query = ApplySorting(query, filter.SortBy, filter.SortDir);
+
+            return query.ToList();
+        }
+
+        private IQueryable<TaskData> ApplySorting(IQueryable<TaskData> query, string? sortBy, string? sortDir)
+        {
+            var desc = !string.Equals(sortDir, "asc", StringComparison.OrdinalIgnoreCase);
+            if (string.Equals(sortBy, "Name", StringComparison.OrdinalIgnoreCase))
+            {
+                return desc
+                    ? query.OrderByDescending(t => t.Name)
+                    : query.OrderBy(t => t.Name);
+            }
+            if (string.Equals(sortBy, "Priority", StringComparison.OrdinalIgnoreCase))
+            {
+                return desc
+                    ? query.OrderByDescending(t => t.Priority)
+                    : query.OrderBy(t => t.Priority);
+            }
+            if (string.Equals(sortBy, "DeadlineAt", StringComparison.OrdinalIgnoreCase))
+            {
+
+                return desc
+                    ? query.OrderBy(t => t.DeadlineAt != null).ThenByDescending(t => t.DeadlineAt)
+                    : query.OrderBy(t => t.DeadlineAt == null).ThenBy(t => t.DeadlineAt);
+            }
+
+            return desc
+                ? query.OrderByDescending(t => t.CreateAt)
+                : query.OrderBy(t => t.CreateAt);
         }
     }
 

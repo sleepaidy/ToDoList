@@ -17,7 +17,7 @@ builder.Services.AddDbContext<WebContext>(op => op.UseSqlServer(connectionString
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IToDoListService, ToDoListServices>();
-builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddHttpContextAccessor();
 builder.Services

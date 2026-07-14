@@ -689,5 +689,107 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("FailedList_Meta_Deadline", resourceCulture);
             }
         }
+        
+        public static string Filter_All {
+            get {
+                return ResourceManager.GetString("Filter_All", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Apply {
+            get {
+                return ResourceManager.GetString("Filter_Apply", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Category {
+            get {
+                return ResourceManager.GetString("Filter_Category", resourceCulture);
+            }
+        }
+        
+        public static string Filter_EmptyFiltered {
+            get {
+                return ResourceManager.GetString("Filter_EmptyFiltered", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Priority {
+            get {
+                return ResourceManager.GetString("Filter_Priority", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Reset {
+            get {
+                return ResourceManager.GetString("Filter_Reset", resourceCulture);
+            }
+        }
+        
+        public static string Filter_ResultsCount {
+            get {
+                return ResourceManager.GetString("Filter_ResultsCount", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Search {
+            get {
+                return ResourceManager.GetString("Filter_Search", resourceCulture);
+            }
+        }
+        
+        public static string Filter_Search_Placeholder {
+            get {
+                return ResourceManager.GetString("Filter_Search_Placeholder", resourceCulture);
+            }
+        }
+        
+        public static string Filter_SortBy {
+            get {
+                return ResourceManager.GetString("Filter_SortBy", resourceCulture);
+            }
+        }
+        
+        public static string Filter_SortDir {
+            get {
+                return ResourceManager.GetString("Filter_SortDir", resourceCulture);
+            }
+        }
+        
+        public static string SortBy_CreateAt {
+            get {
+                return ResourceManager.GetString("SortBy_CreateAt", resourceCulture);
+            }
+        }
+        
+        public static string SortBy_DeadlineAt {
+            get {
+                return ResourceManager.GetString("SortBy_DeadlineAt", resourceCulture);
+            }
+        }
+        
+        public static string SortBy_Name {
+            get {
+                return ResourceManager.GetString("SortBy_Name", resourceCulture);
+            }
+        }
+        
+        public static string SortBy_Priority {
+            get {
+                return ResourceManager.GetString("SortBy_Priority", resourceCulture);
+            }
+        }
+        
+        public static string SortDir_Asc {
+            get {
+                return ResourceManager.GetString("SortDir_Asc", resourceCulture);
+            }
+        }
+        
+        public static string SortDir_Desc {
+            get {
+                return ResourceManager.GetString("SortDir_Desc", resourceCulture);
+            }
+        }
     }
 }

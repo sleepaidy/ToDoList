@@ -37,7 +37,7 @@ namespace ToDoList.Services
         private async Task ProcessRemindersAsync(CancellationToken cancellationToken)
         {
             using var scope = _scopeFactory.CreateScope();
-            var repository = scope.ServiceProvider.GetRequiredService<IToDoListRepository>();
+            var repository = scope.ServiceProvider.GetRequiredService<ITaskRepository>();
             var now = DateTime.Now;
 
             var tasks24h = repository.GetTasksNeeding24HoursReminder(now);

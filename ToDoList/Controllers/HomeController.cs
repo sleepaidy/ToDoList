@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ToDoList.Models;
 using ToDoList.Models.Home;
-using ToDoList.Interfaces;
 using ToDoList.Data.Enums;
 using ToDoList.Data;
 using ToDoList.Data.HelperModels;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Controllers
 {
@@ -64,9 +64,13 @@ namespace ToDoList.Controllers
         public IActionResult Complete(int id)
         {
             var userId = _authService.GetUserId();
-            return _toDoListService.CompleteTask(id, userId)
-                ? RedirectToAction(nameof(DoneList))
-                : RedirectToAction(nameof(ToDoList));
+            var result = _toDoListService.CompleteTask(id, userId);
+            return result switch
+            {
+                Status.Done => RedirectToAction(nameof(DoneList)),
+                Status.Failed => RedirectToAction(nameof(FailedList)),
+                _ => RedirectToAction(nameof(ToDoList))
+            };
         }
 
 

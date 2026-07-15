@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data.Enums;
 using ToDoList.Data.Repository.Interfaces;
-using ToDoList.Interfaces;
 using ToDoList.Models.User;
 using Microsoft.AspNetCore.Authentication;
 using ToDoList.Services;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Controllers
 {

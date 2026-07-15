@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
-using ToDoList.Interfaces;
 using ToDoList.Localization;
 using ToDoList.Models.Auth;
 using ToDoList.Services;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Controllers
 {

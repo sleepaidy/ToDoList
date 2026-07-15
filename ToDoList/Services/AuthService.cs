@@ -1,9 +1,9 @@
 ﻿using ToDoList.Data.Repository.Interfaces;
-using ToDoList.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using ToDoList.Data.Models;
 using ToDoList.Data.Enums;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Services
 {

@@ -56,20 +56,21 @@ namespace ToDoList.Data.Repository
             _webContext.SaveChanges();
         }
 
-        public void MarkExpiredInProgressAsFailed(DateTime now, int userId)
+        public void MarkExpiredInProgressAsFailed(DateTime now, int? userId = null)
         {
-            var expired = _webContext.Tasks
-                .Where(t => t.UserId == userId
-                         && t.Status == Status.InProgress
-                         && t.DeadlineAt != null
-                         && t.DeadlineAt <= now)
-                .ToList();
-
+            var query = _webContext.Tasks
+                    .Where(t => t.Status == Status.InProgress
+                             && t.DeadlineAt != null
+                             && t.DeadlineAt <= now);
+            if (userId.HasValue)
+            {
+                query = query.Where(t => t.UserId == userId.Value);
+            }
+            var expired = query.ToList();
             foreach (var task in expired)
             {
                 task.Status = Status.Failed;
             }
-
             if (expired.Count > 0)
             {
                 _webContext.SaveChanges();

@@ -28,13 +28,9 @@ namespace ToDoList.Services
             entity.Status = viewModel.Status;
             entity.IsImportant = viewModel.IsImportant;
             entity.Category = viewModel.Category;
-            if (viewModel.DeadlineDate == null && viewModel.DeadlineTime == null)
+            if (viewModel.DeadlineDate == null)
             {
                 entity.DeadlineAt = null;
-            }
-            else if (viewModel.DeadlineDate == null)
-            {
-                entity.DeadlineAt = DateTime.Today + viewModel.DeadlineTime!.Value.ToTimeSpan();
             }
             else if (viewModel.DeadlineTime == null)
             {

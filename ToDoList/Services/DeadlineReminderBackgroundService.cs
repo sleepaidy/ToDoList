@@ -42,6 +42,8 @@ namespace ToDoList.Services
             var repository = scope.ServiceProvider.GetRequiredService<ITaskRepository>();
             var now = DateTime.Now;
 
+            repository.MarkExpiredInProgressAsFailed(now);
+
             var tasks24h = repository.GetTasksNeeding24HoursReminder(now);
             foreach (var task in tasks24h)
             {

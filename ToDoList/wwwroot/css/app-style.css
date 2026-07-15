@@ -616,6 +616,10 @@ body.app-body {
     transition: color var(--ease), text-decoration-color var(--ease);
 }
 
+.todo-app-page a.create-btn {
+    text-decoration: none;
+}
+
 .todo-app-page a:hover {
     color: var(--text-strong);
     text-decoration-color: currentColor;
@@ -1027,32 +1031,98 @@ body.app-body {
 }
 
 .task-filters {
-    margin-bottom: 1.25rem;
-    padding: 1rem 1.05rem;
-    background: var(--surface);
-    border: 1px solid var(--block-border);
-    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin: 0 0 1.35rem;
+    padding: 0 0 1.15rem;
+    border-bottom: 1px solid var(--block-border);
 }
 
-.task-filters .form-row {
-    margin-bottom: 0.75rem;
+.task-filters--active {
+    border-bottom-color: hsl(var(--hue-warm), 14%, 78%);
 }
 
-.task-filters .form-row:last-child {
-    margin-bottom: 0;
+.task-filters__row {
+    display: grid;
+    gap: 0.7rem 0.75rem;
+    align-items: end;
+}
+
+.task-filters__row--filters {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.4fr);
+}
+
+.task-filters__row--sort {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+}
+
+.task-filters__field .form-field__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--block-meta-label);
+}
+
+.task-filters__field .form-field__input {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.88rem;
+    background: var(--surface-raised);
+    border-color: hsl(var(--hue-warm), 12%, 88%);
+}
+
+.task-filters__field .form-field__input:hover {
+    border-color: var(--block-border-focus);
+    background: var(--card);
+}
+
+.task-filters__field .form-field__select {
+    padding-right: 2rem;
+    background-position: right 0.6rem center;
 }
 
 .task-filters__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: flex-end;
+    gap: 0.45rem;
+    align-items: center;
+    padding-bottom: 0.05rem;
+}
+
+.task-filters__btn {
+    min-width: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
 }
 
 .task-filters__results {
     margin: 0 0 0.75rem;
     font-size: 0.85rem;
     color: var(--block-text);
+}
+
+@media (max-width: 820px) {
+    .task-filters__row--filters,
+    .task-filters__row--sort {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .task-filters__field--search {
+        grid-column: 1 / -1;
+    }
+
+    .task-filters__actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 520px) {
+    .task-filters__row--filters,
+    .task-filters__row--sort {
+        grid-template-columns: 1fr;
+    }
 }
 
 .task-list {

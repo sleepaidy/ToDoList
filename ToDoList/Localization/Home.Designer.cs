@@ -581,7 +581,16 @@ namespace ToDoList.Localization {
                 return ResourceManager.GetString("Index_Validation_Name_Required", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Укажите дату дедлайна вместе со временем.
+        /// </summary>
+        public static string Index_Validation_DeadlineTimeRequiresDate {
+            get {
+                return ResourceManager.GetString("Index_Validation_DeadlineTimeRequiresDate", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Важная.
         /// </summary>

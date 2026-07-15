@@ -60,11 +60,13 @@
             <div class="form-row form-row--3">
                 <div class="form-field">
                     <label class="form-field__label" for="task-due-date">@Home.Index_Label_DeadlineDate</label>
-                    <input type="date" id="task-due-date" name="DeadlineDate" class="form-field__input" />
+                    <input type="date" id="task-due-date" name="DeadlineDate" class="form-field__input" value="@(Model.DeadlineDate?.ToString("yyyy-MM-dd"))" />
+                    @Html.ValidationMessageFor(x => x.DeadlineDate)
                 </div>
                 <div class="form-field">
                     <label class="form-field__label" for="task-due-time">@Home.Index_Label_DeadlineTime</label>
-                    <input type="time" id="task-due-time" name="DeadlineTime" class="form-field__input" />
+                    <input type="time" id="task-due-time" name="DeadlineTime" class="form-field__input" value="@(Model.DeadlineTime?.ToString("HH:mm"))" />
+                    @Html.ValidationMessageFor(x => x.DeadlineTime)
                 </div>
                 <div class="form-field">
                     <label class="form-field__label" for="task-important">@Home.Index_Label_Tag</label>

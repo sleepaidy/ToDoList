@@ -127,6 +127,9 @@
   <data name="Registration_Switch_Text" xml:space="preserve">
     <value>Already have an account?</value>
   </data>
+  <data name="Validation_InvalidCredentials" xml:space="preserve">
+    <value>Invalid login or password.</value>
+  </data>
   <data name="Validation_LoginTaken" xml:space="preserve">
     <value>This login is already taken</value>
   </data>

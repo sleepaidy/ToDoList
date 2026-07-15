@@ -98,21 +98,6 @@
                         @Html.ValidationMessageFor(x => x.Priority)
                     </div>
                 </fieldset>
-
-                <fieldset class="form-field form-field--group">
-                    <legend class="form-field__label">@Home.Index_Label_Status</legend>
-                    <div class="choice-group">
-                        <label class="choice-pill">
-                            <input type="radio" name="Status" value="InProgress" checked />
-                            <span>@Home.Index_Status_InProgress</span>
-                        </label>
-                        <label class="choice-pill">
-                            <input type="radio" name="Status" value="Done" />
-                            <span>@Home.Index_Status_Done</span>
-                        </label>
-                        @Html.ValidationMessageFor(x => x.Status)
-                    </div>
-                </fieldset>
             </div>
 
             <div class="create-form__actions">

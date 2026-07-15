@@ -142,6 +142,18 @@ body.app-body {
     background: var(--surface);
 }
 
+.nav-logout-form {
+    margin: 0;
+    display: inline;
+}
+
+.nav-logout-form__button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+}
+
 .app-navbar .navbar-toggler {
     border-color: var(--page-border);
 }
@@ -1469,8 +1481,6 @@ body.app-body {
     display: block;
 }
 
-/* --- Auth pages (login / registration) --- */
-
 .app-body--auth {
     min-height: 100vh;
 }
@@ -1526,6 +1536,29 @@ body.app-body {
 
 .auth-form__submit {
     width: 100%;
+}
+
+.auth-form__summary:not(.validation-summary-valid) {
+    margin: 0 0 0.35rem;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--accent-red-strong);
+    background: var(--accent-red-soft);
+    border: 1px solid hsla(var(--hue-red), 55%, 52%, 0.28);
+    border-radius: var(--radius-sm);
+}
+
+.auth-form__summary ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.field-validation-error {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-red-strong);
 }
 
 .auth-switch {

@@ -123,7 +123,7 @@ namespace ToDoList.Data.Repository
             return _webContext.Tasks
                 .Where(t => t.Status == Status.InProgress
                 && t.DeadlineAt != null
-                && t.DeadlineAt > now
+                && t.DeadlineAt > now.AddHours(1)
                 && t.DeadlineAt <= now.AddHours(24)
                 && !t.Notified24HoursBefore)
                 .ToList();
@@ -215,9 +215,8 @@ namespace ToDoList.Data.Repository
             }
             if (string.Equals(sortBy, "DeadlineAt", StringComparison.OrdinalIgnoreCase))
             {
-
                 return desc
-                    ? query.OrderBy(t => t.DeadlineAt != null).ThenByDescending(t => t.DeadlineAt)
+                    ? query.OrderBy(t => t.DeadlineAt == null).ThenByDescending(t => t.DeadlineAt)
                     : query.OrderBy(t => t.DeadlineAt == null).ThenBy(t => t.DeadlineAt);
             }
 

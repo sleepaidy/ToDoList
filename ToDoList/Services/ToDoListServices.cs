@@ -25,7 +25,7 @@ namespace ToDoList.Services
             entity.Description = viewModel.Description;
             entity.CreateAt = DateTime.Now;
             entity.Priority = viewModel.Priority;
-            entity.Status = viewModel.Status;
+            entity.Status = Status.InProgress;
             entity.IsImportant = viewModel.IsImportant;
             entity.Category = viewModel.Category;
             if (viewModel.DeadlineDate == null)

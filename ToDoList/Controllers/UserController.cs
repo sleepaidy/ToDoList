@@ -4,13 +4,14 @@ using ToDoList.Data.Enums;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Models.User;
 using Microsoft.AspNetCore.Authentication;
+using ToDoList.Helpers;
 using ToDoList.Services;
 using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Controllers
 {
     [Authorize]
-    public class UserController : Controller 
+    public class UserController : Controller
     {
         public IAuthService _authService;
         public IUserRepository _userRepository;
@@ -22,11 +23,12 @@ namespace ToDoList.Controllers
             _authService = authService;
             _webHostEnvironment = webHostEnvironment;
         }
+
         [HttpGet]
         public IActionResult Profile()
         {
             var user = _authService.GetUser();
-            if(user == null)
+            if (user == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
@@ -45,7 +47,7 @@ namespace ToDoList.Controllers
         public IActionResult ChangeLanguage(Language language)
         {
             var user = _authService.GetUser()!;
-            user.Language  = language;
+            user.Language = language;
             _userRepository.Update(user);
 
             user = _authService.GetUser()!;
@@ -57,32 +59,25 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateAvatar (IFormFile avatar)
+        public IActionResult UpdateAvatar(IFormFile avatar)
         {
-            if(avatar == null || avatar.Length == 0)
+            if (avatar == null || avatar.Length == 0)
+            {
+                return RedirectToAction(nameof(Profile));
+            }
+
+            var extension = AvatarStorageHelper.TryGetSafeExtension(avatar);
+            if (extension == null)
             {
                 return RedirectToAction(nameof(Profile));
             }
 
             var user = _authService.GetUser()!;
-            var userId = user.Id;
-            var avatarsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "avatars");
-            Directory.CreateDirectory(avatarsDir);
-
-            var fileName = $"avatar-{userId}.jpg";
-            var path = Path.Combine(avatarsDir, fileName);
-
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                avatar.CopyTo(fileStream); // copy to our PC
-            }
-
-            user.ProfileImage = $"/images/avatars/{fileName}";
+            user.ProfileImage = AvatarStorageHelper.SaveAvatar(
+                _webHostEnvironment, user.Id, avatar, extension);
             _userRepository.Update(user);
 
             return RedirectToAction(nameof(Profile));
         }
-
-
     }
 }

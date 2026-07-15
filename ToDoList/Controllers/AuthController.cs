@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
+using ToDoList.Helpers;
 using ToDoList.Localization;
 using ToDoList.Models.Auth;
 using ToDoList.Services;
@@ -41,10 +43,12 @@ namespace ToDoList.Controllers
                 return View(viewModel);
             }
 
-            var user = _userRepository.GetByNameAndPassword(viewModel.Login, viewModel.Password);
+            var login = viewModel.Login?.Trim() ?? "";
+            var user = _userRepository.GetByNameAndPassword(login, viewModel.Password);
 
             if (user == null)
             {
+                ModelState.AddModelError(string.Empty, Auth.Validation_InvalidCredentials);
                 return View(viewModel);
             }
 
@@ -90,7 +94,7 @@ namespace ToDoList.Controllers
                 Name = viewModel.Login,
                 Password = viewModel.Password,
                 ProfileImage = "",
-                Language = Language.Russian
+                Language = ResolveLanguageFromCurrentCulture()
             };
 
             try
@@ -107,19 +111,13 @@ namespace ToDoList.Controllers
 
             if (avatar != null && avatar.Length > 0)
             {
-                var avatarsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "avatars");
-                Directory.CreateDirectory(avatarsDir);
-
-                var fileName = $"avatar-{user.Id}.jpg";
-                var path = Path.Combine(avatarsDir, fileName);
-
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                var extension = AvatarStorageHelper.TryGetSafeExtension(avatar);
+                if (extension != null)
                 {
-                    avatar.CopyTo(fileStream);
+                    user.ProfileImage = AvatarStorageHelper.SaveAvatar(
+                        _webHostEnvironment, user.Id, avatar, extension);
+                    _userRepository.Update(user);
                 }
-
-                user.ProfileImage = $"/images/avatars/{fileName}";
-                _userRepository.Update(user);
             }
 
             var savedUser = _userRepository.Get(user.Id);
@@ -130,6 +128,9 @@ namespace ToDoList.Controllers
 
             return RedirectToAction("ToDoList", "Home");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult LogOut()
         {
             HttpContext.SignOutAsync(AuthService.AUTH_KEY)
@@ -137,5 +138,12 @@ namespace ToDoList.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        private static Language ResolveLanguageFromCurrentCulture()
+        {
+            var twoLetter = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            return string.Equals(twoLetter, "en", StringComparison.OrdinalIgnoreCase)
+                ? Language.English
+                : Language.Russian;
+        }
     }
 }

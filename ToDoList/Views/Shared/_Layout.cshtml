@@ -109,7 +109,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="LogOut">@Shared.Nav_LogOut</a>
+                                <form asp-controller="Auth" asp-action="LogOut" method="post" class="nav-logout-form">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="nav-link nav-logout-form__button">@Shared.Nav_LogOut</button>
+                                </form>
                             </li>
                         }
                         else

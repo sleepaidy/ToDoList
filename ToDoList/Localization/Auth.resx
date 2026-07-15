@@ -127,6 +127,9 @@
   <data name="Registration_Switch_Text" xml:space="preserve">
     <value>Уже есть аккаунт?</value>
   </data>
+  <data name="Validation_InvalidCredentials" xml:space="preserve">
+    <value>Неверный логин или пароль.</value>
+  </data>
   <data name="Validation_LoginTaken" xml:space="preserve">
     <value>Этот логин уже занят</value>
   </data>

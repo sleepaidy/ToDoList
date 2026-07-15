@@ -37,13 +37,9 @@ namespace ToDoList.Controllers
             }
             var userId = _authService.GetUserId();
             var task = _toDoListService.CreateTask(viewModel, userId);
-            return task.Status switch
-            {
-                Status.InProgress => RedirectToAction(nameof(ToDoList)),
-                Status.Done => RedirectToAction(nameof(DoneList)),
-                Status.Failed => RedirectToAction(nameof(FailedList)),
-                _ => RedirectToAction(nameof(ToDoList))
-            };
+            return task.Status == Status.Failed
+                ? RedirectToAction(nameof(FailedList))
+                : RedirectToAction(nameof(ToDoList));
         }
 
         [HttpPost]

@@ -1,74 +1,148 @@
-@model TaskListFilterViewModel
-@{
-    ViewData["Title"] = Home.FailedList_Page_Title;
-}
-
-<div class="todo-app-page">
-    <article class="page-card" aria-labelledby="failed-heading">
-        <header class="page-card__header">
-            <h1 id="failed-heading" class="page-card__title">@Home.FailedList_Header_Title</h1>
-            <p class="page-card__lead">@Home.FailedList_Header_Lead</p>
-            <span class="page-card__count">@Model.Tasks.Count</span>
-        </header>
-
-        @await Html.PartialAsync("_TaskListFilters", Model)
-
-        @if (Model.Tasks.Count == 0 && Model.IsFilterActive)
-        {
-            <p class="page-card__lead">
-                @Home.Filter_EmptyFiltered
-                <a asp-controller="Home" asp-action="FailedList">@Home.Filter_Reset</a>
-            </p>
-        }
-        else if (Model.Tasks.Count == 0)
-        {
-            <p class="page-card__lead">
-                @Home.FailedList_Empty_Message
-                <a asp-controller="Home" asp-action="Index">@Home.FailedList_Empty_Link</a>
-            </p>
-        }
-        else
-        {
-            <p class="task-filters__results">@string.Format(Home.Filter_ResultsCount, Model.Tasks.Count)</p>
-            <ul class="task-list">
-                @foreach (var task in Model.Tasks)
-                {
-                    <li class="task-card task-card--failed">
-                        <div class="task-card__head">
-                            <h2 class="task-card__title">@task.Name</h2>
-                            <div class="task-card__actions">
-                                @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "FailedList", task.Name))
-                            </div>
-                        </div>
-
-                        @if (!string.IsNullOrWhiteSpace(task.Description))
-                        {
-                            <p class="task-card__description">@task.Description</p>
-                        }
-
-                        <ul class="task-card__meta">
-                            <li>
-                                <span class="task-card__meta-label">@Home.ToDoList_Meta_Status</span>
-                                <span class="task-card__pill task-card__pill--failed">@Shared.Status_Failed</span>
-                            </li>
-                            @if (!string.IsNullOrWhiteSpace(task.Category))
-                            {
-                                <li>
-                                    <span class="task-card__meta-label">@Home.ToDoList_Meta_Category</span>
-                                    <span>@task.Category</span>
-                                </li>
-                            }
-                            @if (task.DeadlineAt.HasValue)
-                            {
-                                <li>
-                                    <span class="task-card__meta-label">@Home.FailedList_Meta_Deadline</span>
-                                    <span>@task.DeadlineAt.Value.ToString("dd.MM.yyyy")</span>
-                                </li>
-                            }
-                        </ul>
-                    </li>
-                }
-            </ul>
-        }
-    </article>
-</div>
+@model TaskListFilterViewModel
+
+@{
+
+    ViewData["Title"] = Home.FailedList_Page_Title;
+
+}
+
+
+
+<div class="todo-app-page">
+
+    <article class="page-card" aria-labelledby="failed-heading">
+
+        <header class="page-card__header">
+
+            <h1 id="failed-heading" class="page-card__title">@Home.FailedList_Header_Title</h1>
+
+            <p class="page-card__lead">@Home.FailedList_Header_Lead</p>
+
+            <span class="page-card__count">@Model.Tasks.Count</span>
+
+        </header>
+
+
+
+        @await Html.PartialAsync("_TaskListFilters", Model)
+
+
+
+        @if (Model.Tasks.Count == 0 && Model.IsFilterActive)
+
+        {
+
+            <p class="page-card__lead">
+
+                @Home.Filter_EmptyFiltered
+
+                <a asp-controller="Home" asp-action="FailedList">@Home.Filter_Reset</a>
+
+            </p>
+
+        }
+
+        else if (Model.Tasks.Count == 0)
+
+        {
+
+            <p class="page-card__lead">
+
+                @Home.FailedList_Empty_Message
+
+                <a asp-controller="Home" asp-action="Index">@Home.FailedList_Empty_Link</a>
+
+            </p>
+
+        }
+
+        else
+
+        {
+
+            <p class="task-filters__results">@string.Format(Home.Filter_ResultsCount, Model.Tasks.Count)</p>
+
+            <ul class="task-list">
+
+                @foreach (var task in Model.Tasks)
+
+                {
+
+                    <li class="task-card task-card--failed">
+
+                        <div class="task-card__head">
+
+                            <h2 class="task-card__title">@task.Name</h2>
+
+                            <div class="task-card__actions">
+
+                                @await Html.PartialAsync("_TaskDeleteForm", (task.Id, "FailedList", task.Name))
+
+                            </div>
+
+                        </div>
+
+
+
+                        @if (!string.IsNullOrWhiteSpace(task.Description))
+
+                        {
+
+                            <p class="task-card__description">@task.Description</p>
+
+                        }
+
+
+
+                        <ul class="task-card__meta">
+
+                            <li>
+
+                                <span class="task-card__meta-label">@Home.ToDoList_Meta_Status</span>
+
+                                <span class="task-card__pill task-card__pill--failed">@Shared.Status_Failed</span>
+
+                            </li>
+
+                            @if (!string.IsNullOrWhiteSpace(task.Category))
+
+                            {
+
+                                <li>
+
+                                    <span class="task-card__meta-label">@Home.ToDoList_Meta_Category</span>
+
+                                    <span>@task.Category</span>
+
+                                </li>
+
+                            }
+
+                            @if (task.DeadlineAt.HasValue)
+
+                            {
+
+                                <li>
+
+                                    <span class="task-card__meta-label">@Home.FailedList_Meta_Deadline</span>
+
+                                    <span>@task.DeadlineAt.Value.ToString("dd.MM.yyyy")</span>
+
+                                </li>
+
+                            }
+
+                        </ul>
+
+                    </li>
+
+                }
+
+            </ul>
+
+        }
+
+    </article>
+
+</div>
+

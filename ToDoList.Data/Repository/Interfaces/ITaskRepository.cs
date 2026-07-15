@@ -12,7 +12,7 @@ namespace ToDoList.Data.Repository.Interfaces
         void Remove(TaskData model);
         TaskData? GetById(int id, int userId);
         void UpdateStatus(TaskData task, Status status);
-        void MarkExpiredInProgressAsFailed(DateTime now, int userId);
+        void MarkExpiredInProgressAsFailed(DateTime now, int? userId = null);
         int GetNextSortOrder(int userId, bool isImportant, Status status);
         bool MoveTask(int taskId, int userId, bool moveUp);
         List<TaskData> GetTasksNeeding24HoursReminder(DateTime now);

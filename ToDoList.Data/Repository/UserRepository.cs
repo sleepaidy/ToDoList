@@ -1,11 +1,13 @@
 ﻿using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace ToDoList.Data.Repository
 {
     public class UserRepository : IUserRepository
     {
         private readonly WebContext _webContext;
+        private readonly PasswordHasher<UserData> _passwordHasher = new();
 
         public UserRepository(WebContext webContext)
         {
@@ -14,9 +16,25 @@ namespace ToDoList.Data.Repository
 
         public UserData? GetByNameAndPassword(string userName , string password)
         {
-            var hash = GetHashByPassword(password);
-            return _webContext.Users
-                .FirstOrDefault(x => x.Name == userName && x.Password == hash);
+            if(string.IsNullOrWhiteSpace(userName) || string.IsNullOrEmpty(password))
+            {
+                return null;
+            }
+
+            var normalized = userName.Trim();
+            var user = _webContext.Users
+                .FirstOrDefault(x => x.Name == normalized);
+               
+            if(user == null)
+            {
+                return null;
+            }
+
+            var result = _passwordHasher.VerifyHashedPassword(user, user.Password, password);
+
+            return result == PasswordVerificationResult.Failed
+                ? null
+                : user;
         }
 
         public bool IsNameUniq(string userName)
@@ -32,8 +50,8 @@ namespace ToDoList.Data.Repository
 
         public void Registration(UserData user)
         {
-            var hash = GetHashByPassword(user.Password);
-            user.Password = hash;
+            var plainPassword = user.Password;
+            user.Password = _passwordHasher.HashPassword(user, plainPassword);
 
             _webContext.Users.Add(user);
             _webContext.SaveChanges();
@@ -44,11 +62,7 @@ namespace ToDoList.Data.Repository
             return _webContext.Users.FirstOrDefault(x => x.Id == id);
         }
 
-        private string GetHashByPassword(string password)
-        {
-            password = password.Replace("a", "o");
-            return password.Substring(0, password.Length - 1);
-        }
+        
 
         public void Update(UserData user)
         {

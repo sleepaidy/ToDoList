@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using ToDoList.Data.Enums;
-using ToDoList.Interfaces;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.MiddlewareServices
 {

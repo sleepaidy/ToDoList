@@ -2,9 +2,9 @@ using ToDoList.Data.Enums;
 using ToDoList.Data.HelperModels;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
-using ToDoList.Interfaces;
 using ToDoList.Models.Dtos;
 using ToDoList.Models.Home;
+using ToDoList.Services.Interfaces;
 
 
 namespace ToDoList.Services
@@ -25,16 +25,12 @@ namespace ToDoList.Services
             entity.Description = viewModel.Description;
             entity.CreateAt = DateTime.Now;
             entity.Priority = viewModel.Priority;
-            entity.Status = viewModel.Status;
+            entity.Status = Status.InProgress;
             entity.IsImportant = viewModel.IsImportant;
             entity.Category = viewModel.Category;
-            if (viewModel.DeadlineDate == null && viewModel.DeadlineTime == null)
+            if (viewModel.DeadlineDate == null)
             {
                 entity.DeadlineAt = null;
-            }
-            else if (viewModel.DeadlineDate == null)
-            {
-                entity.DeadlineAt = DateTime.Today + viewModel.DeadlineTime!.Value.ToTimeSpan();
             }
             else if (viewModel.DeadlineTime == null)
             {
@@ -88,15 +84,21 @@ namespace ToDoList.Services
             return true;
         }
 
-        public bool CompleteTask(int id, int userId)
+        public Status? CompleteTask(int id, int userId)
         {
+            UpdateTaskStatus(userId);
+
             var task = _repository.GetById(id, userId);
-            if (task == null || task.Status != Status.InProgress)
+            if (task == null)
             {
-                return false;
+                return null;
+            }
+            if(task.Status != Status.InProgress)
+            {
+                return task.Status;
             }
             _repository.UpdateStatus(task, Status.Done);
-            return true;
+            return Status.Done;
         }
 
         private static ToDoTaskDto MapToDto(TaskData item) => new()

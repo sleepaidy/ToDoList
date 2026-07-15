@@ -4,7 +4,7 @@ using ToDoList.Models.Dtos;
 using ToDoList.Models.Home;
 
 
-namespace ToDoList.Interfaces
+namespace ToDoList.Services.Interfaces
 {
     public interface IToDoListService
     {
@@ -12,7 +12,7 @@ namespace ToDoList.Interfaces
         IReadOnlyList<ToDoTaskDto> GetAllTasksForCurrentUser(int userId);
         IReadOnlyList<ToDoTaskDto> GetTasksByStatus(Status status, int userId);
         bool DeleteTask(int id, int UserId);
-        bool CompleteTask(int id, int userId);
+        Status? CompleteTask(int id, int userId);
         bool MoveTaskUp(int id, int userId);
         bool MoveTaskDown(int id, int userId);
         TaskListFilterViewModel GetFilteredTasksByStatus(Status status, int userId, TaskListFilter filter);

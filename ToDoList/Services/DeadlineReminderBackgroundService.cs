@@ -10,11 +10,13 @@ namespace ToDoList.Services
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly IHubContext<ToDoHub, IToDoHub> _hubContext;
         private readonly ILogger<DeadlineReminderBackgroundService> _logger;
-        public DeadlineReminderBackgroundService(IServiceScopeFactory scopeFactory, IHubContext<ToDoHub, IToDoHub> hubContext, ILogger<DeadlineReminderBackgroundService> logger)
+        private readonly IOnlineUserTracker _onlineUsers;
+        public DeadlineReminderBackgroundService(IServiceScopeFactory scopeFactory, IHubContext<ToDoHub, IToDoHub> hubContext, ILogger<DeadlineReminderBackgroundService> logger, IOnlineUserTracker onlineUsers)
         {
             _scopeFactory = scopeFactory;
             _hubContext = hubContext;
             _logger = logger;
+            _onlineUsers = onlineUsers;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -40,9 +42,17 @@ namespace ToDoList.Services
             var repository = scope.ServiceProvider.GetRequiredService<ITaskRepository>();
             var now = DateTime.Now;
 
+            repository.MarkExpiredInProgressAsFailed(now);
+
             var tasks24h = repository.GetTasksNeeding24HoursReminder(now);
             foreach (var task in tasks24h)
             {
+                var userId = task.UserId.ToString();
+                if (!_onlineUsers.IsOnline(userId))
+                {
+                    continue;
+                }
+
                 await SendReminderAsync(task, "24h", cancellationToken);
                 repository.Mark24HoursReminderSent(task.Id);
             }
@@ -50,10 +60,15 @@ namespace ToDoList.Services
             var tasks1h = repository.GetTasksNeeding1HourReminder(now);
             foreach (var task in tasks1h)
             {
+                var userId = task.UserId.ToString();
+                if (!_onlineUsers.IsOnline(userId))
+                {
+                    continue;
+                }
+
                 await SendReminderAsync(task, "1h", cancellationToken);
                 repository.Mark1HourReminderSent(task.Id);
             }
-
         }
 
         private async Task SendReminderAsync(ToDoList.Data.Models.TaskData task, string reminderType, CancellationToken cancellationToken)

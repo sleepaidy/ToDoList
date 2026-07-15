@@ -232,6 +232,9 @@
   <data name="Index_Validation_Name_Required" xml:space="preserve">
     <value>Название обязательно для заполнения.</value>
   </data>
+  <data name="Index_Validation_DeadlineTimeRequiresDate" xml:space="preserve">
+    <value>Укажите дату дедлайна вместе со временем.</value>
+  </data>
   <data name="ToDoList_Badge_Important" xml:space="preserve">
     <value>Важная</value>
   </data>

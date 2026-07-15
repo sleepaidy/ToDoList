@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Data.Enums;
-using ToDoList.Interfaces;
 using ToDoList.Models.Home;
+using ToDoList.Services.Interfaces;
 
 namespace ToDoList.ViewComponents
 {

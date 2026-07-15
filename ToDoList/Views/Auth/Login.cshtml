@@ -11,6 +11,7 @@
         </header>
 
         <form class="create-form auth-form" asp-action="Login" asp-controller="Auth" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="auth-form__summary"></div>
             <div class="form-field">
                 <label class="form-field__label" for="auth-login">@Auth.Login_Label_Login</label>
                 <input

@@ -4,9 +4,10 @@ using ToDoList.Data;
 using ToDoList.Data.Repository;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Hubs;
-using ToDoList.Interfaces;
+using ToDoList.Hubs.Interfaces;
 using ToDoList.MiddlewareServices;
 using ToDoList.Services;
+using ToDoList.Services.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services
     });
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<IOnlineUserTracker, OnlineUserTracker>();
 builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
 builder.Services.AddHostedService<DeadlineReminderBackgroundService>();
 

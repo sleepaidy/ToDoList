@@ -232,6 +232,9 @@
   <data name="Index_Validation_Name_Required" xml:space="preserve">
     <value>Name is required.</value>
   </data>
+  <data name="Index_Validation_DeadlineTimeRequiresDate" xml:space="preserve">
+    <value>Please provide a deadline date together with the time.</value>
+  </data>
   <data name="ToDoList_Badge_Important" xml:space="preserve">
     <value>Important</value>
   </data>

@@ -3,13 +3,14 @@
 
 @{
     var listAction = Model.Status == Status.Done ? "DoneList" : "FailedList";
+    var filtersClass = Model.IsFilterActive ? "task-filters task-filters--active" : "task-filters";
 }
 
-<form method="get" class="task-filters">
-    <div class="form-row">
-        <div class="form-field">
+<form method="get" class="@filtersClass">
+    <div class="task-filters__row task-filters__row--filters">
+        <div class="form-field task-filters__field">
             <label class="form-field__label" for="filter-category">@Home.Filter_Category</label>
-            <select id="filter-category" name="category" class="form-field__select">
+            <select id="filter-category" name="category" class="form-field__input form-field__select">
                 <option value="" selected="@(string.IsNullOrWhiteSpace(Model.Category) ? "selected" : null)">@Home.Filter_All</option>
                 @foreach (var cat in Model.AvailableCategories)
                 {
@@ -17,16 +18,16 @@
                 }
             </select>
         </div>
-        <div class="form-field">
+        <div class="form-field task-filters__field">
             <label class="form-field__label" for="filter-priority">@Home.Filter_Priority</label>
-            <select id="filter-priority" name="priority" class="form-field__select">
+            <select id="filter-priority" name="priority" class="form-field__input form-field__select">
                 <option value="" selected="@(!Model.Priority.HasValue ? "selected" : null)">@Home.Filter_All</option>
                 <option value="High" selected="@(Model.Priority == Priority.High ? "selected" : null)">@Shared.Priority_High</option>
                 <option value="Medium" selected="@(Model.Priority == Priority.Medium ? "selected" : null)">@Shared.Priority_Medium</option>
                 <option value="Low" selected="@(Model.Priority == Priority.Low ? "selected" : null)">@Shared.Priority_Low</option>
             </select>
         </div>
-        <div class="form-field">
+        <div class="form-field task-filters__field task-filters__field--search">
             <label class="form-field__label" for="filter-search">@Home.Filter_Search</label>
             <input type="text"
                    id="filter-search"
@@ -38,26 +39,27 @@
                    autocomplete="off" />
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-field">
+
+    <div class="task-filters__row task-filters__row--sort">
+        <div class="form-field task-filters__field">
             <label class="form-field__label" for="filter-sort-by">@Home.Filter_SortBy</label>
-            <select id="filter-sort-by" name="sortBy" class="form-field__select">
+            <select id="filter-sort-by" name="sortBy" class="form-field__input form-field__select">
                 <option value="CreateAt" selected="@(Model.SortBy == "CreateAt" ? "selected" : null)">@Home.SortBy_CreateAt</option>
                 <option value="Name" selected="@(Model.SortBy == "Name" ? "selected" : null)">@Home.SortBy_Name</option>
                 <option value="DeadlineAt" selected="@(Model.SortBy == "DeadlineAt" ? "selected" : null)">@Home.SortBy_DeadlineAt</option>
                 <option value="Priority" selected="@(Model.SortBy == "Priority" ? "selected" : null)">@Home.SortBy_Priority</option>
             </select>
         </div>
-        <div class="form-field">
+        <div class="form-field task-filters__field">
             <label class="form-field__label" for="filter-sort-dir">@Home.Filter_SortDir</label>
-            <select id="filter-sort-dir" name="sortDir" class="form-field__select">
+            <select id="filter-sort-dir" name="sortDir" class="form-field__input form-field__select">
                 <option value="desc" selected="@(Model.SortDir == "desc" ? "selected" : null)">@Home.SortDir_Desc</option>
                 <option value="asc" selected="@(Model.SortDir == "asc" ? "selected" : null)">@Home.SortDir_Asc</option>
             </select>
         </div>
-        <div class="form-field task-filters__actions">
-            <button type="submit" class="create-btn create-btn--primary">@Home.Filter_Apply</button>
-            <a class="create-btn create-btn--secondary" asp-controller="Home" asp-action="@listAction">@Home.Filter_Reset</a>
+        <div class="task-filters__actions">
+            <button type="submit" class="create-btn create-btn--primary task-filters__btn">@Home.Filter_Apply</button>
+            <a class="create-btn create-btn--secondary task-filters__btn" asp-controller="Home" asp-action="@listAction">@Home.Filter_Reset</a>
         </div>
     </div>
 </form>

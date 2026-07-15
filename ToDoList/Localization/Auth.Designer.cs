@@ -268,6 +268,15 @@ namespace ToDoList.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Неверный логин или пароль.
+        /// </summary>
+        public static string Validation_InvalidCredentials {
+            get {
+                return ResourceManager.GetString("Validation_InvalidCredentials", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Этот логин уже занят.
         /// </summary>
         public static string Validation_LoginTaken {

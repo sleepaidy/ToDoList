@@ -1,7 +1,7 @@
 ﻿using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 
-namespace ToDoList.Interfaces
+namespace ToDoList.Services.Interfaces
 {
     public interface IAuthService
     {

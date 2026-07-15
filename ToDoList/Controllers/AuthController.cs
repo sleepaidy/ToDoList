@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ToDoList.Data.Enums;
 using ToDoList.Data.Models;
 using ToDoList.Data.Repository.Interfaces;
@@ -92,7 +93,17 @@ namespace ToDoList.Controllers
                 Language = Language.Russian
             };
 
-            _userRepository.Registration(user);
+            try
+            {
+                _userRepository.Registration(user);
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(
+                    nameof(RegisterViewModel.Login),
+                    Auth.Validation_LoginTaken);
+                return View(viewModel);
+            }
 
             if (avatar != null && avatar.Length > 0)
             {

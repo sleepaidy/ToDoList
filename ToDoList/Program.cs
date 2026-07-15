@@ -4,6 +4,7 @@ using ToDoList.Data;
 using ToDoList.Data.Repository;
 using ToDoList.Data.Repository.Interfaces;
 using ToDoList.Hubs;
+using ToDoList.Hubs.Interfaces;
 using ToDoList.Interfaces;
 using ToDoList.MiddlewareServices;
 using ToDoList.Services;
@@ -29,6 +30,7 @@ builder.Services
     });
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<IOnlineUserTracker, OnlineUserTracker>();
 builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
 builder.Services.AddHostedService<DeadlineReminderBackgroundService>();
 

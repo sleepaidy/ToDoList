@@ -6,5 +6,32 @@ using ToDoList.Services;
 namespace ToDoList.Hubs
 {
     [Authorize(AuthenticationSchemes = AuthService.AUTH_KEY)]
-    public class ToDoHub : Hub<IToDoHub> { } 
+    public class ToDoHub : Hub<IToDoHub> 
+    {
+        private readonly IOnlineUserTracker _onlineUsers;
+
+        public ToDoHub(IOnlineUserTracker onlineUsers)
+        {
+            _onlineUsers = onlineUsers;
+        }
+
+        public override Task OnConnectedAsync()
+        {
+            var userId = Context.UserIdentifier;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                _onlineUsers.UserConnected(userId);
+            }
+            return base.OnConnectedAsync();
+        }
+        public override Task OnDisconnectedAsync(Exception? exception)
+        {
+            var userId = Context.UserIdentifier;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                _onlineUsers.UserDisconnected(userId);
+            }
+            return base.OnDisconnectedAsync(exception);
+        }
+    } 
 }

@@ -159,28 +159,12 @@ Authentication screen.
 
 ---
 
-## Security notes
+## Security
 
-Implemented:
 - Password hashing with ASP.NET Identity `PasswordHasher`
 - Authorization on protected pages and APIs
 - Per-user task isolation (`userId` scoped queries)
 - Avatar upload restricted to common image extensions
-
-Limitations / possible next steps:
-- Antiforgery validation is not applied to every state-changing form/API call
-- Avatar validation is extension-based; file size limits could be stricter
-- Reminders are delivered only while the user is connected (SignalR)
-
----
-
-## Roadmap
-
-- [ ] Automated tests (unit / integration)
-- [ ] Broader antiforgery coverage
-- [ ] Stricter upload validation (size + content checks)
-- [ ] Offline reminder delivery (email / push)
-- [ ] Docker Compose setup (app + SQL Server)
 
 ---
 

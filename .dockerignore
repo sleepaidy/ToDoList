@@ -1,0 +1,8 @@
+** [Bb]in/
+** [Oo]bj/
+.git/
+.vs/
+.vscode/
+build.error
+README.md
+docs/

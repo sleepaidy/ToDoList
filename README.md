@@ -88,7 +88,7 @@ Edit `ToDoList/appsettings.json` if needed:
 From the solution root:
 
 ```bash
-dotnet ef database update --project ToDoList.Data --startup-project ToDoList
+dotnet ef database update --project ToDoList.Data --startup-project ToDoList.Data
 ```
 
 > Requires the EF Core tools:  
@@ -97,7 +97,7 @@ dotnet ef database update --project ToDoList.Data --startup-project ToDoList
 ### 4. Run the app
 
 ```bash
-dotnet run --project ToDoList
+dotnet run --project ToDoList/ToDoList.csproj
 ```
 
 Open the HTTPS URL printed in the console (typically `https://localhost:7xxx`).

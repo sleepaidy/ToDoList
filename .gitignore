@@ -28,3 +28,6 @@ Thumbs.db
 ## IDE
 .vscode/
 *.DotSettings.user
+
+# Error logs
+*.error

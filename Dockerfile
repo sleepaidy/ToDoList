@@ -17,6 +17,10 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-EXPOSE 8080
+# Set the application to listen on port 80 internally
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
+
 ENTRYPOINT ["dotnet", "ToDoList.dll"]
+
 

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # The Database Service
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: todolist_db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong@Password123
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+  # The Web App Service
+  web:
+    image: todolist_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: todolist_web
+    ports:
+      - "5111:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Overriding connection string to point to the 'db' container
+      - ConnectionStrings__DefaultDbConnection=Server=db;Database=ToDoList;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;
+    depends_on:
+      - db
+
+volumes:
+  mssql_data:
